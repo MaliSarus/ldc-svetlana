@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛДЦ Светлана - Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="row row_between row_center">
+            <div class="header__logo">
+                <img src="./assets/img/header/logo.svg" alt="Логотип" class="logo">
+            </div>
+            <div class="header__main-menu">
+                <ul>
+                    <li><a href="#">О центре</a></li>
+                    <li><a href="#">Кураторы направлений</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="header__contacts">
+                <h4>Санкт-Петербург, пр. Энгельса д.27, лит. Т</h4>
+                <div class="header__phone">
+                    <h3><a href="tel:+781262702">+7 (812) 627-02-<span class="header__phone_red">03</span></a></h3>
+                    <small>круглосуточно</small>
+                </div>
+            </div>
+        </div>
+        <div class="row row_between row_center">
+            <div class="header__primary-menu">
+                <ul>
+                    <li>Врачи</li>
+                    <li>Услуги</li>
+                    <li>Телемедицина</li>
+                    <li>Check-up программы</li>
+                    <li>Цены</li>
+                    <li>Для пациентов</li>
+                </ul>
+            </div>
+            <form action="#" class="header__search-form">
+                <button type="submit" class="header__search-form-button">
+                    <img src="./assets/img/header/search.svg" alt="Поиск">
+                </button>
+                <input type="search" class="header__search-form-field" placeholder="Поиск по сайту">
+            </form>
+            <div class="header__emergency-call">
+                <a href="tel:+781262702">
+                    <img src="./assets/img/header/emergency-call.svg" alt="Срочный звонок">
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="about__info">
+                <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
+                <h4 class="about__title">Эксперты становятся ближе </h4>
+                <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед Доктор
+                    медицинских наук, профессор. </p>
+                <button>Подробнее</button>
+                <div class="select-buttons">
+                    <div class="select-buttons__button"></div>
+                    <div class="select-buttons__button"></div>
+                    <div class="select-buttons__button"></div>
+                    <div class="select-buttons__button"></div>
+                </div>
+            </div>
+            <div class="about__doctor">
+                <div class="about__doctor-picture">
+<!--                    <img src="./assets/img/about/doctor.png" alt="Доктор Вишневский" >-->
+                </div>
+                <div class="sending">
+                    <h2>Консультация</h2>
+                    <h4 class="sending__prev-price"><del>4000 &#8381</del></h4>
+                    <h4 class="sending__today-price">1500 &#8381</h4>
+                    <div class="sending__sale">
+                        <h4>-65%</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    console.log(document.documentElement.clientWidth)
+</script>
+</body>
+</html>
