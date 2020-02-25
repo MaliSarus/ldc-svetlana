@@ -10,7 +10,7 @@ body, html {
   font-family: 'Exo', sans-serif;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -23,7 +23,7 @@ a{
   padding: 0 10px;
   box-sizing: border-box;
 
-  &_size_1667{
+  &_size_1667 {
     max-width: 1667px !important;
   }
 }
@@ -40,14 +40,24 @@ a{
   }
 }
 
-.title{
+.title {
   margin: 0;
   font-size: 30px;
 }
 
-.content{
+.content {
   max-width: 1360px;
   margin: 0 auto;
+
+  &_flex {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+}
+
+.column {
+  max-width: 290px;
+  width: 100%;
 }
 
 // Экстрабольшие девайсы (большие десктопы, >= 1200px)
@@ -77,7 +87,8 @@ a{
     &__logo {
       margin-right: 60px;
       padding: 5px 0;
-      img{
+
+      img {
         vertical-align: middle;
       }
     }
@@ -112,6 +123,7 @@ a{
     &__contacts {
       display: flex;
       align-items: center;
+
       p {
         font-size: 16px;
         display: inline-block;
@@ -125,6 +137,7 @@ a{
       position: relative;
       display: inline-block;
       float: right;
+
       a {
         font-weight: bold;
         font-size: 24px;
@@ -132,6 +145,7 @@ a{
         color: $main-color;
 
       }
+
       small {
         position: absolute;
         right: 0;
@@ -154,8 +168,9 @@ a{
           margin-right: 30px;
           display: inline-block;
           font-size: 16px;
-          a{
-            color: rgba(white,.8);
+
+          a {
+            color: rgba(white, .8);
           }
         }
       }
@@ -171,7 +186,8 @@ a{
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
       position: relative;
       z-index: 2;
-      &:focus{
+
+      &:focus {
         border: 2px solid white;
       }
 
@@ -249,13 +265,14 @@ a{
       padding: 90px 0;
       max-width: 666px;
       position: relative;
-      &::before{
+
+      &::before {
         position: absolute;
         display: block;
         content: '';
         width: 176px;
         height: 92px;
-        background-color: rgba($accent-color,.2);
+        background-color: rgba($accent-color, .2);
         top: 245px;
         left: -310px;
         transform: skewX(-20deg);
@@ -274,7 +291,8 @@ a{
         margin-bottom: 55px;
         cursor: pointer;
         transition: background-color .5s;
-        &:hover{
+
+        &:hover {
           background-color: $accent-color;
         }
       }
@@ -322,7 +340,8 @@ a{
       min-height: 100%;
       flex-grow: 1;
       position: relative;
-      &::before{
+
+      &::before {
         position: absolute;
         z-index: 0;
         bottom: 0;
@@ -331,9 +350,10 @@ a{
         content: '';
         height: 250px;
         width: 300px;
-        background-color: rgba($accent-color,.4);
+        background-color: rgba($accent-color, .4);
         transform: skewX(-15deg);
       }
+
       &-picture {
         position: relative;
         z-index: 1;
@@ -397,12 +417,15 @@ a{
   }
 
 
-  .features{
-    padding: 60px 0;
-    &__title{
+  .features {
+    padding-top: 60px;
+    padding-bottom: 90px;
+
+    &__title {
       margin-bottom: 60px;
     }
-    &__block{
+
+    &__block {
       position: relative;
       flex-basis: calc(100% / 4 - 20px);
       display: flex;
@@ -413,36 +436,42 @@ a{
       text-align: center;
       padding: 0 50px;
       box-sizing: border-box;
-      &:nth-child(1){
-        .features__icon::before{
+
+      &:nth-child(1) {
+        .features__icon::before {
           background: url("../img/features/heart-icon.svg") center no-repeat;
         }
       }
-      &:nth-child(2){
-        .features__icon::before{
+
+      &:nth-child(2) {
+        .features__icon::before {
           background: url("../img/features/tech-icon.svg") center no-repeat;
         }
       }
-      &:nth-child(3){
-        .features__icon::before{
+
+      &:nth-child(3) {
+        .features__icon::before {
           background: url("../img/features/grant-icon.svg") center no-repeat;
         }
       }
-      &:nth-child(4){
-        .features__icon::before{
+
+      &:nth-child(4) {
+        .features__icon::before {
           background: url("../img/features/people-icon.svg") center no-repeat;
         }
       }
     }
-    &__icon{
+
+    &__icon {
       position: absolute;
       left: 50%;
       transform: translateX(-50%) skewX(-15deg);
-      top:-10%;
+      top: -10%;
       width: 85px;
       height: 50px;
       background-color: $main-color;
-      &::before{
+
+      &::before {
         transform: skewX(15deg);
         width: 100%;
         height: 100%;
@@ -450,39 +479,51 @@ a{
         content: '';
       }
     }
-    &__desc{
+
+    &__desc {
       font-size: 18px;
       line-height: 120%;
       width: 100%;
     }
   }
-  
-  .units{
+
+  .units {
     background-color: $bg-gray;
-    &__block{
-      padding: 40px 0;
+    position: relative;
+
+    &__block {
       width: 100%;
+      position: relative;
+      top: -30px;
+      box-shadow: 0px 10px 30px rgba(12, 28, 56, 0.08);
     }
-    &__head{
+
+    &__head {
+      padding-top: 40px;
       background: $bg-gray;
-      .title{
+
+      .title {
         margin-bottom: 35px;
       }
     }
-    &__menu{
-      ul{
+
+    &__menu {
+      ul {
         padding: 0;
         list-style: none;
-        li{
+
+        li {
           margin-right: 55px;
           display: inline-block;
-          a{
+
+          a {
             font-weight: 600;
             font-size: 18px;
             color: $main-color;
             padding-bottom: 20px;
             transition: color .5s;
-            &:hover{
+
+            &:hover {
               color: $accent-color;
               border-bottom: 2px solid $accent-color;
             }
@@ -490,79 +531,156 @@ a{
         }
       }
     }
-    &__content{
+
+    &__content {
       background-color: white;
-      &-services{
-        ul{
-          padding: 0;
-          list-style: none;
-          li::before {
-            margin-right: 20px;
-            width: 1em;
-            text-align: right;
-            display: inline-block;
-            font-weight: bold;
-            font-size: 16px;
-            color: $accent-color;
-          }
-          &:nth-child(1){
-            li:nth-child(1)::before{
-              content: 'А';
+      padding: 40px 0;
+
+      &-image {
+        min-width: 325px;
+        height: 330px;
+        background: url("../img/units/content-image.png") center no-repeat;
+        background-size: cover;
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(179.96deg, rgba(42, 68, 114, 0) 18.76%, rgba(42, 68, 114, 0.55) 49.37%);
+        }
+
+        p {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          color: white;
+          padding: 40px 25px;
+          font-size: 18px;
+          margin: 0;
+        }
+      }
+
+      &-services {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 330px;
+
+        .column {
+          ul:last-child {
+            li:last-child {
+              margin-bottom: 0;
             }
           }
-          &:nth-child(2){
-            li:nth-child(1)::before{
-              content: 'В';
+
+          &:nth-child(1) {
+            ul {
+              &:nth-child(1) {
+                li:nth-child(1)::before {
+                  content: 'А';
+                }
+              }
+
+              &:nth-child(2) {
+                li:nth-child(1)::before {
+                  content: 'В';
+                }
+              }
+
+              &:nth-child(3) {
+                li:nth-child(1)::before {
+                  content: 'Г';
+                }
+              }
+
+              &:nth-child(4) {
+                li:nth-child(1)::before {
+                  content: 'И';
+                }
+              }
             }
           }
-          &:nth-child(3){
-            li:nth-child(1)::before{
-              content: 'Г';
+
+
+          &:nth-child(2) {
+            ul {
+              &:nth-child(1) {
+                li:nth-child(1)::before {
+                  content: 'К';
+                }
+              }
+
+              &:nth-child(2) {
+                li:nth-child(1)::before {
+                  content: 'Н';
+                }
+              }
+
+              &:nth-child(3) {
+                li:nth-child(1)::before {
+                  content: 'О';
+                }
+              }
+
+              &:nth-child(4) {
+                li:nth-child(1)::before {
+                  content: 'П';
+                }
+              }
             }
           }
-          &:nth-child(4){
-            li:nth-child(1)::before{
-              content: 'И';
+
+          &:nth-child(3) {
+            ul {
+              &:nth-child(1) {
+                li:nth-child(1)::before {
+                  content: 'Т';
+                }
+              }
+
+              &:nth-child(2) {
+                li:nth-child(1)::before {
+                  content: 'Ф';
+                }
+              }
+
+              &:nth-child(3) {
+                li:nth-child(1)::before {
+                  content: 'Х';
+                }
+              }
+
+              &:nth-child(4) {
+                li:nth-child(1)::before {
+                  content: 'Э';
+                }
+              }
             }
           }
-          &:nth-child(5){
-            li:nth-child(1)::before{
-              content: 'К';
-            }
-          }
-          &:nth-child(6){
-            li:nth-child(1)::before{
-              content: 'Н';
-            }
-          }
-          &:nth-child(7){
-            li:nth-child(1)::before{
-              content: 'О';
-            }
-          }
-          &:nth-child(8){
-            li:nth-child(1)::before{
-              content: 'П';
-            }
-          }
-          &:nth-child(9){
-            li:nth-child(1)::before{
-              content: 'Т';
-            }
-          }
-          &:nth-child(10){
-            li:nth-child(1)::before{
-              content: 'Ф';
-            }
-          }
-          &:nth-child(11){
-            li:nth-child(1)::before{
-              content: 'Х';
-            }
-          }
-          &:nth-child(12){
-            li:nth-child(1)::before{
-              content: 'Э';
+
+          ul {
+            margin: 0;
+            display: block;
+            padding: 0;
+            list-style: none;
+
+            li {
+              margin-bottom: 29px;
+
+              &::before {
+                margin-right: 20px;
+                width: 1em;
+                text-align: right;
+                display: inline-block;
+                font-weight: bold;
+                font-size: 16px;
+                color: $accent-color;
+                content: '';
+              }
             }
           }
         }
@@ -570,6 +688,13 @@ a{
     }
   }
 }
+
+
+
+
+
+
+
 
 
 
