@@ -1,34 +1,54 @@
-var gulp       	 = require('gulp');
-var sass       	 = require('gulp-sass');
-var browserSync 	 = require('browser-sync').create();
-var autoprefixer 	 = require('gulp-autoprefixer');
-var sourcemaps = require('gulp-sourcemaps');
+const
+    gulp          = require('gulp'),
+    sass          = require('gulp-sass'),
+    browserSync   = require("browser-sync").create(),
+    del           = require('del'),
+    cache         = require('gulp-cache'),
+    autoPrefixer  = require('gulp-autoprefixer');
 
-gulp.task('browser-sync', function(done) {
-    browserSync.init({
-        server: {
-            baseDir: './src'
-        },
-    });
-    done()
-});
-
-gulp.task('sass', function(done){
-    gulp.src('./src/assets/scss/*.scss')
-        .pipe(sass({outputStyle: 'compact'}))
-        .pipe(autoprefixer({
+function gulpSass() {
+    return gulp
+        .src('./src/assets/scss/**/*.scss')
+        .pipe(sass({ outputStyle: "compressed" }))
+        .pipe(autoPrefixer({
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(sourcemaps.write('./src/assets/maps'))
-        .pipe(gulp.dest('./src/assets/css/'))
+        .pipe(gulp.dest('./src/assets/css'))
         .pipe(browserSync.stream());
-    done()
-});
+}
 
-gulp.task('default', gulp.series('sass', 'browser-sync', function(done) {
-    gulp.watch('./src/**/*.scss', gulp.series('sass'));
-    gulp.watch("./src/*.html").on('change', browserSync.reload);
-    gulp.watch("src/assets/js/*.js").on('change', browserSync.reload);
-    done()
-}));
+function startServer(done) {
+    browserSync.init({
+        server: {
+            baseDir: "./src/"
+        },
+    });
+    done();
+}
+
+function clean() {
+    return del(["dist"]);
+}
+
+function clear() {
+    return cache.clearAll();
+}
+
+function reload(done) {
+    browserSync.reload();
+    done();
+}
+
+function watchFiles(done) {
+    gulp.watch('./src/assets/scss/**/*.scss', gulp.parallel(gulpSass));
+    gulp.watch('./src/assets/css/**/*.css', gulp.parallel(reload));
+    gulp.watch("./src/**/*.html", gulp.parallel(reload));
+    gulp.watch('./src/assets/js/**/*.js', gulp.parallel(reload));
+    done();
+}
+
+gulp.task('default',gulp.parallel(watchFiles, startServer));
+
+exports.clean = clean;
+exports.clear = clear;
