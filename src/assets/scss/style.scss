@@ -2,6 +2,7 @@
 
 $main-color: #2A4472;
 $accent-color: #E84E2C;
+$bg-gray: #F1F1F1;
 
 body, html {
   margin: 0;
@@ -19,11 +20,16 @@ a{
   max-width: 100%;
   margin: 0 auto;
   position: relative;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  &_size_1667{
+    max-width: 1667px !important;
+  }
 }
 
 .row {
   display: flex;
-  padding: 0 10px;
 
   &_between {
     justify-content: space-between;
@@ -32,6 +38,16 @@ a{
   &_center {
     align-items: center;
   }
+}
+
+.title{
+  margin: 0;
+  font-size: 30px;
+}
+
+.content{
+  max-width: 1360px;
+  margin: 0 auto;
 }
 
 // Экстрабольшие девайсы (большие десктопы, >= 1200px)
@@ -208,7 +224,7 @@ a{
   }
 
   .about {
-    background-color: #F1F1F1;
+    background-color: $bg-gray;
     position: relative;
 
     &::before {
@@ -232,6 +248,18 @@ a{
     &__info {
       padding: 90px 0;
       max-width: 666px;
+      position: relative;
+      &::before{
+        position: absolute;
+        display: block;
+        content: '';
+        width: 176px;
+        height: 92px;
+        background-color: rgba($accent-color,.2);
+        top: 245px;
+        left: -310px;
+        transform: skewX(-20deg);
+      }
 
       button {
         padding: 15px 0;
@@ -362,6 +390,180 @@ a{
             font-size: 26px !important;
             font-weight: 500;
             margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  .features{
+    padding: 60px 0;
+    &__title{
+      margin-bottom: 60px;
+    }
+    &__block{
+      position: relative;
+      flex-basis: calc(100% / 4 - 20px);
+      display: flex;
+      align-items: center;
+      height: 167px;
+      background: $bg-gray;
+      color: $main-color;
+      text-align: center;
+      padding: 0 50px;
+      box-sizing: border-box;
+      &:nth-child(1){
+        .features__icon::before{
+          background: url("../img/features/heart-icon.svg") center no-repeat;
+        }
+      }
+      &:nth-child(2){
+        .features__icon::before{
+          background: url("../img/features/tech-icon.svg") center no-repeat;
+        }
+      }
+      &:nth-child(3){
+        .features__icon::before{
+          background: url("../img/features/grant-icon.svg") center no-repeat;
+        }
+      }
+      &:nth-child(4){
+        .features__icon::before{
+          background: url("../img/features/people-icon.svg") center no-repeat;
+        }
+      }
+    }
+    &__icon{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) skewX(-15deg);
+      top:-10%;
+      width: 85px;
+      height: 50px;
+      background-color: $main-color;
+      &::before{
+        transform: skewX(15deg);
+        width: 100%;
+        height: 100%;
+        display: block;
+        content: '';
+      }
+    }
+    &__desc{
+      font-size: 18px;
+      line-height: 120%;
+      width: 100%;
+    }
+  }
+  
+  .units{
+    background-color: $bg-gray;
+    &__block{
+      padding: 40px 0;
+      width: 100%;
+    }
+    &__head{
+      background: $bg-gray;
+      .title{
+        margin-bottom: 35px;
+      }
+    }
+    &__menu{
+      ul{
+        padding: 0;
+        list-style: none;
+        li{
+          margin-right: 55px;
+          display: inline-block;
+          a{
+            font-weight: 600;
+            font-size: 18px;
+            color: $main-color;
+            padding-bottom: 20px;
+            transition: color .5s;
+            &:hover{
+              color: $accent-color;
+              border-bottom: 2px solid $accent-color;
+            }
+          }
+        }
+      }
+    }
+    &__content{
+      background-color: white;
+      &-services{
+        ul{
+          padding: 0;
+          list-style: none;
+          li::before {
+            margin-right: 20px;
+            width: 1em;
+            text-align: right;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 16px;
+            color: $accent-color;
+          }
+          &:nth-child(1){
+            li:nth-child(1)::before{
+              content: 'А';
+            }
+          }
+          &:nth-child(2){
+            li:nth-child(1)::before{
+              content: 'В';
+            }
+          }
+          &:nth-child(3){
+            li:nth-child(1)::before{
+              content: 'Г';
+            }
+          }
+          &:nth-child(4){
+            li:nth-child(1)::before{
+              content: 'И';
+            }
+          }
+          &:nth-child(5){
+            li:nth-child(1)::before{
+              content: 'К';
+            }
+          }
+          &:nth-child(6){
+            li:nth-child(1)::before{
+              content: 'Н';
+            }
+          }
+          &:nth-child(7){
+            li:nth-child(1)::before{
+              content: 'О';
+            }
+          }
+          &:nth-child(8){
+            li:nth-child(1)::before{
+              content: 'П';
+            }
+          }
+          &:nth-child(9){
+            li:nth-child(1)::before{
+              content: 'Т';
+            }
+          }
+          &:nth-child(10){
+            li:nth-child(1)::before{
+              content: 'Ф';
+            }
+          }
+          &:nth-child(11){
+            li:nth-child(1)::before{
+              content: 'Х';
+            }
+          }
+          &:nth-child(12){
+            li:nth-child(1)::before{
+              content: 'Э';
+            }
           }
         }
       }

@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+<!--Шапка-->
 <header class="header">
     <div class="container">
         <div class="row row_between row_center">
-            <div class="header__logo">
+            <div class="header__logo"> <!--            Верхняя часть-->
                 <img src="./assets/img/header/logo.svg" alt="Логотип" class="logo">
             </div>
             <div class="header__main-menu">
@@ -29,7 +30,7 @@
             </div>
         </div>
         <div class="row row_between row_center">
-            <div class="header__primary-menu">
+            <div class="header__primary-menu"> <!--            Нижняя часть-->
                 <ul>
                     <li><a href="#">Врачи</a></li>
                     <li><a href="#">Услуги</a></li>
@@ -53,10 +54,10 @@
         </div>
     </div>
 </header>
-<section class="about">
+<section class="about"> <!--Секция о докторах-->
     <div class="container">
         <div class="row">
-            <div class="about__info">
+            <div class="about__info"><!--Левая часть-->
                 <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
                 <h4 class="about__title">Эксперты становятся ближе </h4>
                 <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед Доктор
@@ -69,9 +70,8 @@
                     <div class="select-buttons__button"></div>
                 </div>
             </div>
-            <div class="about__doctor">
+            <div class="about__doctor"><!--Правая часть-->
                 <div class="about__doctor-picture">
-<!--                    <img src="./assets/img/about/doctor.png" alt="Доктор Вишневский" >-->
                 </div>
                 <div class="sending">
                     <h2>Консультация</h2>
@@ -85,8 +85,99 @@
         </div>
     </div>
 </section>
-<script>
-    console.log(document.documentElement.clientWidth)
-</script>
+<section class="features"><!--Секция о возможностях-->
+    <div class="container">
+        <h2 class="title features__title">Многолетний опыт безупречной работы</h2>
+        <div class="row row_between">
+            <div class="features__block">
+                <div class="features__icon"></div>
+                <div class="features__desc">Многопрофильная помощь по 56 направлениям</div>
+            </div>
+            <div class="features__block">
+                <div class="features__icon"></div>
+                <div class="features__desc">Диагностическое оборудование экспертного класса</div>
+            </div>
+            <div class="features__block">
+                <div class="features__icon"></div>
+                <div class="features__desc">Заслуженные<br>врачи Российской Федерации</div>
+            </div>
+            <div class="features__block">
+                <div class="features__icon"></div>
+                <div class="features__desc">Телемедицина.<br>Дистанционные консультации</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="units"><!--Секция об отделениях-->
+    <div class="container container_size_1667">
+        <div class="row">
+            <div class="units__block"><!--Верх-->
+                <div class="content"><!--Ограничение основного контента-->
+                    <div class="units__head">
+                        <h2 class="title">
+                            Отделения <лечебно – диагностического центра>
+                        </h2>
+                        <div class="units__menu">
+                            <ul>
+                                <li><a href="#">Лечебное отделение</a></li>
+                                <li><a href="#">Диагностическое отделение</a></li>
+                                <li><a href="#">Операционный блок</a></li>
+                                <li><a href="#">Реабилитационное отделение</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="units__content"><!--Низ-->
+                        <div class="units__content-image"></div>
+                        <div class="units__content-services">
+                            <ul>
+                                <li>Аллергология</li>
+                                <li>Артроскопия</li>
+                                <li>Анестезиология</li>
+                            </ul>
+                            <ul>
+                                <li>Вертебрология</li>
+                                <li>Второе мнения</li>
+                            </ul>
+                            <ul>
+                                <li>Гастроэнтерология</li>
+                            </ul>
+                            <ul>
+                                <li>Иммунлогия</li>
+                            </ul>
+                            <ul>
+                                <li>Кардиология</li>
+                                <li>Колопроктология</li>
+                            </ul>
+                            <ul>
+                                <li>Неврология</li>
+                            </ul>
+                            <ul>
+                                <li>Онкология</li>
+                                <li>Оториноларингология</li>
+                                <li>Офтальмология</li>
+                            </ul>
+                            <ul>
+                                <li>Психотерапия</li>
+                            </ul>
+                            <ul>
+                                <li>Терапия</li>
+                            </ul>
+                            <ul>
+                                <li>Флебология</li>
+                            </ul>
+                            <ul>
+                                <li>Хирургия</li>
+                            </ul>
+                            <ul>
+                                <li>Эндокринология</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="units__emergency-room"></div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
