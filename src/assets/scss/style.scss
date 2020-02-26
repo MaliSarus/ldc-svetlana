@@ -17,6 +17,7 @@ a {
 //Для телефонов
 
 .container {
+  min-width: 1360px;
   max-width: 100%;
   margin: 0 auto;
   position: relative;
@@ -43,15 +44,21 @@ a {
 .title {
   margin: 0;
   font-size: 30px;
+  color: #0A1831;
 }
 
 .content {
+  width: 100%;
   max-width: 1360px;
   margin: 0 auto;
 
   &_flex {
     display: flex;
     flex-wrap: nowrap;
+  }
+
+  &_between {
+    justify-content: space-between;
   }
 }
 
@@ -61,17 +68,20 @@ a {
 }
 
 // Экстрабольшие девайсы (большие десктопы, >= 1200px)
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .container {
     max-width: 1360px
   }
 
   .header {
+    position: fixed;
+    top: 0;
+    left: 0;
     color: $main-color;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
-
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    width: 100%;
+    background-color: white;
     &::before {
       display: block;
       width: calc(100vw - 18px);
@@ -82,6 +92,12 @@ a {
       background-color: $main-color;
       z-index: -1;
       content: '';
+    }
+
+    &__top{
+      width: 100%;
+      display: flex;
+      align-items: center;
     }
 
     &__logo {
@@ -242,6 +258,7 @@ a {
   .about {
     background-color: $bg-gray;
     position: relative;
+    margin-top: 130px;
 
     &::before {
       position: absolute;
@@ -495,7 +512,8 @@ a {
       width: 100%;
       position: relative;
       top: -30px;
-      box-shadow: 0px 10px 30px rgba(12, 28, 56, 0.08);
+      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
+      margin-bottom: 30px;
     }
 
     &__head {
@@ -511,17 +529,17 @@ a {
       ul {
         padding: 0;
         list-style: none;
-
+        margin: 0;
         li {
           margin-right: 55px;
           display: inline-block;
-
+          padding-bottom: 22px;
           a {
             font-weight: 600;
             font-size: 18px;
             color: $main-color;
-            padding-bottom: 20px;
             transition: color .5s;
+            padding-bottom: 20px;
 
             &:hover {
               color: $accent-color;
@@ -682,6 +700,235 @@ a {
                 content: '';
               }
             }
+          }
+        }
+      }
+    }
+
+    &__emergency-room {
+      flex-grow: 1;
+      background-color: white;
+      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
+      padding: 40px 0 45px 0;
+      margin-bottom: 60px;
+
+      .title {
+        margin-bottom: 35px;
+      }
+    }
+
+    &__features {
+      display: flex;
+      justify-content: space-between;
+
+      ul {
+        padding: 0;
+        display: block;
+        list-style: none;
+        margin: 0;
+
+        &:nth-child(1) {
+          margin-right: 30px;
+
+          li {
+            color: rgba(#0A1831, .8);
+
+            &:before {
+              display: inline-block;
+              content: '';
+              width: 14px;
+              height: 6px;
+              margin-right: 10px;
+              background-color: $accent-color;
+              transform: translateY(-50%) skewX(-15deg);
+            }
+
+            span {
+              color: $accent-color;
+              font-weight: bold;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          margin-right: 30px;
+
+          li {
+            color: $main-color;
+            text-decoration: underline;
+            font-weight: bold;
+          }
+        }
+
+        li {
+          margin-bottom: 20px;
+
+          &:last-child {
+            margin: 0;
+          }
+        }
+      }
+
+      &-image {
+        width: 325px;
+        height: 190px;
+        background: url("../img/units/features-image.png") center no-repeat;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(179.98deg, rgba(42, 68, 114, 0) 18.76%, rgba(42, 68, 114, 0.55) 49.37%);;
+        }
+
+        p {
+          position: absolute;
+          padding: 15px 70px 15px 15px;
+          font-size: 16px;
+          line-height: 140%;
+          bottom: 0;
+          color: white;
+        }
+      }
+    }
+
+    &__countries {
+      flex-grow: 1;
+      margin-bottom: 60px;
+    }
+
+    &__country {
+      flex-basis: calc(100% / 4 - 20px);
+      background-color: white;
+      padding: 27px 0;
+      text-align: center;
+      font-size: 20px;
+      color: $main-color;
+
+      &-image {
+        width: 54px;
+        height: 36px;
+        margin: 0 auto 15px auto;
+      }
+
+      &:nth-child(1) {
+        .units__country-image {
+          background: url("../img/units/country-america.svg") center no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &:nth-child(2) {
+        .units__country-image {
+          background: url("../img/units/country-swis.svg") center no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &:nth-child(3) {
+        .units__country-image {
+          background: url("../img/units/country-israil.svg") center no-repeat;
+          background-size: contain;
+        }
+      }
+
+      &:nth-child(4) {
+        .units__country-image {
+          background: url("../img/units/country-germany.svg") center no-repeat;
+          background-size: contain;
+        }
+      }
+    }
+  }
+
+  .appointment{
+    background-color: white;
+    &__block{
+      flex-basis: 100%;
+      padding: 55px 0;
+      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
+      margin-top: 60px;
+      margin-bottom: 90px;
+      background: url("../img/appointment/appointment-block-bg.svg") center no-repeat;
+      background-size: contain;
+    }
+    &__title{
+      flex-grow: 1;
+      .title{
+        margin-top: -5px;
+        margin-bottom: 12px;
+        font-size: 24px;
+      }
+      a{
+        color: $accent-color;
+      }
+    }
+    &__form{
+      display: flex;
+      justify-content: space-between;
+      vertical-align: center;
+      position: relative;
+      flex-grow: 3;
+      input, button{
+        flex-basis: calc(100% / 3 - 20px);
+        box-sizing: border-box;
+        height: 50px;
+        padding: 0 18px;
+        font-size: 16px;
+        background: #FFFFFF;
+        border: 1px solid rgba(42, 68, 114, 0.2);
+        border-radius: 1px;
+        color: $main-color;
+      }
+      input{
+        &::placeholder{
+          color: $main-color;
+        }
+      }
+      button{
+        border: 1px solid $main-color;
+        &:hover{
+          background-color: $main-color;
+          color: white;
+          img{
+            filter: grayscale(1) invert(1) brightness(1.5);
+          }
+        }
+        img{
+          vertical-align: middle;
+          margin-left: 10px;
+          filter: none;
+        }
+      }
+      label{
+        height: auto;
+      }
+      label{
+        position: absolute;
+        bottom: -22px;
+        small{
+          font-size: 12px;
+          color: $main-color;
+        }
+        input{
+          margin: 0;
+          height: 16px;
+          width: 16px;
+          vertical-align: middle;
+          margin-right: 8px;
+          background: white;
+          border: 1px solid $main-color;
+          outline: none;
+          appearance: none;
+          padding: 0;
+          &:checked::before{
+            content: 'X';
+            display: block;
+            font-size: 15px;
+            text-align: center;
+            color: $main-color;
           }
         }
       }

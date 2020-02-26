@@ -11,21 +11,23 @@
 <header class="header">
     <div class="container">
         <div class="row row_between row_center">
-            <div class="header__logo"> <!--            Верхняя часть-->
-                <img src="./assets/img/header/logo.svg" alt="Логотип" class="logo">
-            </div>
-            <div class="header__main-menu">
-                <ul>
-                    <li><a href="#">О центре</a></li>
-                    <li><a href="#">Кураторы направлений</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="header__contacts">
-                <p>Санкт-Петербург, пр. Энгельса д.27, лит. Т</p>
-                <div class="header__phone">
-                    <a href="tel:+781262702">+7 (812) 627-02-<span class="header__phone_red">03</span></a>
-                    <small>круглосуточно</small>
+            <div class="header__top">
+                <div class="header__logo"> <!--            Верхняя часть-->
+                    <img src="./assets/img/header/logo.svg" alt="Логотип" class="logo">
+                </div>
+                <div class="header__main-menu">
+                    <ul>
+                        <li><a href="#">О центре</a></li>
+                        <li><a href="#">Кураторы направлений</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="header__contacts">
+                    <p>Санкт-Петербург, пр. Энгельса д.27, лит. Т</p>
+                    <div class="header__phone">
+                        <a href="tel:+781262702">+7 (812) 627-02-<span class="header__phone_red">03</span></a>
+                        <small>круглосуточно</small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,7 +77,9 @@
                 </div>
                 <div class="sending">
                     <h2>Консультация</h2>
-                    <h4 class="sending__prev-price"><del>4000 &#8381</del></h4>
+                    <h4 class="sending__prev-price">
+                        <del>4000 &#8381</del>
+                    </h4>
                     <h4 class="sending__today-price">1500 &#8381</h4>
                     <div class="sending__sale">
                         <h4>-65%</h4>
@@ -115,7 +119,7 @@
                 <div class="units__head">
                     <div class="content">
                         <h2 class="title">
-                            Отделения <лечебно – диагностического центра>
+                            Отделения &lt;лечебно – диагностического центра&gt;
                         </h2>
                         <div class="units__menu">
                             <ul>
@@ -131,7 +135,8 @@
                     <div class="content content_flex">
                         <div class="units__content-image">
                             <p>
-                                Лечебно-Диагностический Центр завода «Светлана» это возвращение к добрым традициям в сочетании с самым на сегодняшний день современным оснащением.
+                                Лечебно-Диагностический Центр завода «Светлана» это возвращение к добрым традициям в
+                                сочетании с самым на сегодняшний день современным оснащением.
                             </p>
                         </div>
                         <div class="units__content-services">
@@ -187,7 +192,81 @@
                     </div>
                 </div>
             </div>
-            <div class="units__emergency-room"></div>
+        </div>
+        <div class="row">
+            <div class="units__emergency-room">
+                <div class="content">
+                    <h2 class="title">
+                        Взрослый и детский травмпункт &lt;ЛДЦ Завода “Светлана”&gt;
+                    </h2>
+                    <div class="units__features">
+                        <ul>
+                            <li><span>Круглосуточное</span> рентген-обследование без очередей;</li>
+                            <li>Приём врача травмотолога;</li>
+                            <li>Рентген снимок и заключение рентгенолога за <span>30 минут</span>;</li>
+                            <li>Оказание травматологической экстренной помощи <span>на месте</span>;</li>
+                            <li>Мы принимаем пациентов в возрасте <span>от 3х лет!</span></li>
+                        </ul>
+                        <ul>
+                            <li>Травма глаза</li>
+                            <li>Травма осевого скелета</li>
+                            <li>Травма ЛОР-органов</li>
+                            <li>Травма лица и органов зрения</li>
+                            <li>Травма кисти</li>
+                        </ul>
+                        <div class="units__features-image">
+                            <p>
+                                Круглосуточный травматологический пункт экспертного класса с&nbsp;отделением цифровой
+                                рентгенологии
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="units__countries">
+                <div class="content content_flex content_between">
+                    <div class="units__country">
+                        <div class="units__country-image"></div>
+                        Лечение в Америке
+                    </div>
+                    <div class="units__country">
+                        <div class="units__country-image"></div>
+                        Лечение в Швейцарии
+                    </div>
+                    <div class="units__country">
+                        <div class="units__country-image"></div>
+                        Лечение в Израиле
+                    </div>
+                    <div class="units__country">
+                        <div class="units__country-image"></div>
+                        Лечение в Германии
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="appointment">
+    <div class="container container_size_1667">
+        <div class="row">
+            <div class="appointment__block">
+                <div class="content content_flex content_between">
+                    <div class="appointment__title">
+                        <h2 class="title">Запись на прием</h2>
+                        <a href="tel:+78126270203">+7 (812) 627 02 03</a>
+                    </div>
+                    <form action="#" class="appointment__form">
+                        <input type="text" placeholder="Имя">
+                        <label for="confident"><input type="checkbox" id="confident"><small>Даю согласие на обработку <u>персональных
+                            данных</u></small></label>
+                        <input type="tel" placeholder="Телефон">
+                        <button type="submit">Записаться на приём <img src="./assets/img/appointment/submit-icon.svg"
+                                                                       alt="Иконка кнопки"></button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
