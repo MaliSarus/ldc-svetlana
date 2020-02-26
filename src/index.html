@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>ЛДЦ Светлана - Главная</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./assets/css/slick.css">
+    <link rel="stylesheet" href="./assets/css/slick-theme.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="./assets/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 <!--Шапка-->
@@ -259,10 +263,11 @@
                     </div>
                     <form action="#" class="appointment__form">
                         <input type="text" placeholder="Имя">
-                        <label for="confident"><input type="checkbox" id="confident"><small>Даю согласие на обработку <u>персональных
-                            данных</u></small></label>
+                        <label for="confident"><input type="checkbox" id="confident"><small>Даю согласие на обработку
+                            <u>персональных
+                                данных</u></small></label>
                         <input type="tel" placeholder="Телефон">
-                        <button type="submit">Записаться на приём <img src="./assets/img/appointment/submit-icon.svg"
+                        <button type="submit" class="btn-white">Записаться на приём <img src="./assets/img/appointment/submit-icon.svg"
                                                                        alt="Иконка кнопки"></button>
                     </form>
                 </div>
@@ -270,5 +275,197 @@
         </div>
     </div>
 </section>
+<section class="specialists">
+    <div class="container container_size_1667">
+        <div class="row">
+            <div class="specialists__block">
+                <div class="specialists__head">
+                    <div class="content">
+                        <h2 class="title">
+                            Специалисты &lt;лечебно – диагностического центра&gt;
+                        </h2>
+                    </div>
+                </div>
+                <div class="specialists__content">
+                    <div class="content">
+                        <div class="specialists__slider">
+                            <div class="specialists__doctor">
+                                <article class="doctor__info">
+                                    <div class="doctor__image">
+                                        <img src="./assets/img/specialists/doctor.png" alt="Доктор">
+                                    </div>
+                                    <h4 class="doctor__name">
+                                        Вишневский <br>
+                                        <span>Аркадий Анатольевич</span>
+                                    </h4>
+                                    <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                    <ul class="doctor__features">
+                                        <li>Доктор медицинских наук</li>
+                                        <li>Профессор</li>
+                                    </ul>
+                                    <article class="doctor__full-info">
+                                        <h4 class="doctor__name">
+                                            Вишневский <br>
+                                            <span>Аркадий Анатольевич</span>
+                                        </h4>
+                                        <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                        <ul class="doctor__features">
+                                            <li>Доктор медицинских наук</li>
+                                            <li>Профессор</li>
+                                        </ul>
+                                        <p class="doctor__exp"><b>Стаж более 30 лет</b></p>
+                                        <p class="doctor__desc"><b>Куратор направления</b> экстренной травматологической
+                                            помощи и
+                                            стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
+                                            Завода
+                                            “Светлана”</p>
+                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                    </article>
+                                </article>
+                            </div>
+                            <div class="specialists__doctor">
+                                <article class="doctor__info">
+                                    <div class="doctor__image">
+                                        <img src="./assets/img/specialists/doctor.png" alt="Доктор">
+                                    </div>
+                                    <h4 class="doctor__name">
+                                        Вишневский <br>
+                                        <span>Аркадий Анатольевич</span>
+                                    </h4>
+                                    <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                    <ul class="doctor__features">
+                                        <li>Доктор медицинских наук</li>
+                                        <li>Профессор</li>
+                                    </ul>
+                                    <article class="doctor__full-info">
+                                        <h4 class="doctor__name">
+                                            Вишневский <br>
+                                            <span>Аркадий Анатольевич</span>
+                                        </h4>
+                                        <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                        <ul class="doctor__features">
+                                            <li>Доктор медицинских наук</li>
+                                            <li>Профессор</li>
+                                        </ul>
+                                        <p class="doctor__exp"><b>Стаж более 30 лет</b></p>
+                                        <p class="doctor__desc"><b>Куратор направления</b> экстренной травматологической помощи и
+                                            стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ Завода
+                                            “Светлана”</p>
+                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                    </article>
+                                </article>
+                            </div>
+                            <div class="specialists__doctor">
+                                <article class="doctor__info">
+                                    <div class="doctor__image">
+                                        <img src="./assets/img/specialists/doctor.png" alt="Доктор">
+                                    </div>
+                                    <h4 class="doctor__name">
+                                        Вишневский <br>
+                                        <span>Аркадий Анатольевич</span>
+                                    </h4>
+                                    <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                    <ul class="doctor__features">
+                                        <li>Доктор медицинских наук</li>
+                                        <li>Профессор</li>
+                                    </ul>
+                                    <article class="doctor__full-info">
+                                        <h4 class="doctor__name">
+                                            Вишневский <br>
+                                            <span>Аркадий Анатольевич</span>
+                                        </h4>
+                                        <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                        <ul class="doctor__features">
+                                            <li>Доктор медицинских наук</li>
+                                            <li>Профессор</li>
+                                        </ul>
+                                        <p class="doctor__exp"><b>Стаж более 30 лет</b></p>
+                                        <p class="doctor__desc"><b>Куратор направления</b> экстренной травматологической помощи и
+                                            стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ Завода
+                                            “Светлана”</p>
+                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                    </article>
+                                </article>
+                            </div>
+                            <div class="specialists__doctor">
+                                <article class="doctor__info">
+                                    <div class="doctor__image">
+                                        <img src="./assets/img/specialists/doctor.png" alt="Доктор">
+                                    </div>
+                                    <h4 class="doctor__name">
+                                        Вишневский <br>
+                                        <span>Аркадий Анатольевич</span>
+                                    </h4>
+                                    <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                    <ul class="doctor__features">
+                                        <li>Доктор медицинских наук</li>
+                                        <li>Профессор</li>
+                                    </ul>
+                                    <article class="doctor__full-info">
+                                        <h4 class="doctor__name">
+                                            Вишневский <br>
+                                            <span>Аркадий Анатольевич</span>
+                                        </h4>
+                                        <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                        <ul class="doctor__features">
+                                            <li>Доктор медицинских наук</li>
+                                            <li>Профессор</li>
+                                        </ul>
+                                        <p class="doctor__exp"><b>Стаж более 30 лет</b></p>
+                                        <p class="doctor__desc"><b>Куратор направления</b> экстренной травматологической помощи и
+                                            стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ Завода
+                                            “Светлана”</p>
+                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                    </article>
+                                </article>
+                            </div>
+                            <div class="specialists__doctor">
+                                <article class="doctor__info">
+                                    <div class="doctor__image">
+                                        <img src="./assets/img/specialists/doctor.png" alt="Доктор">
+                                    </div>
+                                    <h4 class="doctor__name">
+                                        Вишневский <br>
+                                        <span>Аркадий Анатольевич</span>
+                                    </h4>
+                                    <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                    <ul class="doctor__features">
+                                        <li>Доктор медицинских наук</li>
+                                        <li>Профессор</li>
+                                    </ul>
+                                    <article class="doctor__full-info">
+                                        <h4 class="doctor__name">
+                                            Вишневский <br>
+                                            <span>Аркадий Анатольевич</span>
+                                        </h4>
+                                        <p class="doctor__work">Травматолог-ортопед, вертебролог</p>
+                                        <ul class="doctor__features">
+                                            <li>Доктор медицинских наук</li>
+                                            <li>Профессор</li>
+                                        </ul>
+                                        <p class="doctor__exp"><b>Стаж более 30 лет</b></p>
+                                        <p class="doctor__desc"><b>Куратор направления</b> экстренной травматологической помощи и
+                                            стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ Завода
+                                            “Светлана”</p>
+                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                    </article>
+                                </article>
+                            </div>
+                        </div>
+                        <div class="specialists__control-panel">
+                            <button class="btn-white">Все специалисты клиники</button>
+                            <div class="specialists__arrows">
+                                <div class="arrow specialists__arrow-left"></div>
+                                <div class="arrow specialists__arrow-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="./assets/js/slick.min.js"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>

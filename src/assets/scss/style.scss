@@ -2,6 +2,7 @@
 
 $main-color: #2A4472;
 $accent-color: #E84E2C;
+$main-color-dark: #0A1831;
 $bg-gray: #F1F1F1;
 
 body, html {
@@ -44,7 +45,7 @@ a {
 .title {
   margin: 0;
   font-size: 30px;
-  color: #0A1831;
+  color: $main-color-dark;
 }
 
 .content {
@@ -67,6 +68,34 @@ a {
   width: 100%;
 }
 
+.btn-white{
+  border: 1px solid $main-color;
+  background-color: white;
+  color: $main-color;
+  padding: 20px 0;
+  &:hover{
+    background-color: $main-color;
+    color: white;
+  }
+}
+
+.arrow{
+  width: 60px;
+  height: 16px;
+  position: relative;
+  &::before{
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url("../img/specialists/arrow.svg") center no-repeat;
+    background-size: contain;
+  }
+}
+
 // Экстрабольшие девайсы (большие десктопы, >= 1200px)
 @media screen and (min-width: 1400px) {
   .container {
@@ -82,6 +111,7 @@ a {
     box-shadow: 0 0 10px rgba(0, 0, 0, .3);
     width: 100%;
     background-color: white;
+
     &::before {
       display: block;
       width: calc(100vw - 18px);
@@ -94,7 +124,7 @@ a {
       content: '';
     }
 
-    &__top{
+    &__top {
       width: 100%;
       display: flex;
       align-items: center;
@@ -530,10 +560,12 @@ a {
         padding: 0;
         list-style: none;
         margin: 0;
+
         li {
           margin-right: 55px;
           display: inline-block;
           padding-bottom: 22px;
+
           a {
             font-weight: 600;
             font-size: 18px;
@@ -843,9 +875,10 @@ a {
     }
   }
 
-  .appointment{
+  .appointment {
     background-color: white;
-    &__block{
+
+    &__block {
       flex-basis: 100%;
       padding: 55px 0;
       box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
@@ -854,24 +887,29 @@ a {
       background: url("../img/appointment/appointment-block-bg.svg") center no-repeat;
       background-size: contain;
     }
-    &__title{
+
+    &__title {
       flex-grow: 1;
-      .title{
+
+      .title {
         margin-top: -5px;
         margin-bottom: 12px;
         font-size: 24px;
       }
-      a{
+
+      a {
         color: $accent-color;
       }
     }
-    &__form{
+
+    &__form {
       display: flex;
       justify-content: space-between;
       vertical-align: center;
       position: relative;
       flex-grow: 3;
-      input, button{
+
+      input, button {
         flex-basis: calc(100% / 3 - 20px);
         box-sizing: border-box;
         height: 50px;
@@ -882,37 +920,43 @@ a {
         border-radius: 1px;
         color: $main-color;
       }
-      input{
-        &::placeholder{
+
+      input {
+        &::placeholder {
           color: $main-color;
         }
       }
-      button{
+
+      button {
         border: 1px solid $main-color;
-        &:hover{
-          background-color: $main-color;
-          color: white;
-          img{
+
+        &:hover {
+          img {
             filter: grayscale(1) invert(1) brightness(1.5);
           }
         }
-        img{
+
+        img {
           vertical-align: middle;
           margin-left: 10px;
           filter: none;
         }
       }
-      label{
+
+      label {
         height: auto;
       }
-      label{
+
+      label {
         position: absolute;
         bottom: -22px;
-        small{
+
+        small {
           font-size: 12px;
           color: $main-color;
         }
-        input{
+
+        input {
           margin: 0;
           height: 16px;
           width: 16px;
@@ -923,7 +967,8 @@ a {
           outline: none;
           appearance: none;
           padding: 0;
-          &:checked::before{
+
+          &:checked::before {
             content: 'X';
             display: block;
             font-size: 15px;
@@ -933,6 +978,167 @@ a {
         }
       }
     }
+  }
+  .specialists {
+    background-color: $bg-gray;
+    position: relative;
+
+    &__block {
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
+      position: relative;
+      left: 0;
+      top: -30px;
+    }
+
+    &__head {
+      background-color: $bg-gray;
+      width: 100%;
+      padding: 40px 0;
+    }
+
+    &__content {
+      background-color: white;
+      padding: 40px 0;
+      padding-top: 20px;
+    }
+
+    &__doctor {
+      background-color: #fcfcfc;
+      padding: 12px;
+      max-width: 325px;
+      margin-right: 20px;
+      position: relative;
+      &:last-child{
+        margin-right: 0;
+      }
+
+      .doctor {
+        &__image {
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 22px;
+          img{
+            max-width: 100%;
+          }
+        }
+
+        &__info {
+          display: block;
+          color: $main-color;
+          position: relative;
+          font-size: 14px;
+
+          .doctor__name {
+            font-size: 18px;
+            color: $main-color-dark;
+            margin-bottom: 22px;
+            margin-top: 0;
+
+            span {
+              font-weight: normal;
+            }
+          }
+
+          .doctor__work {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 17px;
+          }
+
+          .doctor__features {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            li::before {
+              content: "-";
+              margin-right: 5px;
+            }
+          }
+        }
+
+        &__info:hover {
+          .doctor__full-info {
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+          }
+        }
+
+        &__full-info {
+          opacity: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(white, .95);
+          position: absolute;
+          left: -12px;
+          top: -12px;
+          padding: 12px;
+          transition: opacity .5s;
+          font-size: 14px;
+          .doctor__features{
+            margin-bottom: 20px;
+          }
+          a{
+            display: block;
+            width: calc(100% - 40px);
+            text-align: center;
+            color: $main-color;
+            border: 1px solid $main-color;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 12px;
+            transition: background-color .5s, color .5s;
+            &:hover{
+              color: white;
+              background-color: $main-color;
+            }
+          }
+        }
+        &__exp{
+          color: $main-color-dark;
+          margin: 0;
+          margin-bottom: 26px;
+        }
+        &__desc{
+          line-height: 120%;
+        }
+      }
+    }
+    &__slider{
+      margin-bottom: 15px;
+    }
+    &__control-panel{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      button{
+        width: 443px;
+      }
+    }
+    &__arrows{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      height: 100%;
+      align-items: center;
+    }
+    &__arrow-left{
+      display: inline-block;
+      margin-right: 36px;
+    }
+    &__arrow-right{
+      display: inline-block;
+      &::before{
+        transform: rotate(180deg);
+      }
+    }
+
   }
 }
 
