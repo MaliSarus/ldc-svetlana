@@ -492,19 +492,24 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       min-height: 100%;
       flex-grow: 1;
       position: relative;
-
-      &::before {
+      img{
         position: absolute;
-        z-index: 0;
         bottom: 0;
-        right: 30px;
-        display: block;
-        content: '';
-        height: 250px;
-        width: 300px;
-        background-color: rgba($accent-color, .4);
-        transform: skewX(-15deg);
+        right: 0;
       }
+
+      //&::before {
+      //  position: absolute;
+      //  z-index: 0;
+      //  bottom: 0;
+      //  right: 30px;
+      //  display: block;
+      //  content: '';
+      //  height: 250px;
+      //  width: 300px;
+      //  background-color: rgba($accent-color, .4);
+      //  transform: skewX(-15deg);
+      //}
 
       &-picture {
         position: relative;
@@ -649,6 +654,7 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       top: -30px;
       box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
       margin-bottom: 30px;
+      z-index: 10;
     }
 
     &__head {
@@ -848,6 +854,8 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
       padding: 40px 0 45px 0;
       margin-bottom: 60px;
+      position: relative;
+      z-index: 10;
 
       .title {
         margin-bottom: 35px;
@@ -982,6 +990,7 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
 
   .appointment {
     background-color: white;
+    //background-image: url();
 
     &__block {
       flex-basis: 100%;
@@ -991,6 +1000,8 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       margin-bottom: 90px;
       background: url("../img/appointment/appointment-block-bg.svg") center no-repeat;
       background-size: contain;
+      position: relative;
+      z-index: 10;
     }
 
     &__title {
@@ -1115,7 +1126,8 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       max-width: 325px;
       //margin-right: 20px;
       position: relative;
-      height: inherit;
+      height: 100%;
+      box-sizing: border-box;
 
       &:last-child {
         margin-right: 0;
@@ -1123,7 +1135,8 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
 
       .doctor {
         &__image {
-          width: 100%;
+          width: 300px;
+          max-height: 300px;
           margin-left: auto;
           margin-right: auto;
           margin-bottom: 22px;
@@ -1138,6 +1151,7 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
           color: $main-color;
           position: relative;
           font-size: 14px;
+          height: 100%;
 
           .doctor__name {
             font-size: 18px;
@@ -1227,6 +1241,7 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
 
     &__slider {
       margin-bottom: 15px;
+      transform: translateX(-20px);
     }
 
     &__control-panel {
@@ -1538,6 +1553,144 @@ input[type="text"], input[type="search"],input[type="tel"],input[type="email"]{
       }
     }
   }
+}
+
+body {
+  height: 1800px;
+}
+
+.layer1, .layer2, .layer3 {
+  position: fixed;
+  width: 100%;
+  //transition: all .2s linear;
+}
+
+.layer1 {
+  z-index: 1;
+}
+
+.layer2 {
+  z-index: 11;
+}
+
+.layer3 {
+  z-index: 11;
+}
+
+#fig11 {
+  height: 100px;
+  width: 200px;
+  background: $accent-color;
+  position: absolute;
+  top: 1030px;
+  left: 3%;
+}
+
+#fig12 {
+  height: 110px;
+  width: 110px;
+  background: black;
+  position: absolute;
+  top: 1080px;
+  left: 5%;
+}
+
+#fig13 {
+  width: 282px;
+  height: 150px;
+  background: $main-color;
+  position: absolute;
+  top: 1455px;
+  right: 3%;
+}
+
+#fig14 {
+  width: 242px;
+  height: 129px;
+  background: $main-color;
+  position: absolute;
+  top: 1870px;
+  left: 3%;
+}
+
+#fig21 {
+  width: 242px;
+  height: 129px;
+  background: $main-color-dark;
+  position: absolute;
+  top: 2345px;
+  left: 3%;
+}
+
+#fig22 {
+  width: 242px;
+  height: 129px;
+  background: black;
+  position: absolute;
+  top: 2345px;
+  right: 3%;
+}
+
+#fig23 {
+  width: 133px;
+  height: 71px;
+  background: $accent-color;
+  position: absolute;
+  top: 800px;
+  left: 5%;
+  opacity: .5;
+}
+
+#fig24 {
+  width: 82px;
+  height: 44px;
+  background: $main-color-dark;
+  position: absolute;
+  top: 1220px;
+  left: 5%;
+  opacity: .25;
+}
+
+#fig31 {
+  width: 107px;
+  height: 57px;
+  background: $accent-color;
+  position: absolute;
+  top: 752px;
+  right: 3%;
+  margin-bottom: 50px;
+}
+
+#fig32 {
+  width: 133px;
+  height: 71px;
+  background: $main-color-dark;
+  position: absolute;
+  top: 1090px;
+  right: 3%;
+}
+
+#fig33 {
+  width: 122px;
+  height: 65px;
+  background: $accent-color;
+  position: absolute;
+  top: 1508px;
+  right: 3%;
+}
+
+#fig34 {
+  height: 31px;
+  width: 31px;
+  background: $accent-color;
+  position: absolute;
+  top: 550px;
+  right: 3%;
+}
+
+.fig{
+  transform: skewX(-15deg);
+  opacity: .3;
 }
 
 

@@ -18,7 +18,9 @@
     -ms-touch-action: pan-Y;
     touch-action: manipulation;
     -moz-backface-visibility: hidden;
-    /* fix firefox animation glitch */ }
+    display: flex;
+    /* fix firefox animation glitch */
+    padding: 20px 0;}
   .owl-carousel .owl-stage:after {
     content: ".";
     display: block;
@@ -30,7 +32,10 @@
     position: relative;
     overflow: hidden;
     /* fix for flashing background */
-    -webkit-transform: translate3d(0px, 0px, 0px); }
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    padding: 0 20px;
+    padding-right: 0;
+    width: calc(100% + 10px);}
   .owl-carousel .owl-wrapper,
   .owl-carousel .owl-item {
     -webkit-backface-visibility: hidden;
