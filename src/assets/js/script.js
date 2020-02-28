@@ -48,14 +48,34 @@ $(window).ready(function () {
         feedOwl.trigger('next.owl.carousel');
     });
 
+    const sliderButtons = $('.select-buttons__button');
+    sliderButtons.on('click', function (event) {
+        const prevItem = $('.about__item_active');
+        const sliderItems = $('.about__item');
+        const index = sliderButtons.index(event.currentTarget);
+        const sliderItem = sliderItems[index];
+        sliderButtons.removeClass('select-buttons__button_active');
+        event.currentTarget.classList.add('select-buttons__button_active');
+        prevItem.removeClass('about__item_active');
+        sliderItem.classList.add('about__item_active');
+    });
 
+    // sliderItems.animate({
+    //     opacity: 0
+    // }, 500, function () {
+    //     sliderItems.removeClass('about__item_active');
+    //
+    // });
 });
+
 
 $(window).scroll(parallaxScrolling);
 
 function parallaxScrolling() {
     var scrolled = $(window).scrollTop();
     $('.layer1').css('top', (0 - (scrolled * .9)) + 'px');
-    $('.layer2').css('top', (0 - (scrolled * .66)) + 'px');
-    $('.layer3').css('top', (0 - (scrolled * .33)) + 'px');
+    $('.layer2').css('top', (0 - (scrolled * .7)) + 'px');
+    $('.layer3').css('top', (0 - (scrolled * .5)) + 'px');
+    $('.layer4').css('top', (0 - (scrolled * .9)) + 'px');
+
 }

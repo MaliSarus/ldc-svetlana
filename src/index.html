@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./assets/css/owl-slider/owl.carousel.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
 
-    <script src="./assets/js/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/jquery-3.4.1.js"></script>
 </head>
 <body>
 
@@ -18,8 +18,6 @@
     <div class="fig" id="fig12"></div>
     <div class="fig" id="fig13"></div>
     <div class="fig" id="fig14"></div>
-    <div class="fig" id="fig21"></div>
-    <div class="fig" id="fig22"></div>
 </div>
 
 <div class="layer2">
@@ -31,6 +29,11 @@
     <div class="fig" id="fig31"></div>
     <div class="fig" id="fig32"></div>
     <div class="fig" id="fig33"></div>
+</div>
+
+<div class="layer4">
+    <div class="fig" id="fig21"></div>
+    <div class="fig" id="fig22"></div>
 </div>
 <!--Шапка-->
 <header class="header">
@@ -71,7 +74,7 @@
                 <button type="submit" class="header__search-form-button">
                     <img src="./assets/img/header/search.svg" alt="Поиск">
                 </button>
-                <input type="search" class="header__search-form-field" placeholder="Поиск по сайту">
+                <input name="search" type="search" class="header__search-form-field" placeholder="Поиск по сайту">
             </form>
             <div class="header__emergency-call">
                 <a href="tel:+781262702">
@@ -84,34 +87,113 @@
 <section class="about"> <!--Секция о докторах-->
     <div class="container">
         <div class="row">
-            <div class="about__info"><!--Левая часть-->
-                <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
-                <h4 class="about__title">Эксперты становятся ближе </h4>
-                <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед<br>Доктор
-                    медицинских наук, профессор. </p>
-                <button>Подробнее</button>
+            <div class="about__slider">
+                <div class="about__item about__item_active">
+                    <div class="about__info"><!--Левая часть-->
+                        <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
+                        <h4 class="about__title">Эксперты становятся ближе </h4>
+                        <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед<br>Доктор
+                            медицинских наук, профессор. </p>
+                        <button>Подробнее</button>
+                    </div>
+                    <div class="about__doctor">
+                        <!--Правая часть-->
+                        <!--                <div class="about__doctor-picture">-->
+                        <!--                </div>-->
+                        <!--                <div class="sending">-->
+                        <!--                    <h2>Консультация</h2>-->
+                        <!--                    <h4 class="sending__prev-price">-->
+                        <!--                        <del>4000 &#8381</del>-->
+                        <!--                    </h4>-->
+                        <!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
+                        <!--                    <div class="sending__sale">-->
+                        <!--                        <h4>-65%</h4>-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
+                    </div>
+                </div>
+                <div class="about__item">
+                    <div class="about__info"><!--Левая часть-->
+                        <h2 class="about__doctor-name">Клаустрафурдинов Генадий <br>Анатольевич </h2>
+                        <h4 class="about__title">Эксперты становятся ближе </h4>
+                        <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед<br>Доктор
+                            медицинских наук, профессор. </p>
+                        <button>Подробнее</button>
+                    </div>
+                    <div class="about__doctor">
+                        <!--Правая часть-->
+                        <!--                <div class="about__doctor-picture">-->
+                        <!--                </div>-->
+                        <!--                <div class="sending">-->
+                        <!--                    <h2>Консультация</h2>-->
+                        <!--                    <h4 class="sending__prev-price">-->
+                        <!--                        <del>4000 &#8381</del>-->
+                        <!--                    </h4>-->
+                        <!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
+                        <!--                    <div class="sending__sale">-->
+                        <!--                        <h4>-65%</h4>-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
+                    </div>
+                </div>
+                <div class="about__item">
+                    <div class="about__info"><!--Левая часть-->
+                        <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
+                        <h4 class="about__title">Эксперты становятся ближе </h4>
+                        <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед<br>Доктор
+                            медицинских наук, профессор. </p>
+                        <button>Подробнее</button>
+                    </div>
+                    <div class="about__doctor">
+                        <!--Правая часть-->
+                        <!--                <div class="about__doctor-picture">-->
+                        <!--                </div>-->
+                        <!--                <div class="sending">-->
+                        <!--                    <h2>Консультация</h2>-->
+                        <!--                    <h4 class="sending__prev-price">-->
+                        <!--                        <del>4000 &#8381</del>-->
+                        <!--                    </h4>-->
+                        <!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
+                        <!--                    <div class="sending__sale">-->
+                        <!--                        <h4>-65%</h4>-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
+                    </div>
+                </div>
+                <div class="about__item">
+                    <div class="about__info"><!--Левая часть-->
+                        <h2 class="about__doctor-name">Вишневский Аркадий <br>Анатольевич </h2>
+                        <h4 class="about__title">Эксперты становятся ближе </h4>
+                        <p class="about__desc">Невролог, вертеброневролог, нейрохирург, травмотолог-ортопед<br>Доктор
+                            медицинских наук, профессор. </p>
+                        <button class="btn btn_dark">Подробнее</button>
+                    </div>
+                    <div class="about__doctor">
+                        <!--Правая часть-->
+                        <!--                <div class="about__doctor-picture">-->
+                        <!--                </div>-->
+                        <!--                <div class="sending">-->
+                        <!--                    <h2>Консультация</h2>-->
+                        <!--                    <h4 class="sending__prev-price">-->
+                        <!--                        <del>4000 &#8381</del>-->
+                        <!--                    </h4>-->
+                        <!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
+                        <!--                    <div class="sending__sale">-->
+                        <!--                        <h4>-65%</h4>-->
+                        <!--                    </div>-->
+                        <!--                </div>-->
+                        <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
+                    </div>
+                </div>
                 <div class="select-buttons">
                     <div class="select-buttons__button"></div>
                     <div class="select-buttons__button"></div>
                     <div class="select-buttons__button"></div>
                     <div class="select-buttons__button"></div>
                 </div>
-            </div>
-            <div class="about__doctor">
-                <!--Правая часть-->
-<!--                <div class="about__doctor-picture">-->
-<!--                </div>-->
-<!--                <div class="sending">-->
-<!--                    <h2>Консультация</h2>-->
-<!--                    <h4 class="sending__prev-price">-->
-<!--                        <del>4000 &#8381</del>-->
-<!--                    </h4>-->
-<!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
-<!--                    <div class="sending__sale">-->
-<!--                        <h4>-65%</h4>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
             </div>
         </div>
     </div>
@@ -167,52 +249,75 @@
                             </p>
                         </div>
                         <div class="units__content-services">
-                            <div class="column">
+                            <div class="units__column">
                                 <ul>
-                                    <li>Аллергология</li>
-                                    <li>Артроскопия</li>
-                                    <li>Анестезиология</li>
+                                    <li class="units__list-item"><span class="main-letter">А</span><a class="units__item-link"
+                                                                                                href="#">Аллергология</a>
+                                    </li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Артроскопия</a></li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Анестезиология</a></li>
                                 </ul>
                                 <ul>
-                                    <li>Вертебрология</li>
-                                    <li>Второе мнения</li>
+                                    <li class="units__list-item"><span class="main-letter">В</span><a class="units__item-link"
+                                                                                                href="#">Вертебрология</a>
+                                    </li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Второе мнение</a></li>
                                 </ul>
                                 <ul>
-                                    <li>Гастроэнтерология</li>
+                                    <li class="units__list-item"><span class="main-letter">Г</span><a class="units__item-link"
+                                                                                                href="#">Гастроэнтерология</a>
+                                    </li>
                                 </ul>
                                 <ul>
-                                    <li>Иммунлогия</li>
-                                </ul>
-                            </div>
-                            <div class="column">
-                                <ul>
-                                    <li>Кардиология</li>
-                                    <li>Колопроктология</li>
-                                </ul>
-                                <ul>
-                                    <li>Неврология</li>
-                                </ul>
-                                <ul>
-                                    <li>Онкология</li>
-                                    <li>Оториноларингология</li>
-                                    <li>Офтальмология</li>
-                                </ul>
-                                <ul>
-                                    <li>Психотерапия</li>
+                                    <li class="units__list-item"><span class="main-letter">И</span><a class="units__item-link"
+                                                                                               href="#">Иммунлогия</a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="column">
+                            <div class="units__column">
                                 <ul>
-                                    <li>Терапия</li>
+                                    <li class="units__list-item"><span class="main-letter">К</span><a class="units__item-link"
+                                                                                               href="#">Кардиология</a>
+                                    </li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Колопроктология</a></li>
                                 </ul>
                                 <ul>
-                                    <li>Флебология</li>
+                                    <li class="units__list-item"><span class="main-letter">Н</span><a class="units__item-link"
+                                                                                               href="#">Неврология</a>
+                                    </li>
                                 </ul>
                                 <ul>
-                                    <li>Хирургия</li>
+                                    <li class="units__list-item"><span class="main-letter">О</span><a class="units__item-link"
+                                                                                               href="#">Онкология</a>
+                                    </li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Оториноларингология</a></li>
+                                    <li class="units__list-item"><a class="units__item-link" href="#">Офтальмология</a></li>
                                 </ul>
                                 <ul>
-                                    <li>Эндокринология</li>
+                                    <li class="units__list-item"><span class="main-letter">П</span><a class="units__item-link"
+                                                                                               href="#">Психотерапия</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="units__column">
+                                <ul>
+                                    <li class="units__list-item"><span class="main-letter">Т</span><a class="units__item-link"
+                                                                                               href="#">Терапия</a></li>
+                                </ul>
+                                <ul>
+                                    <li class="units__list-item"><span class="main-letter">Ф</span><a class="units__item-link"
+                                                                                               href="#">Флебология</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="units__list-item"><span class="main-letter">Х</span><a class="units__item-link"
+                                                                                               href="#">Хирургия</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="units__list-item"><span class="main-letter">Э</span><a class="units__item-link"
+                                                                                               href="#">Эндокринология</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -234,12 +339,12 @@
                             <li>Оказание травматологической экстренной помощи <span>на месте</span>;</li>
                             <li>Мы принимаем пациентов в возрасте <span>от 3х лет!</span></li>
                         </ul>
-                        <ul>
-                            <li>Травма глаза</li>
-                            <li>Травма осевого скелета</li>
-                            <li>Травма ЛОР-органов</li>
-                            <li>Травма лица и органов зрения</li>
-                            <li>Травма кисти</li>
+                        <ul class="units__features_hurt-list">
+                            <li class="units__features_hurt-item"><a class="units__features_hurt-link" href="#">Травма глаза</a></li>
+                            <li class="units__features_hurt-item"><a class="units__features_hurt-link" href="#">Травма осевого скелета</a></li>
+                            <li class="units__features_hurt-item"><a class="units__features_hurt-link" href="#">Травма ЛОР-органов</a></li>
+                            <li class="units__features_hurt-item"><a class="units__features_hurt-link" href="#">Травма лица и органов зрения</a></li>
+                            <li class="units__features_hurt-item"><a class="units__features_hurt-link" href="#">Травма кисти</a></li>
                         </ul>
                         <div class="units__features-image">
                             <p>
@@ -285,12 +390,13 @@
                         <a href="tel:+78126270203">+7 (812) 627 02 03</a>
                     </div>
                     <form action="#" class="appointment__form">
-                        <input type="text" placeholder="Имя">
-                        <label for="confident"><input type="checkbox" id="confident"><small>Даю согласие на обработку
+                        <input type="text" name="customerName" placeholder="Имя">
+                        <label for="confident"><input name="confident" type="checkbox" id="confident"><small>Даю
+                            согласие на обработку
                             <u>персональных
                                 данных</u></small></label>
-                        <input type="tel" placeholder="Телефон">
-                        <button type="submit" class="btn-white">Записаться на приём <img
+                        <input type="tel" name="phone" placeholder="Телефон">
+                        <button type="submit" class="btn_white">Записаться на приём <img
                                 src="./assets/img/appointment/submit-icon.svg"
                                 alt="Иконка кнопки"></button>
                     </form>
@@ -343,7 +449,7 @@
                                             стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
                                             Завода
                                             “Светлана”</p>
-                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                        <a href="#" class=" btn btn_white">Подробнее о враче</a>
                                     </article>
                                 </article>
                             </div>
@@ -377,7 +483,7 @@
                                             стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
                                             Завода
                                             “Светлана”</p>
-                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                        <a href="#" class="btn btn_white">Подробнее о враче</a>
                                     </article>
                                 </article>
                             </div>
@@ -413,7 +519,7 @@
                                             стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
                                             Завода
                                             “Светлана”</p>
-                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                        <a href="#" class="btn btn_white">Подробнее о враче</a>
                                     </article>
                                 </article>
                             </div>
@@ -447,7 +553,7 @@
                                             стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
                                             Завода
                                             “Светлана”</p>
-                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                        <a href="#" class="btn btn_white">Подробнее о враче</a>
                                     </article>
                                 </article>
                             </div>
@@ -481,13 +587,13 @@
                                             стабильно-функционального остеосинтеза в травматологии и ортопедии ЛДЦ
                                             Завода
                                             “Светлана”</p>
-                                        <a href="#" class="btn-white">Подробнее о враче</a>
+                                        <a href="#" class="btn btn_white">Подробнее о враче</a>
                                     </article>
                                 </article>
                             </div>
                         </div>
                         <div class="specialists__control-panel">
-                            <button class="btn-white">Все специалисты клиники</button>
+                            <button class="btn btn_white">Все специалисты клиники</button>
                             <div class="arrows">
                                 <div class="arrow arrows__arrow-left"></div>
                                 <div class="arrow arrows__arrow-right"></div>
@@ -515,7 +621,7 @@
                         Кураторы направлений центра заслуженные врачи Российской Федерации, академики и
                         член-корреспонденты РАН.
                     </p>
-                    <a href="#" class="btn-white">Узнать больше о центре</a>
+                    <a href="#" class="btn btn_tr">Узнать больше о центре</a>
                 </div>
                 <div class="care__video">
                     <div class="care__video-block">
@@ -677,7 +783,8 @@
                 <div class="footer__icons">
                     <div class="footer__icons-item"><img src="./assets/img/footer/vk-icon.svg" alt="иконка вк"></div>
                     <div class="footer__icons-item"><img src="./assets/img/footer/fb-icon.svg" alt="иконка фб"></div>
-                    <div class="footer__icons-item"><img src="./assets/img/footer/inst-icon.svg" alt="иконка инсты"></div>
+                    <div class="footer__icons-item"><img src="./assets/img/footer/inst-icon.svg" alt="иконка инсты">
+                    </div>
                 </div>
             </div>
         </div>
@@ -688,7 +795,8 @@
                 <p>Имеются противопоказания, необходимо проконсультироваться со специалистом</p>
             </div>
             <div class="row">
-                <p>Все предложения и цены, указанные на сайте, носят информационный характер и не являются публичной офертой (ст. 437 ГК РФ)</p>
+                <p>Все предложения и цены, указанные на сайте, носят информационный характер и не являются публичной
+                    офертой (ст. 437 ГК РФ)</p>
             </div>
         </div>
     </div>
