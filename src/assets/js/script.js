@@ -60,12 +60,12 @@ $(window).ready(function () {
         sliderItem.classList.add('about__item_active');
     });
 
-    // sliderItems.animate({
-    //     opacity: 0
-    // }, 500, function () {
-    //     sliderItems.removeClass('about__item_active');
-    //
-    // });
+    const hamburger = $('.hamburger');
+    // On click
+    hamburger.on("click", function() {
+        hamburger.toggleClass("is-active");
+        // Do something else, like open/close menu
+    });
 });
 
 
