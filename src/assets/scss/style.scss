@@ -1,8 +1,10 @@
 @import "fonts";
 
 $main-color: #2A4472;
-$accent-color: #E84E2C;
 $main-color-dark: #0A1831;
+$main-color-light: #3F5A8A;
+$accent-color: #E84E2C;
+$accent-color-light: #FF785A;
 $bg-gray: #F1F1F1;
 
 body, html {
@@ -58,8 +60,10 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 .content {
   width: 100%;
-  max-width: 1360px;
+  max-width: 1380px;
   margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
 
   &_flex {
     display: flex;
@@ -94,6 +98,44 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       background-color: $main-color;
       color: white;
     }
+    &:active{
+      background-color: $main-color-light;
+    }
+    &_fill{
+      border: 1px solid $main-color;
+      background-color: $main-color;
+      color: white;
+      &:hover{
+        background-color: $accent-color;
+      }
+      &:active{
+        background-color: $accent-color-light;
+      }
+    }
+  }
+
+  &_red{
+    border: 1px solid $accent-color;
+    background-color: white;
+    color: $accent-color;
+    &:hover{
+      background-color: $accent-color;
+      color: white;
+    }
+    &:active{
+      background-color: $accent-color-light;
+    }
+    &_fill{
+      border: 1px solid $accent-color;
+      background-color: $accent-color;
+      color: white;
+      &:hover{
+        background-color: $main-color;
+      }
+      &:active{
+        background-color: $main-color-light;
+      }
+    }
   }
 
   &_dark {
@@ -126,6 +168,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   display: flex;
   height: 100%;
   align-items: center;
+  z-index: 20;
 
   &__arrow-left {
     display: inline-block;
@@ -145,6 +188,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   width: 60px;
   height: 16px;
   position: relative;
+  cursor: pointer;
+  transition: filter .3s, transform .3s;
 
   &::before {
     display: block;
@@ -158,13 +203,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     background-size: contain;
   }
 
-  .arrow{
-    cursor: pointer;
-    transition: filter .3s, transform .3s;
-    &:hover{
-      filter: saturate(4) hue-rotate(152deg);
-      transform: scale(1.2);
-    }
+  &:hover {
+    filter: saturate(4) hue-rotate(152deg);
+    transform: scale(1.2);
   }
 }
 
@@ -174,18 +215,54 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 }
 
 
-.mobile{
+.mobile {
   display: none !important;
 }
+
+.popup {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  background-color: rgba(black, .4);
+  align-items: center;
+  justify-content: center;
+
+  &__block {
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    height: 500px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 30px;
+  }
+  &-close-button{
+    color: white;
+    position: absolute;
+    right: -36px;
+    top: -36px;
+  }
+}
+
 
 
 // Экстрабольшие девайсы (большие десктопы, >= 1200px)
 @media screen and (min-width: 1400px) {
+
   //.desktop{
   //  visibility: visible;
   //}
   .container {
-    max-width: 1360px
+    max-width: 1380px
   }
 
   .header {
@@ -256,6 +333,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     &__contacts {
       display: flex;
       align-items: center;
+      flex-grow: 1;
+      justify-content: space-between;
 
       p {
         font-size: 16px;
@@ -296,11 +375,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       ul {
         list-style: none;
         padding: 0;
+        margin-right: 70px;
 
         li {
           margin-right: 30px;
           display: inline-block;
           font-size: 16px;
+
+          &:last-child {
+            margin-right: 0;
+          }
 
           a {
             color: rgba(white, .8);
@@ -315,13 +399,17 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       width: 310px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: rgba(255, 255, 255, 0.5);
-      margin-right: 35px;
+      margin-right: 77px;
       background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
       position: relative;
       z-index: 2;
 
       &:focus {
-        border: 2px solid white;
+        background-color: white;
+
+        .header__search-form-field {
+          background-color: white;
+        }
       }
 
       &-button {
@@ -354,16 +442,33 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         &::placeholder {
           color: rgba(255, 255, 255, 0.5);
         }
+
       }
     }
 
     &__emergency-call {
-      max-height: 60px;
-      float: right;
+      height: 100%;
+      background-color: $accent-color;
+      transform: skewX(-15deg);
+      transition: background-color .5s;
+      flex-grow: 1;
+      text-align: center;
+
+      &:hover {
+        background-color: #3F5A8A;;
+      }
 
       a {
         display: block;
-        height: 60px;
+        height: 100%;
+        color: white;
+        transform: skewX(15deg);
+        padding: 10px 15px;
+
+        img {
+          margin-right: 10px;
+          vertical-align: middle;
+        }
       }
     }
 
@@ -404,14 +509,18 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     &__item {
       width: 100%;
       display: none;
-      animation-name: fadeOut;
-      animation-duration: 1500ms;
 
       &_active {
-        transition: opacity .5s;
         display: flex;
-        animation-name: fadeIn;
-        animation-duration: 2500ms;
+        animation-name: slideIn;
+        animation-duration: 1000ms;
+        animation-fill-mode: forwards;
+      }
+
+      &_deactivate {
+        display: flex;
+        animation-name: slideOut;
+        animation-duration: 1000ms;
       }
     }
 
@@ -600,30 +709,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       text-align: center;
       padding: 0 50px;
       box-sizing: border-box;
-
-      &:nth-child(1) {
-        .features__icon::before {
-          background: url("../img/features/heart-icon.svg") center no-repeat;
-        }
-      }
-
-      &:nth-child(2) {
-        .features__icon::before {
-          background: url("../img/features/tech-icon.svg") center no-repeat;
-        }
-      }
-
-      &:nth-child(3) {
-        .features__icon::before {
-          background: url("../img/features/grant-icon.svg") center no-repeat;
-        }
-      }
-
-      &:nth-child(4) {
-        .features__icon::before {
-          background: url("../img/features/people-icon.svg") center no-repeat;
-        }
-      }
     }
 
     &__icon {
@@ -631,16 +716,15 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       left: 50%;
       transform: translateX(-50%) skewX(-15deg);
       top: -10%;
-      width: 85px;
+      width: 65px;
       height: 50px;
       background-color: $main-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      &::before {
+      img {
         transform: skewX(15deg);
-        width: 100%;
-        height: 100%;
-        display: block;
-        content: '';
       }
     }
 
@@ -678,26 +762,32 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         padding: 0;
         list-style: none;
         margin: 0;
+      }
 
-        li {
-          margin-right: 55px;
-          display: inline-block;
-          padding-bottom: 22px;
+      &-item {
+        margin-right: 55px;
+        display: inline-block;
+        padding-bottom: 22px;
+      }
 
-          a {
-            font-weight: 600;
-            font-size: 18px;
-            color: $main-color;
-            transition: color .5s;
-            padding-bottom: 20px;
+      &-link {
+        font-weight: 600;
+        font-size: 18px;
+        color: $main-color;
+        transition: color .5s;
+        padding-bottom: 20px;
 
-            &:hover {
-              color: $accent-color;
-              border-bottom: 2px solid $accent-color;
-            }
-          }
+        &_active {
+          color: $accent-color;
+          border-bottom: 2px solid $accent-color;
+        }
+
+        &:hover {
+          color: $accent-color;
+          border-bottom: 2px solid $accent-color;
         }
       }
+
     }
 
     &__content {
@@ -733,10 +823,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       }
 
       &-services {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        height: 330px;
+        display: none;
+
+        &_active {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          height: 330px;
+        }
       }
     }
 
@@ -800,6 +894,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         display: block;
         list-style: none;
         margin: 0;
+        width: 100%;
+        max-width: 641px;
 
         li {
           margin-bottom: 20px;
@@ -835,7 +931,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 
       &_hurt-list {
-        margin-right: 30px;
+        max-width: 326px !important;
       }
 
       &_hurt-item {
@@ -876,12 +972,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     }
 
     &__countries {
-      flex-grow: 1;
       margin-bottom: 60px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
     }
 
     &__country {
       flex-basis: calc(100% / 4 - 20px);
+      display: block;
       background-color: white;
       padding: 27px 0;
       text-align: center;
@@ -889,38 +989,34 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       color: $main-color;
       position: relative;
       z-index: 10;
+      box-sizing: border-box;
+
+      &:hover {
+        background-color: $bg-gray;
+
+        &::before {
+          display: block;
+          content: '';
+          width: 100%;
+          height: 4px;
+          background-color: white;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+
+        .units__country-image {
+          margin-top: -4px;
+        }
+      }
 
       &-image {
         width: 54px;
         height: 36px;
         margin: 0 auto 15px auto;
-      }
 
-      &:nth-child(1) {
-        .units__country-image {
-          background: url("../img/units/country-america.svg") center no-repeat;
-          background-size: contain;
-        }
-      }
-
-      &:nth-child(2) {
-        .units__country-image {
-          background: url("../img/units/country-swis.svg") center no-repeat;
-          background-size: contain;
-        }
-      }
-
-      &:nth-child(3) {
-        .units__country-image {
-          background: url("../img/units/country-israil.svg") center no-repeat;
-          background-size: contain;
-        }
-      }
-
-      &:nth-child(4) {
-        .units__country-image {
-          background: url("../img/units/country-germany.svg") center no-repeat;
-          background-size: contain;
+        img {
+          height: 100%;
         }
       }
     }
@@ -928,9 +1024,19 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
   .appointment {
     background-color: white;
-    //background-image: url("../img/appointment/bg-figure-red.svg");
 
     &__block {
+      flex-basis: 100%;
+      padding: 55px 0;
+      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
+      margin-top: 60px;
+      margin-bottom: 90px;
+      background: url("../img/appointment/appointment-block-bg.svg") center no-repeat;
+      background-size: contain;
+      position: relative;
+      z-index: 10;
+      background-color: white;
+
       &::before {
         display: block;
         content: '';
@@ -955,16 +1061,10 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         background-size: contain;
       }
 
-      flex-basis: 100%;
-      padding: 55px 0;
-      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
-      margin-top: 60px;
-      margin-bottom: 90px;
-      background: url("../img/appointment/appointment-block-bg.svg") center no-repeat;
-      background-size: contain;
-      position: relative;
-      z-index: 10;
-      background-color: white;
+      .content {
+        position: relative;
+        z-index: 10;
+      }
     }
 
     &__title {
@@ -1003,6 +1103,15 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       input {
         &::placeholder {
           color: $main-color;
+          transition: .5s;
+        }
+
+        &:focus {
+          &::placeholder {
+            opacity: 0;
+            transform: translate(-10px, -100px);
+            font-size: 5px;
+          }
         }
       }
 
@@ -1035,7 +1144,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
           color: $main-color;
         }
 
-        input {
+        #confident {
           margin: 0;
           height: 16px;
           width: 16px;
@@ -1047,12 +1156,20 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
           appearance: none;
           padding: 0;
 
-          &:checked::before {
-            content: 'X';
-            display: block;
-            font-size: 15px;
-            text-align: center;
-            color: $main-color;
+          &:checked {
+            background-color: $main-color;
+
+            &::before {
+              display: block;
+              content: '';
+              width: 98%;
+              height: 98%;
+              background-image: url("../img/appointment/checkmark.svg");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: contain;
+              filter: grayscale(1) contrast(50);
+            }
           }
         }
       }
@@ -1339,6 +1456,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       flex-basis: 100%;
       justify-content: center;
       align-items: center;
+
+      .owl-stage-outer {
+        padding: 0;
+
+        .owl-stage {
+          padding: 0;
+        }
+      }
     }
 
     &__item {
@@ -1399,12 +1524,18 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
       }
 
       &-content {
+        position: relative;
         width: 100%;
         max-height: 90px;
         line-height: 120%;
         overflow: hidden;
         color: rgba(black, .7);
         margin-bottom: 12px;
+        cursor: pointer;
+        &_unhide{
+          overflow: visible;
+          max-height: none;
+        }
       }
 
       &-about {
@@ -1462,15 +1593,20 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         list-style: none;
         display: block;
         flex-grow: 1;
+      }
 
-        li {
-          &:last-child {
-            margin-bottom: 0;
-          }
-
-          margin-bottom: 12px;
+      &-item {
+        margin-bottom: 12px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
+
+      &-link{
+        color:rgba(white, .8);
+        text-decoration: none;
+      }
+
     }
 
     &__contacts {
@@ -1481,19 +1617,20 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
         margin-bottom: 20px;
       }
 
-      a {
+    }
+    &__phone{
         font-size: 24px;
         color: white;
         font-weight: bold;
         display: block;
         margin-bottom: 35px;
-      }
     }
 
     &__icons {
       display: flex;
 
       &-item {
+        display: block;
         margin-right: 22px;
       }
     }
@@ -1528,9 +1665,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-@media screen and (max-width: 576px){
-  .header{
-    .row:nth-child(2){
+@media screen and (max-width: 576px) {
+  .header {
+    .row:nth-child(2) {
       display: none;
     }
 
@@ -1538,9 +1675,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-body {
-  height: 1800px;
-}
 
 .layer1, .layer2, .layer3, .layer4 {
   position: fixed;
@@ -1684,26 +1818,36 @@ body {
   border: 0;
   margin: 0;
   overflow: visible;
-  background-color: $accent-color;}
+  background-color: $accent-color;
+}
+
 .hamburger:hover {
-  opacity: 0.7; }
+  opacity: 0.7;
+}
+
 .hamburger.is-active:hover {
-  opacity: 0.7; }
+  opacity: 0.7;
+}
+
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: white; }
+  background-color: white;
+}
 
 .hamburger-box {
   width: 40px;
   height: 24px;
   display: inline-block;
-  position: relative; }
+  position: relative;
+}
 
 .hamburger-inner {
   display: block;
   top: 50%;
-  margin-top: -2px; }
+  margin-top: -2px;
+}
+
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
   width: 40px;
   height: 4px;
@@ -1712,52 +1856,73 @@ body {
   position: absolute;
   transition-property: transform;
   transition-duration: 0.15s;
-  transition-timing-function: ease; }
+  transition-timing-function: ease;
+}
+
 .hamburger-inner::before, .hamburger-inner::after {
   content: "";
-  display: block; }
+  display: block;
+}
+
 .hamburger-inner::before {
-  top: -15px; }
+  top: -15px;
+}
+
 .hamburger-inner::after {
-  bottom: -15px; }
+  bottom: -15px;
+}
 
 .hamburger--spin .hamburger-inner {
   transition-duration: 0.22s;
-  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
 .hamburger--spin .hamburger-inner::before {
-  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in; }
+  transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
+}
+
 .hamburger--spin .hamburger-inner::after {
-  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
 
 .hamburger--spin.is-active .hamburger-inner {
   transform: rotate(225deg);
   transition-delay: 0.12s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
 .hamburger--spin.is-active .hamburger-inner::before {
   top: 0;
   opacity: 0;
-  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out; }
+  transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
+}
+
 .hamburger--spin.is-active .hamburger-inner::after {
   bottom: 0;
   transform: rotate(-90deg);
-  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
 
 
-@keyframes fadeIn {
+@keyframes slideIn {
   from {
     opacity: 0;
+    margin-left: -2000px;
   }
   to {
     opacity: 1;
+    margin: 0;
   }
 }
 
-@keyframes fadeOut {
-  from {
+@keyframes slideOut {
+  0% {
     opacity: 1;
+    margin: 0;
   }
-  to {
+  99% {
     opacity: 0;
+    margin-left: -2000px;
   }
 }
 
