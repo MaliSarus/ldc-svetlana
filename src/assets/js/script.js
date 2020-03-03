@@ -82,12 +82,13 @@ $(document).ready(function () {
     const headerPrimaryMenuItems = headerPrimaryMenu.find('li');
     const dropdownMenuContainer = $('.dropdown-menu__container');
     $(headerPrimaryMenuItems[1]).on('click', function () {
-        dropdownMenuContainer.addClass('dropdown-menu__container_active');
+        dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
         $('body').css({overflow:'hidden'})
     });
     dropdownMenuContainer.on('click',function (event) {
         if(event.target.classList.contains('dropdown-menu__container_active')){
-            $(event.target).removeClass('dropdown-menu__container_active')
+            $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
+            $('body').css({overflow:'visible'})
         }
     });
 
