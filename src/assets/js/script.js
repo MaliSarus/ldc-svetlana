@@ -78,6 +78,21 @@ window.onload = function () {
 };
 
 $(document).ready(function () {
+    const headerPrimaryMenu = $('.header__primary-menu');
+    const headerPrimaryMenuItems = headerPrimaryMenu.find('li');
+    const dropdownMenuContainer = $('.dropdown-menu__container');
+    $(headerPrimaryMenuItems[1]).on('click', function () {
+        dropdownMenuContainer.addClass('dropdown-menu__container_active');
+        $('body').css({overflow:'hidden'})
+    });
+    dropdownMenuContainer.on('click',function (event) {
+        if(event.target.classList.contains('dropdown-menu__container_active')){
+            $(event.target).removeClass('dropdown-menu__container_active')
+        }
+    });
+
+
+
     const appointmentPhoneInput = $('input[name="phone"]');
     const appointmentNameInput = $('input[name="customerName"]');
     const appointmentConfident = $('.appointment__form label[for="confident"] #confident');
@@ -146,11 +161,17 @@ $(document).ready(function () {
             });
         }, 300)
     });
-
-    // appointmentNameInput.on('input', () => {
-    //     appointmentNameInput.val(appointmentNameInput.val().replace(/[^А-я]/, ''));
-    // });
-
+    const dropdownTabs =  $('.dropdown-menu__tabs_item')
+    dropdownTabs.on('click', function (event) {
+        event.preventDefault();
+        const index = dropdownTabs.index(event.currentTarget);
+        const prevLink = $('.dropdown-menu__tabs_item_active');
+        prevLink.removeClass('dropdown-menu__tabs_item_active');
+        $(dropdownTabs[index]).addClass('dropdown-menu__tabs_item_active');
+        const dropdownContents = $('.dropdown-menu__item');
+        $('.dropdown-menu__item_active').removeClass('dropdown-menu__item_active');
+        $(dropdownContents[index]).addClass('dropdown-menu__item_active');
+    });
 
 
     const hamburger = $('.hamburger');
