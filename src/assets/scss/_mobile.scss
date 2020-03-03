@@ -1,0 +1,9 @@
+@media screen and (max-width: 576px) {
+  .header {
+    .row:nth-child(2) {
+      display: none;
+    }
+
+    background-color: $main-color;
+  }
+}

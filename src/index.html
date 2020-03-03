@@ -673,12 +673,18 @@
                         <a href="tel:+78126270203">+7 (812) 627 02 03</a>
                     </div>
                     <form action="#" class="appointment__form">
-                        <input type="text" name="customerName" placeholder="Имя">
+                        <div class="appointment__input-wrapper">
+                            <input type="text" id="customerName" name="customerName" required >
+                            <label for="customerName">Имя</label>
+                        </div>
                         <label for="confident"><input name="confident" type="checkbox" id="confident" value="yes"
                                                       required>
                             <small>Даю согласие на обработку <u>персональных данных</u></small>
                         </label>
-                        <input type="tel" name="phone" placeholder="Телефон" required>
+                        <div class="appointment__input-wrapper">
+                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">Телефон</label>
+                        </div>
                         <button type="submit" class="btn btn_white">Записаться на приём <img
                                 src="./assets/img/appointment/submit-icon.svg"
                                 alt="Иконка кнопки"></button>
@@ -951,7 +957,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feedback__item-content">
+                    <div class="feedback__item-content" tabindex="0">
                         <p class="feedback__item-content-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet assumenda commodi
                             consectetur corporis eum exercitationem facere, fuga itaque nobis pariatur sapiente.
@@ -983,7 +989,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feedback__item-content">
+                    <div class="feedback__item-content" tabindex="0">
                         <p class="feedback__item-content-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet assumenda commodi
                             consectetur corporis eum exercitationem facere, fuga itaque nobis pariatur sapiente.
@@ -1015,7 +1021,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="feedback__item-content">
+                    <div class="feedback__item-content" tabindex="0">
                         <p class="feedback__item-content-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet assumenda commodi
                             consectetur corporis eum exercitationem facere, fuga itaque nobis pariatur sapiente.

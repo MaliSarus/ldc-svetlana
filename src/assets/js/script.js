@@ -78,38 +78,80 @@ window.onload = function () {
 };
 
 $(document).ready(function () {
-    $('input[name="phone"]').on('focus', function () {
+    const appointmentPhoneInput = $('input[name="phone"]');
+    const appointmentNameInput = $('input[name="customerName"]');
+    const appointmentConfident = $('.appointment__form label[for="confident"] #confident');
+    const appointmentSubmitButton = $('.appointment__form button[type="submit"]');
+    const popUpClose = $('.popup-close-button');
+    const popUp = $('.popup');
+    popUpClose.on('click',function () {
+        popUp.hide();
+        $('body').css({
+            overflow: 'visible'
+        });
+        $('.appointment__form').unbind('submit').submit();
+    });
+
+    appointmentSubmitButton.on('click', function (event) {
+        if(appointmentNameInput.val() == '') {
+            appointmentNameInput.css({
+                borderColor: '#E84E2C',
+                color: '#E84E2C'
+            });
+            $('label[for="customerName"]').css({
+                color: '#E84E2C'
+            }).html('Введите имя');
+            event.preventDefault();
+        }
+
+        if (appointmentPhoneInput.val() == '') {
+            appointmentPhoneInput.css({
+                borderColor: '#E84E2C',
+                color: '#E84E2C'
+            });
+            $('label[for="phone"]').css({
+                color: '#E84E2C'
+            }).html('Введите телефон');
+            event.preventDefault();
+        }
+        if(!appointmentConfident.prop("checked")){
+            appointmentConfident.css({
+                borderColor: '#E84E2C'
+            });
+            $('.appointment__form label[for="confident"] small').css({
+                color: '#E84E2C'
+            })
+        }
+        if(appointmentConfident.prop('checked') && appointmentPhoneInput.val() !== '' && appointmentNameInput.val() !== ''){
+            event.preventDefault();
+            popUp.show();
+            popUp.css({
+                display:'flex'
+            });
+            $('body').css({
+                overflow:'hidden'
+            })
+        }
+    });
+
+    appointmentPhoneInput.on('focus', function () {
         setTimeout(function () {
-            $('input[name="phone"]').inputmask({
+            appointmentPhoneInput.inputmask({
                 "mask": "+7-(999)-999-9999",
                 showMaskOnHover: false,
                 showMaskOnFocus: true,
                 'onincomplete': function () {
-                    $('input[name="phone"]').inputmask("remove")
+                    appointmentPhoneInput.inputmask("remove")
                 }
             });
         }, 300)
     });
 
-    const popUpClose = $('.popup-close-button');
-    popUpClose.on('click',function () {
-        $('.popup').hide();
-    });
-
-
-    const customerNameInput = $('input[name="customerName"]');
-    customerNameInput.on('input', () => {
-        customerNameInput.val(customerNameInput.val().replace(/[^а-я]/, ''));
-    });
-
-    $('.feedback__item-content').on('focus',function (event) {
-       event.currentTarget.classList.add('feedback__item-content_unhide');
-    });
-
-    // $('.feedback__item-content').on('blur',function (event) {
-    //    // event.currentTarget.classList.remove('feedback__item-content_unhide');
-    //     console.log('Blur')
+    // appointmentNameInput.on('input', () => {
+    //     appointmentNameInput.val(appointmentNameInput.val().replace(/[^А-я]/, ''));
     // });
+
+
 
     const hamburger = $('.hamburger');
     // On click
