@@ -1,4 +1,3 @@
-
 // ТУТ ОБРАБОТКА СЛАЙДЕРОВ И ЧТО С НИМИ СВЯЗАНО
 window.onload = function () {
     const specOwl = $('.specialists__slider.owl-carousel');
@@ -168,11 +167,10 @@ $(document).ready(function () {
     });
 
     $('.appointment__form .appointment__input-wrapper > input').on('input', function (event) {
-        if($(event.target).val() !== ''){
+        if ($(event.target).val() !== '') {
             $(event.target).attr('style', '');
             $(event.target).siblings('label').attr('style', '');
-        }
-        else{
+        } else {
             $(event.target).css({
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
@@ -183,16 +181,15 @@ $(document).ready(function () {
         }
     });
 
-    appointmentConfident.change(function(){
-        if (!this.checked){
+    appointmentConfident.change(function () {
+        if (!this.checked) {
             $(this).css({
                 borderColor: '#E84E2C',
             });
             $('.appointment__form label[for="confident"] small').css({
                 color: '#E84E2C',
             })
-        }
-        else{
+        } else {
             $(this).attr('style', '');
             $('.appointment__form label[for="confident"] small').attr('style', '');
         }
@@ -210,7 +207,7 @@ $(document).ready(function () {
             });
         }, 300)
     });
-
+    //Вкладки на выпадающем меню хэдера
     const dropdownTabs = $('.dropdown-menu__tabs_item')
     dropdownTabs.on('click', function (event) {
         event.preventDefault();
@@ -223,8 +220,9 @@ $(document).ready(function () {
         $(dropdownContents[index]).addClass('dropdown-menu__item_active');
     });
 
+    //Блоки с отзывами
     const feedbackContent = $('.feedback__item-content');
-    $(document).on('click','.feedback__item-content', function (event) {
+    $(document).on('click', '.feedback__item-content', function (event) {
         console.log(event.target);
         if ($(this).hasClass('feedback__item-content_unhide')) {
             $(this).removeClass('feedback__item-content_unhide');
@@ -236,7 +234,7 @@ $(document).ready(function () {
         $(this).removeClass('feedback__item-content_unhide');
     });
 
-
+    //Кнопка для раскрытия меню в мобайле
     const hamburger = $('.hamburger');
     // On click
     hamburger.on("click", function () {
@@ -245,6 +243,7 @@ $(document).ready(function () {
     });
 });
 
+//Паралакс квадратиков
 $(window).scroll(parallaxScrolling);
 
 function parallaxScrolling() {
