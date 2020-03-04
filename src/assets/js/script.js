@@ -1,3 +1,5 @@
+
+// ТУТ ОБРАБОТКА СЛАЙДЕРОВ И ЧТО С НИМИ СВЯЗАНО
 window.onload = function () {
     const specOwl = $('.specialists__slider.owl-carousel');
     specOwl.owlCarousel({
@@ -89,10 +91,13 @@ window.onload = function () {
     });
 };
 
+//ТУПО ОБРАБОТКА СОБЫТИЙ
+
 $(document).ready(function () {
     const headerPrimaryMenu = $('.header__primary-menu');
     const headerPrimaryMenuItems = headerPrimaryMenu.find('li');
     const dropdownMenuContainer = $('.dropdown-menu__container');
+    //ВЫПАДАЮЩЕЕ МЕНЮ В ХЭДЕРЕ
     $(headerPrimaryMenuItems[1]).on('click', function () {
         dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
         $('body').css({overflow: 'hidden'})
@@ -111,6 +116,7 @@ $(document).ready(function () {
     const appointmentSubmitButton = $('.appointment__form button[type="submit"]');
     const popUpClose = $('.popup-close-button');
     const popUp = $('.popup');
+    //ПОП АП ОКНО
     popUpClose.on('click', function () {
         popUp.hide();
         $('body').css({
@@ -118,7 +124,7 @@ $(document).ready(function () {
         });
         $('.appointment__form').unbind('submit').submit();
     });
-
+    //ОБРАБОТКА ФОРМЫ ЗАПИСИ
     appointmentSubmitButton.on('click', function (event) {
         if (appointmentNameInput.val() == '') {
             appointmentNameInput.css({
@@ -128,7 +134,7 @@ $(document).ready(function () {
             $('label[for="customerName"]').css({
                 color: '#E84E2C'
             }).html('Введите имя');
-            event.preventDefault();
+            // event.preventDefault();
         }
 
         if (appointmentPhoneInput.val() == '') {
@@ -139,7 +145,7 @@ $(document).ready(function () {
             $('label[for="phone"]').css({
                 color: '#E84E2C'
             }).html('Введите телефон');
-            event.preventDefault();
+            // event.preventDefault();
         }
         if (!appointmentConfident.prop("checked")) {
             appointmentConfident.css({
@@ -158,6 +164,37 @@ $(document).ready(function () {
             $('body').css({
                 overflow: 'hidden'
             })
+        }
+    });
+
+    $('.appointment__form .appointment__input-wrapper > input').on('input', function (event) {
+        if($(event.target).val() !== ''){
+            $(event.target).attr('style', '');
+            $(event.target).siblings('label').attr('style', '');
+        }
+        else{
+            $(event.target).css({
+                borderColor: '#E84E2C',
+                color: '#E84E2C'
+            });
+            $(event.target).siblings('label').css({
+                color: '#E84E2C'
+            })
+        }
+    });
+
+    appointmentConfident.change(function(){
+        if (!this.checked){
+            $(this).css({
+                borderColor: '#E84E2C',
+            });
+            $('.appointment__form label[for="confident"] small').css({
+                color: '#E84E2C',
+            })
+        }
+        else{
+            $(this).attr('style', '');
+            $('.appointment__form label[for="confident"] small').attr('style', '');
         }
     });
 
@@ -187,7 +224,7 @@ $(document).ready(function () {
     });
 
     const feedbackContent = $('.feedback__item-content');
-    feedbackContent.on('click', function (event) {
+    $(document).on('click','.feedback__item-content', function (event) {
         console.log(event.target);
         if ($(this).hasClass('feedback__item-content_unhide')) {
             $(this).removeClass('feedback__item-content_unhide');
