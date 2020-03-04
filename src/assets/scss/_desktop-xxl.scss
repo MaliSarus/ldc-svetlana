@@ -1,5 +1,10 @@
 @media screen and (min-width: 1400px) {
-
+  .hamburger{
+    display: none;
+  }
+  .tap-menu{
+    display: none;
+  }
   .container {
     max-width: 1380px
   }
@@ -16,7 +21,7 @@
 
     &::before {
       display: block;
-      width: calc(100vw - 18px);
+      width: 100%;
       height: 60px;
       position: absolute;
       left: 0;
@@ -113,12 +118,12 @@
     &__primary-menu {
       align-self: stretch;
       display: flex;
+      margin-right: 80px;
 
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
-        margin-right: 70px;
         display: flex;
 
         li {
@@ -211,10 +216,11 @@
     &__emergency-call {
       height: 100%;
       background-color: $accent-color;
-      transform: skewX(-15deg);
+      transform: skewX(-15deg) translateX(-10px);
       transition: background-color .5s;
       flex-grow: 1;
       text-align: center;
+      max-width: 210px;
 
       &:hover {
         background-color: #3F5A8A;;
@@ -241,16 +247,12 @@
 
   .dropdown-menu__container {
     position: fixed;
-    top: 130px;
+    top: 129px;
     z-index: 99;
     background-color: rgba(black, .7);
     width: 100%;
     height: 100vh;
     display: none;
-
-    &_active {
-      //display: block;
-    }
   }
 
   .dropdown-menu {
@@ -373,6 +375,9 @@
 
     &__item-link {
       color: $main-color;
+      &:hover{
+        color: $accent-color
+      }
     }
   }
 
@@ -380,7 +385,7 @@
     background-color: $bg-gray;
     position: relative;
     margin-top: 130px;
-
+    overflow: hidden;
     &::before {
       position: absolute;
       display: inline-block;
@@ -498,6 +503,7 @@
         -webkit-border-radius: 2px;
         -moz-border-radius: 2px;
         border-radius: 2px;
+        cursor: pointer;
 
         &:hover {
           background-color: $main-color

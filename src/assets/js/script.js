@@ -133,10 +133,10 @@ $(document).ready(function () {
             $('label[for="customerName"]').css({
                 color: '#E84E2C'
             }).html('Введите имя');
-            // event.preventDefault();
+            event.preventDefault();
         }
 
-        if (appointmentPhoneInput.val() == '') {
+        if (!Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999")) {
             appointmentPhoneInput.css({
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
@@ -144,9 +144,10 @@ $(document).ready(function () {
             $('label[for="phone"]').css({
                 color: '#E84E2C'
             }).html('Введите телефон');
-            // event.preventDefault();
+            event.preventDefault();
         }
         if (!appointmentConfident.prop("checked")) {
+            event.preventDefault();
             appointmentConfident.css({
                 borderColor: '#E84E2C'
             });
@@ -154,7 +155,7 @@ $(document).ready(function () {
                 color: '#E84E2C'
             })
         }
-        if (appointmentConfident.prop('checked') && appointmentPhoneInput.val() !== '' && appointmentNameInput.val() !== '') {
+        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999") && appointmentNameInput.val() !== '') {
             event.preventDefault();
             popUp.show();
             popUp.css({
@@ -170,6 +171,7 @@ $(document).ready(function () {
         if ($(event.target).val() !== '') {
             $(event.target).attr('style', '');
             $(event.target).siblings('label').attr('style', '');
+            $('.appointment__form').bind('submit')
         } else {
             $(event.target).css({
                 borderColor: '#E84E2C',
@@ -177,7 +179,18 @@ $(document).ready(function () {
             });
             $(event.target).siblings('label').css({
                 color: '#E84E2C'
-            })
+            });
+
+        }
+        if(!Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999")){
+            appointmentPhoneInput.css({
+                borderColor: '#E84E2C',
+                color: '#E84E2C'
+            });
+            appointmentPhoneInput.siblings('label').css({
+                color: '#E84E2C'
+            });
+            $('.appointment__form').unbind('submit')
         }
     });
 

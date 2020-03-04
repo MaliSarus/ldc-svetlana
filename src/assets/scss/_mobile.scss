@@ -5,178 +5,28 @@
     }
     background-color: $main-color;
   }
-
-  .specialists{
-    background-color: $bg-gray;
-    position: relative;
-
-    &__block {
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
-      position: relative;
-      z-index: 2;
-      left: 0;
-      top: -30px;
-    }
-
-    &__head {
-      background-color: $bg-gray;
-      width: 100%;
-      padding: 40px 0;
-    }
-
-    &__content {
-      background-color: white;
-      padding: 40px 0;
-      padding-top: 20px;
-    }
-
-    &__doctor {
-      background-color: #fcfcfc;
-      padding: 12px;
-      max-width: 325px;
-      //margin-right: 20px;
-      position: relative;
-      height: 100%;
-      box-sizing: border-box;
-
-      &:last-child {
-        margin-right: 0;
-      }
-
-      .doctor {
-        &__image {
-          width: 300px;
-          max-height: 300px;
-          margin-left: auto;
-          margin-right: auto;
-          margin-bottom: 22px;
-
-          img {
-            max-width: 100%;
-          }
-        }
-
-        &__info {
-          display: block;
-          color: $main-color;
-          position: relative;
-          font-size: 14px;
-          height: 100%;
-
-          .doctor__name {
-            font-size: 18px;
-            color: $main-color-dark;
-            margin-bottom: 22px;
-            margin-top: 0;
-
-            span {
-              font-weight: normal;
-            }
-          }
-
-          .doctor__work {
-            margin: 0;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 17px;
-          }
-
-          .doctor__features {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-
-            li::before {
-              content: "-";
-              margin-right: 5px;
-            }
-          }
-        }
-
-        &__info:hover {
-          .doctor__full-info {
-            opacity: 1;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-          }
-        }
-
-        &__full-info {
-          opacity: 0;
-
-          height: 100%;
-          width: 100%;
-          background-color: rgba(white, .95);
-          position: absolute;
-          left: -12px;
-          top: -12px;
-          padding: 12px;
-          transition: opacity .5s;
-          font-size: 14px;
-
-          .doctor__features {
-            margin-bottom: 20px;
-          }
-
-          a {
-            display: block;
-            width: calc(100% - 40px);
-            text-align: center;
-            color: $main-color;
-            border: 1px solid $main-color;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 12px;
-            transition: background-color .5s, color .5s;
-            padding: 15px 0;
-
-            &:hover {
-              color: white;
-              background-color: $main-color;
-            }
-          }
-        }
-
-        &__exp {
-          color: $main-color-dark;
-          margin: 0;
-          margin-bottom: 26px;
-        }
-
-        &__desc {
-          line-height: 120%;
-        }
-      }
-    }
-
-    &__slider {
-      margin-bottom: 15px;
-      transform: translateX(-20px);
-    }
-
-    &__control-panel {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-
-      button {
-        width: 443px;
-      }
-    }
+  .tap-menu{
+    display: block;
+    height: 77px;
+    width: 100%;
+    background-color: $main-color;
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
-
-  .layer1{
+  .layer1 {
     display: none;
   }
-  .layer2{
+
+  .layer2 {
     display: none;
   }
-  .layer3{
+
+  .layer3 {
     display: none;
   }
-  .layer4{
+
+  .layer4 {
     display: none;
   }
 }

@@ -385,7 +385,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 .hamburger {
   padding: 15px 15px;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
@@ -488,12 +488,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 @keyframes slideIn {
   from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
     opacity: 0;
-    margin-left: -2000px;
   }
+
   to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
-    margin: 0;
   }
 }
 
