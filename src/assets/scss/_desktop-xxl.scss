@@ -113,12 +113,14 @@
     &__primary-menu {
       align-self: stretch;
       display: flex;
+
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
         margin-right: 70px;
         display: flex;
+
         li {
           margin-right: 30px;
           font-size: 16px;
@@ -126,10 +128,12 @@
           align-items: center;
           height: 100%;
           cursor: pointer;
-          &:hover{
+
+          &:hover {
             height: calc(100% - 2px);
             border-bottom: 2px solid white;
-            a{
+
+            a {
               transform: translateY(1px);
             }
           }
@@ -157,11 +161,16 @@
       position: relative;
       z-index: 2;
 
-      &:focus {
+      &_focus {
         background-color: white;
 
         .header__search-form-field {
           background-color: white;
+          color: $main-color;
+        }
+
+        .header__search-form-button {
+          filter: sepia(10) saturate(52.5) hue-rotate(179deg) saturate(76.5) contrast(64.5) grayscale(0.35) hue-rotate(335deg);
         }
       }
 
@@ -230,31 +239,34 @@
     }
   }
 
-  .dropdown-menu__container{
+  .dropdown-menu__container {
     position: fixed;
     top: 130px;
     z-index: 99;
-    background-color: rgba(black,.7);
+    background-color: rgba(black, .7);
     width: 100%;
     height: 100vh;
     display: none;
-    &_active{
+
+    &_active {
       //display: block;
     }
   }
 
-  .dropdown-menu{
+  .dropdown-menu {
     background-color: white;
     width: 100%;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
     position: relative;
     display: flex;
-    &__tabs{
+
+    &__tabs {
       flex-basis: calc(100% / 3);
       background: $bg-gray;
       margin-right: 20px;
       padding: 40px 0;
-      ul{
+
+      ul {
         padding: 0;
         margin: 0;
         list-style: none;
@@ -262,14 +274,17 @@
         max-width: 350px;
         float: right;
       }
-      &_item{
+
+      &_item {
         padding: 11px;
         padding-right: 0;
         position: relative;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
           background-color: white;
-          &::after{
+
+          &::after {
             display: block;
             content: '';
             height: 18px;
@@ -281,9 +296,11 @@
             top: 11px;
           }
         }
-        &_active{
+
+        &_active {
           background-color: white;
-          &::after{
+
+          &::after {
             display: block;
             content: '';
             height: 18px;
@@ -296,26 +313,31 @@
           }
         }
       }
-      &_link{
+
+      &_link {
         text-decoration: none;
         font-weight: bold;
         font-size: 16px;
-        color:  #1A305C;
+        color: #1A305C;
         text-transform: uppercase;
       }
     }
-    &__content{
+
+    &__content {
       flex-grow: 1;
       padding: 51px 0 40px 0;
     }
-    &__item{
+
+    &__item {
       width: 100%;
       display: none;
-      &_active{
+
+      &_active {
         display: flex;
       }
     }
-    &__column{
+
+    &__column {
       flex-basis: calc(100% / 3);
       max-width: 325px;
       margin-right: 20px;
@@ -443,11 +465,13 @@
       font-size: 36px;
       line-height: 48px;
       margin-bottom: 35px;
+      color: $main-color-dark;
     }
 
     &__title {
       font-size: 18px;
       margin-bottom: 12px;
+      color: $main-color-dark;
     }
 
     &__desc {
@@ -456,6 +480,7 @@
       font-size: 18px;
       line-height: 24px;
       margin-bottom: 30px;
+      color: $main-color-dark;
     }
 
     .select-buttons {
@@ -712,7 +737,8 @@
     }
 
     &__column {
-      flex-basis: calc(100% / 3);
+      flex-basis: calc(100% / 4);
+      max-width: 325px;
 
       ul:last-child {
         li:last-child {
@@ -745,6 +771,9 @@
 
     &__item-link {
       color: $main-color;
+      &:hover{
+        color: $accent-color
+      }
     }
 
 
@@ -966,10 +995,11 @@
       position: relative;
       flex-grow: 3;
 
-      .appointment__input-wrapper{
+      .appointment__input-wrapper {
         flex-basis: calc(100% / 3 - 20px);
         position: relative;
-        label{
+
+        label {
           position: absolute;
           top: 45%;
           left: 18px;
@@ -978,18 +1008,26 @@
           transition: all .3s;
           color: $main-color
         }
-        input{
+
+        input {
           width: 100%;
-          &:focus{
+
+          &:focus {
             outline: none;
           }
-          &:focus ~ label{
+
+          &:focus ~ label {
             top: 20%;
             font-size: 10px;
           }
-          &:valid ~ label{
+
+          &:valid ~ label {
             top: 20%;
             font-size: 10px;
+            color: $main-color;
+          }
+          &:valid{
+
           }
         }
       }
@@ -1419,7 +1457,9 @@
         margin-bottom: 12px;
         cursor: pointer;
         transition: all .5s;
-        &::before{
+        outline: none;
+
+        &::before {
           position: absolute;
           left: 0;
           top: 0;
@@ -1431,14 +1471,13 @@
           height: 100%;
 
         }
-        //&_unhide{
-        //
-        //}
-        &:focus{
+
+        &_unhide{
           outline: none;
           overflow: visible;
           max-height: none;
-          &::before{
+
+          &::before {
             display: none;
           }
         }
@@ -1503,13 +1542,14 @@
 
       &-item {
         margin-bottom: 12px;
+
         &:last-child {
           margin-bottom: 0;
         }
       }
 
-      &-link{
-        color:rgba(white, .8);
+      &-link {
+        color: rgba(white, .8);
         text-decoration: none;
       }
 
@@ -1524,7 +1564,8 @@
       }
 
     }
-    &__phone{
+
+    &__phone {
       font-size: 24px;
       color: white;
       font-weight: bold;

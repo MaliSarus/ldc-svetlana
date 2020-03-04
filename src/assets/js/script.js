@@ -3,9 +3,19 @@ window.onload = function () {
     specOwl.owlCarousel({
         loop: true,
         margin: 20,
-        items: 4,
+        item: 1,
         nav: false,
         dots: false,
+        responsive: {
+            // breakpoint from 0 up
+            576: {
+                items: 1,
+            },
+            // breakpoint from 1400 up
+            1300: {
+                items: 4,
+            }
+        }
     });
 
     $('.specialists__control-panel .arrows .arrows__arrow-left').on('click', function () {
@@ -36,34 +46,36 @@ window.onload = function () {
     const sliderButtons = $('.select-buttons__button');
 
     sliderButtons[currentSlide].classList.add('select-buttons__button_active');
+    let sliderFlag = 0;
 
     sliderButtons.on('click', function (event) {
-        sliderButtons.removeClass('select-buttons__button_active');
-        const prevItem = $('.about__item_active');
-        const sliderItems = $('.about__item');
-        const index = sliderButtons.index(event.currentTarget);
-        const sliderItem = sliderItems[index];
-        sliderButtons.removeClass('select-buttons__button_active');
-        event.currentTarget.classList.add('select-buttons__button_active');
-        prevItem.addClass('about__item_deactivate');
-        setTimeout(function () {
-            prevItem.removeClass('about__item_deactivate');
-            prevItem.removeClass('about__item_active');
-            sliderItem.classList.add('about__item_active');
-        }, 900);
+        if (sliderFlag == 0) {
+            sliderButtons.removeClass('select-buttons__button_active');
+            const prevItem = $('.about__item_active');
+            const sliderItems = $('.about__item');
+            const index = sliderButtons.index(event.currentTarget);
+            const sliderItem = sliderItems[index];
+            sliderButtons.removeClass('select-buttons__button_active');
+            event.currentTarget.classList.add('select-buttons__button_active');
+            prevItem.addClass('about__item_deactivate');
+            sliderFlag = 1;
+            setTimeout(function () {
+                prevItem.removeClass('about__item_deactivate');
+                prevItem.removeClass('about__item_active');
+                sliderItem.classList.add('about__item_active');
+                sliderFlag = 0
+            }, 900);
+        }
     });
 
-    $('.header__search-form-field').focus(function () {
-        $(this).css({
-            backgroundColor: 'white',
-            color: 'black'
-        });
-        $('.header__search-form').css({
-            backgroundColor: 'white'
-        });
-        $('.header__search-form-button').css({
-            filter: 'sepia(10) saturate(52.5) hue-rotate(179deg) saturate(76.5) contrast(64.5) grayscale(0.35) hue-rotate(335deg)'
-        })
+    const headerSearchField = $('.header__search-form-field');
+
+    headerSearchField.on('focus', function () {
+        $('.header__search-form').addClass('header__search-form_focus');
+    });
+
+    headerSearchField.on('blur', function () {
+        $('.header__search-form').removeClass('header__search-form_focus');
     });
 
     $('.units__menu li').on('click', function (event) {
@@ -83,15 +95,14 @@ $(document).ready(function () {
     const dropdownMenuContainer = $('.dropdown-menu__container');
     $(headerPrimaryMenuItems[1]).on('click', function () {
         dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
-        $('body').css({overflow:'hidden'})
+        $('body').css({overflow: 'hidden'})
     });
-    dropdownMenuContainer.on('click',function (event) {
-        if(event.target.classList.contains('dropdown-menu__container_active')){
+    dropdownMenuContainer.on('click', function (event) {
+        if (event.target.classList.contains('dropdown-menu__container_active')) {
             $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
-            $('body').css({overflow:'visible'})
+            $('body').css({overflow: 'visible'})
         }
     });
-
 
 
     const appointmentPhoneInput = $('input[name="phone"]');
@@ -100,7 +111,7 @@ $(document).ready(function () {
     const appointmentSubmitButton = $('.appointment__form button[type="submit"]');
     const popUpClose = $('.popup-close-button');
     const popUp = $('.popup');
-    popUpClose.on('click',function () {
+    popUpClose.on('click', function () {
         popUp.hide();
         $('body').css({
             overflow: 'visible'
@@ -109,7 +120,7 @@ $(document).ready(function () {
     });
 
     appointmentSubmitButton.on('click', function (event) {
-        if(appointmentNameInput.val() == '') {
+        if (appointmentNameInput.val() == '') {
             appointmentNameInput.css({
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
@@ -130,7 +141,7 @@ $(document).ready(function () {
             }).html('Введите телефон');
             event.preventDefault();
         }
-        if(!appointmentConfident.prop("checked")){
+        if (!appointmentConfident.prop("checked")) {
             appointmentConfident.css({
                 borderColor: '#E84E2C'
             });
@@ -138,14 +149,14 @@ $(document).ready(function () {
                 color: '#E84E2C'
             })
         }
-        if(appointmentConfident.prop('checked') && appointmentPhoneInput.val() !== '' && appointmentNameInput.val() !== ''){
+        if (appointmentConfident.prop('checked') && appointmentPhoneInput.val() !== '' && appointmentNameInput.val() !== '') {
             event.preventDefault();
             popUp.show();
             popUp.css({
-                display:'flex'
+                display: 'flex'
             });
             $('body').css({
-                overflow:'hidden'
+                overflow: 'hidden'
             })
         }
     });
@@ -162,7 +173,8 @@ $(document).ready(function () {
             });
         }, 300)
     });
-    const dropdownTabs =  $('.dropdown-menu__tabs_item')
+
+    const dropdownTabs = $('.dropdown-menu__tabs_item')
     dropdownTabs.on('click', function (event) {
         event.preventDefault();
         const index = dropdownTabs.index(event.currentTarget);
@@ -172,6 +184,19 @@ $(document).ready(function () {
         const dropdownContents = $('.dropdown-menu__item');
         $('.dropdown-menu__item_active').removeClass('dropdown-menu__item_active');
         $(dropdownContents[index]).addClass('dropdown-menu__item_active');
+    });
+
+    const feedbackContent = $('.feedback__item-content');
+    feedbackContent.on('click', function (event) {
+        console.log(event.target);
+        if ($(this).hasClass('feedback__item-content_unhide')) {
+            $(this).removeClass('feedback__item-content_unhide');
+        } else {
+            $(this).addClass('feedback__item-content_unhide');
+        }
+    });
+    feedbackContent.on('blur', function () {
+        $(this).removeClass('feedback__item-content_unhide');
     });
 
 
