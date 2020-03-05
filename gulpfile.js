@@ -9,7 +9,7 @@ const
 function gulpSass() {
     return gulp
         .src('./src/assets/scss/**/*.scss')
-        .pipe(sass({ outputStyle: "compressed" }))
+        .pipe(sass({ outputStyle: "expanded" }))
         .pipe(autoPrefixer({
             browsers: ['last 4 versions'],
             cascade: false

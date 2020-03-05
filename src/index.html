@@ -11,6 +11,9 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="./assets/css/slick.css"/>
+    <link rel="stylesheet" href="./assets/css/slick-theme.css"/>
     <link rel="stylesheet" href="./assets/css/owl-slider/owl.carousel.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -54,7 +57,10 @@
                 <div class="header__logo"> <!--            Верхняя часть-->
                     <img src="./assets/img/header/logo.svg" alt="Логотип" class="logo">
                 </div>
-                <div class="header__main-menu desktop">
+                <div class="header__logo-mobile">
+                    <img src="./assets/img/header/mobile-logo.svg" alt="Логотип" class="logo">
+                </div>
+                <div class="header__main-menu">
                     <ul>
                         <li><a href="#">О центре</a></li>
                         <li><a href="#">Кураторы направлений</a></li>
@@ -62,10 +68,10 @@
                     </ul>
                 </div>
                 <div class="header__contacts">
-                    <p class="desktop">Санкт-Петербург, пр. Энгельса д.27, лит. Т</p>
+                    <p class="header__location">Санкт-Петербург, пр. Энгельса д.27, лит. Т</p>
                     <div class="header__phone">
                         <a href="tel:+781262702">+7 (812) 627-02-<span class="header__phone_red">03</span></a>
-                        <small class="desktop">круглосуточно</small>
+                        <small>круглосуточно</small>
                     </div>
                 </div>
                 <button class="hamburger hamburger--spin" type="button">
@@ -101,14 +107,12 @@
         </div>
     </div>
 </header>
-<div class="tap-menu">
-
-</div>
-<div class="dropdown-menu__container">
+<div class="dropdown-menu__container hide">
     <div class="dropdown-menu ">
         <nav class="dropdown-menu__tabs">
             <ul>
-                <li class="dropdown-menu__tabs_item dropdown-menu__tabs_item_active"><a href="#" class="dropdown-menu__tabs_link">Лечебное
+                <li class="dropdown-menu__tabs_item dropdown-menu__tabs_item_active"><a href="#"
+                                                                                        class="dropdown-menu__tabs_link">Лечебное
                     отделение</a></li>
                 <li class="dropdown-menu__tabs_item"><a href="#" class="dropdown-menu__tabs_link">Диагностическое
                     отделение</a></li>
@@ -504,6 +508,8 @@
         </div>
     </div>
 </div>
+
+
 <section class="about"> <!--Секция о докторах-->
     <div class="container">
         <div class="row">
@@ -517,19 +523,6 @@
                         <button class="btn btn_dark">Подробнее</button>
                     </div>
                     <div class="about__doctor">
-                        <!--Правая часть-->
-                        <!--                <div class="about__doctor-picture">-->
-                        <!--                </div>-->
-                        <!--                <div class="sending">-->
-                        <!--                    <h2>Консультация</h2>-->
-                        <!--                    <h4 class="sending__prev-price">-->
-                        <!--                        <del>4000 &#8381</del>-->
-                        <!--                    </h4>-->
-                        <!--                    <h4 class="sending__today-price">1500 &#8381</h4>-->
-                        <!--                    <div class="sending__sale">-->
-                        <!--                        <h4>-65%</h4>-->
-                        <!--                    </div>-->
-                        <!--                </div>-->
                         <img src="./assets/img/about/sale-pic.png" alt="Картинка скидок">
                     </div>
                 </div>
@@ -582,22 +575,24 @@
 <section class="features"><!--Секция о возможностях-->
     <div class="container">
         <h2 class="title features__title">Многолетний опыт безупречной работы</h2>
-        <div class="row row_between">
-            <div class="features__block">
-                <div class="features__icon"><img src="./assets/img/features/heart-icon.svg" alt=""></div>
-                <div class="features__desc">Многопрофильная помощь по 56 направлениям</div>
-            </div>
-            <div class="features__block">
-                <div class="features__icon"><img src="./assets/img/features/tech-icon.svg" alt=""></div>
-                <div class="features__desc">Диагностическое оборудование экспертного класса</div>
-            </div>
-            <div class="features__block">
-                <div class="features__icon"><img src="./assets/img/features/grant-icon.svg" alt=""></div>
-                <div class="features__desc">Заслуженные<br>врачи Российской Федерации</div>
-            </div>
-            <div class="features__block">
-                <div class="features__icon"><img src="./assets/img/features/people-icon.svg" alt=""></div>
-                <div class="features__desc">Телемедицина.<br>Дистанционные консультации</div>
+        <div class="row">
+            <div class="features__slider">
+                <div class="features__block">
+                    <div class="features__icon"><img src="./assets/img/features/heart-icon.svg" alt=""></div>
+                    <div class="features__desc">Многопрофильная помощь по 56 направлениям</div>
+                </div>
+                <div class="features__block">
+                    <div class="features__icon"><img src="./assets/img/features/tech-icon.svg" alt=""></div>
+                    <div class="features__desc">Диагностическое оборудование экспертного класса</div>
+                </div>
+                <div class="features__block">
+                    <div class="features__icon"><img src="./assets/img/features/grant-icon.svg" alt=""></div>
+                    <div class="features__desc">Заслуженные<br>врачи Российской Федерации</div>
+                </div>
+                <div class="features__block">
+                    <div class="features__icon"><img src="./assets/img/features/people-icon.svg" alt=""></div>
+                    <div class="features__desc">Телемедицина.<br>Дистанционные консультации</div>
+                </div>
             </div>
         </div>
     </div>
@@ -1084,7 +1079,7 @@
         </div>
     </div>
 </section>
-<section class="appointment">
+<section class="appointment hide">
     <div class="container container_size_1667">
         <div class="row">
             <div class="appointment__block">
@@ -1115,7 +1110,7 @@
         </div>
     </div>
 </section>
-<section class="specialists">
+<section class="specialists hide">
     <div class="container container_size_1667">
         <div class="row">
             <div class="specialists__block">
@@ -1315,7 +1310,7 @@
         </div>
     </div>
 </section>
-<section class="care">
+<section class="care hide">
     <div class="container">
         <div class="row">
             <div class="care__block">
@@ -1341,7 +1336,7 @@
         </div>
     </div>
 </section>
-<section class="feedback">
+<section class="feedback hide">
     <div class="quote">
     </div>
     <div class="container">
@@ -1460,8 +1455,43 @@
         </div>
     </div>
 </section>
+
+
 <footer class="footer">
-    <div class="container">
+    <div class="tap-menu">
+        <div class="container">
+            <div class="row row_start">
+                <div class="tap-menu__block">
+                    <div class="tap-menu__button">
+                        <div class="tap-menu__button_logo"><img src="./assets/img/tap-menu/first-kit-icon.svg"
+                                                                alt="Иконка услуг"></div>
+                        Услуги
+                    </div>
+                    <div class="tap-menu__button">
+                        <div class="tap-menu__button_logo"><img src="./assets/img/tap-menu/doctor-icon.svg"
+                                                                alt="Иконка врача"></div>
+                        Врачи
+                    </div>
+                    <div class="tap-menu__button">
+                        <div class="tap-menu__button_logo tap-menu__button_logo_emergency"><img
+                                src="./assets/img/tap-menu/emergency-logo.svg" alt="Иконка 24/7"></div>
+                        Травмпункт
+                    </div>
+                    <div class="tap-menu__button">
+                        <div class="tap-menu__button_logo"><img src="./assets/img/tap-menu/call-icon.svg"
+                                                                alt="Иконка записи"></div>
+                        Запись
+                    </div>
+                    <div class="tap-menu__button">
+                        <div class="tap-menu__button_logo"><img src="./assets/img/tap-menu/mark-icon.svg"
+                                                                alt="Иконка контактов"></div>
+                        Контакты
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container hide">
         <div class="row">
             <div class="footer__license">
                 <div class="footer__license-image">
@@ -1515,8 +1545,8 @@
 
 
 <script src="./assets/js/owl-slider/owl.carousel.min.js"></script>
+<script src="./assets/js/slick-slider/slick.min.js"></script>
 <script src="./assets/js/jquery.inputmask.min.js"></script>
-<script src="./assets/js/inputmask.binding.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>
 </html>

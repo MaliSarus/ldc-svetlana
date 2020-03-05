@@ -88,7 +88,83 @@ window.onload = function () {
         $('.units__content-services_active').removeClass('units__content-services_active');
         $('.units__content-services')[index].classList.add('units__content-services_active');
     });
+
+    if (window.matchMedia('screen and (max-width: 1000px)').matches) {
+        selectButtons.detach();
+        $('.about__slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: false,
+            infinite: false
+        });
+        $('.features__slider').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: false,
+            infinite: false,
+            variableWidth: true,
+            adaptiveHeight: true
+        });
+        $('.units__head .title').html('Отделения ЛДЦ')
+        $('.units__menu > ul').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: false,
+            infinite: false,
+            variableWidth: true,
+            adaptiveHeight: true
+        });
+        $('.container_size_1667').removeClass('container_size_1667')
+    } else {
+        $('.about__slider').filter('.slick-initialized').slick("unslick");
+        $('.features__slider').filter('.slick-initialized').slick("unslick");
+    }
 };
+
+const selectButtons = $('.select-buttons');
+let resizeFlag = 0;
+
+$(window).on('resize', function () {
+    if ($(window).width() > 768) {
+        if (resizeFlag == 0) {
+            $('.slick-initialized').filter('.slick-initialized').slick("unslick");
+            $('.features__slider').filter('.slick-initialized').slick("unslick");
+            selectButtons.appendTo('.about__slider');
+            $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
+            resizeFlag = 1;
+        }
+    } else {
+        if (resizeFlag == 1) {
+            selectButtons.detach();
+            $('.about__slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                infinite: false
+            });
+            $('.about__slider').slick('setPosition');
+            $('.features__slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                infinite: false,
+                variableWidth: true,
+                adaptiveHeight: true
+            });
+            $('.features__slider').slick('setPosition');
+            $('.units__head .title').html('Отделения ЛДЦ');
+            resizeFlag = 0;
+        }
+
+        $('.about__slider').slick('setPosition');
+    }
+});
+
 
 //ТУПО ОБРАБОТКА СОБЫТИЙ
 
@@ -136,7 +212,7 @@ $(document).ready(function () {
             event.preventDefault();
         }
 
-        if (!Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999")) {
+        if (!Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999")) {
             appointmentPhoneInput.css({
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
@@ -155,7 +231,7 @@ $(document).ready(function () {
                 color: '#E84E2C'
             })
         }
-        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999") && appointmentNameInput.val() !== '') {
+        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999") && appointmentNameInput.val() !== '') {
             event.preventDefault();
             popUp.show();
             popUp.css({
@@ -182,7 +258,7 @@ $(document).ready(function () {
             });
 
         }
-        if(!Inputmask.isValid(appointmentPhoneInput.val(),"+7-(999)-999-9999")){
+        if (!Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999")) {
             appointmentPhoneInput.css({
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
