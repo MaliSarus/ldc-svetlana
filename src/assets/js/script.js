@@ -107,7 +107,7 @@ window.onload = function () {
             variableWidth: true,
             adaptiveHeight: true
         });
-        $('.units__head .title').html('Отделения ЛДЦ')
+        $('.units__head .title').html('Отделения ЛДЦ');
         $('.units__menu > ul').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -117,11 +117,25 @@ window.onload = function () {
             variableWidth: true,
             adaptiveHeight: true
         });
-        $('.container_size_1667').removeClass('container_size_1667')
+        $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
     } else {
         $('.about__slider').filter('.slick-initialized').slick("unslick");
         $('.features__slider').filter('.slick-initialized').slick("unslick");
     }
+
+    if ($('.units__menu > .slick-initialized')) {
+        const unitsMenuTabs = $('.units__menu .slick-slide');
+        $('.units__menu > ul').on('afterChange', function (event, slick, currentSlide) {
+            console.log('After Change');
+            const index = $('.units__menu > ul').slick('slickCurrentSlide');
+            const prevLink = $('.units__menu-link_active');
+            prevLink.removeClass('units__menu-link_active');
+            $('.units__menu li')[index].children[0].classList.add('units__menu-link_active');
+            $('.units__content-services_active').removeClass('units__content-services_active');
+            $('.units__content-services')[index].classList.add('units__content-services_active');
+        });
+    }
+
 };
 
 const selectButtons = $('.select-buttons');
@@ -132,8 +146,12 @@ $(window).on('resize', function () {
         if (resizeFlag == 0) {
             $('.slick-initialized').filter('.slick-initialized').slick("unslick");
             $('.features__slider').filter('.slick-initialized').slick("unslick");
+            $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
             selectButtons.appendTo('.about__slider');
             $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
+            $('.units__emergency-room .title').html(' Взрослый и детский травмпункт &lt;ЛДЦ Завода “Светлана”&gt;');
+            $('.units__features > a.btn.btn_red_fill').remove();
+            $('.appointment__block > .content').addClass(['content_flex','content_between']);
             resizeFlag = 1;
         }
     } else {
@@ -157,7 +175,20 @@ $(window).on('resize', function () {
                 adaptiveHeight: true
             });
             $('.features__slider').slick('setPosition');
+            $('.units__menu > ul').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                arrows: false,
+                infinite: false,
+                variableWidth: true,
+                adaptiveHeight: true
+            });
+            $('.units__menu > ul').slick('setPosition');
             $('.units__head .title').html('Отделения ЛДЦ');
+            $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
+            $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
+            $('.appointment__block > .content').removeClass(['content_flex','content_between']);
             resizeFlag = 0;
         }
 
@@ -330,6 +361,12 @@ $(document).ready(function () {
         hamburger.toggleClass("is-active");
         // Do something else, like open/close menu
     });
+
+    if (window.matchMedia('screen and (max-width: 1000px)').matches) {
+        $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
+        $('.appointment__block > .content').removeClass(['content_flex','content_between']);
+    } else {
+    }
 });
 
 //Паралакс квадратиков

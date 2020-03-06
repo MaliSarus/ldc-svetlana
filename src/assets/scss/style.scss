@@ -40,10 +40,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
   @media screen and (max-width: 576px) {
     padding: 0;
+    max-width: none;
   }
 
   &_size_1667 {
     max-width: 1667px !important;
+    @media screen and (max-width: 576px) {
+      max-width: none;
+    }
   }
 }
 
@@ -100,6 +104,13 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   background: none;
   border: none;
   transition: background-color .5s, color .3s;
+  width: 100%;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  @media screen and (max-width: 576px){
+    padding: 15px 0;
+  }
 
   &_white {
     border: 1px solid $main-color;
@@ -416,7 +427,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 .hamburger {
   position: relative;
-  right: -15px;
+  right: 0;
   padding: 15px;
   display: none;
   @media screen and (max-width: 576px) {
