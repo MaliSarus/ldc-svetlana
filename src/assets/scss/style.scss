@@ -201,10 +201,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   height: 100%;
   align-items: center;
   z-index: 20;
+  @media screen and (max-width: 576px){
+    position: static;
+  }
 
   &__arrow-left {
     display: inline-block;
     margin-right: 36px;
+    @media screen and (max-width: 576px) {
+      margin-right: 25px;
+    }
   }
 
   &__arrow-right {
@@ -222,7 +228,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   position: relative;
   cursor: pointer;
   transition: filter .3s, transform .3s;
-
+  @media screen and (max-width: 576px) {
+    width: 23px;
+  }
   &::before {
     display: block;
     content: '';
@@ -233,6 +241,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     top: 0;
     background: url("../img/specialists/arrow.svg") center no-repeat;
     background-size: contain;
+    @media screen and (max-width: 576px){
+      background: url("../img/specialists/arrow-small.svg") center no-repeat;
+    }
   }
 
   &:hover {
@@ -248,7 +259,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 
 .mobile {
-  display: none !important;
+  display: none;
 }
 
 .popup {
