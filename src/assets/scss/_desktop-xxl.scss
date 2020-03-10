@@ -864,6 +864,13 @@
       color: $main-color;
       transition: color .5s;
       padding-bottom: 20px;
+      @media screen and (min-width: 1400px){
+        &:hover {
+          color: $accent-color;
+          border-bottom: 2px solid $accent-color;
+          height: calc(100% - 2px);
+        }
+      }
 
       &::after {
         transition: all .5s;
@@ -875,11 +882,6 @@
         @media screen and (min-width: 1400px) {
           border-bottom: 2px solid $accent-color;
           height: calc(100% - 2px);
-          &:hover {
-            color: $accent-color;
-            border-bottom: 2px solid $accent-color;
-            height: calc(100% - 2px);
-          }
         }
         @media screen and (max-width: 576px) {
           transition: background-color .5s;

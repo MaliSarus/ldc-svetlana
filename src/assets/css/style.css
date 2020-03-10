@@ -1733,6 +1733,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   padding-bottom: 20px;
 }
 
+@media screen and (min-width: 1400px) {
+  .units__menu-link:hover {
+    color: #E84E2C;
+    border-bottom: 2px solid #E84E2C;
+    height: calc(100% - 2px);
+  }
+}
+
 .units__menu-link::after {
   -webkit-transition: all .5s;
   -o-transition: all .5s;
@@ -1746,11 +1754,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 @media screen and (min-width: 1400px) {
   .units__menu-link_active {
-    border-bottom: 2px solid #E84E2C;
-    height: calc(100% - 2px);
-  }
-  .units__menu-link_active:hover {
-    color: #E84E2C;
     border-bottom: 2px solid #E84E2C;
     height: calc(100% - 2px);
   }
