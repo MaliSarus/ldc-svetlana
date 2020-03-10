@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="./assets/css/slick.css"/>
     <link rel="stylesheet" href="./assets/css/slick-theme.css"/>
-    <link rel="stylesheet" href="./assets/css/owl-slider/owl.carousel.css"/>
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <script src="./assets/js/jquery-3.4.1.js"></script>
@@ -81,33 +80,69 @@
                 </button>
             </div>
         </div>
-        <div class="row row_center row_between desktop">
-            <div class="header__primary-menu"> <!--            Нижняя часть-->
-                <ul>
-                    <li><a href="#">Врачи</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Телемедицина</a></li>
-                    <li><a href="#">Check-up программы</a></li>
-                    <li><a href="#">Цены</a></li>
-                    <li><a href="#">Для пациентов</a></li>
-                </ul>
-            </div>
-            <form action="#" class="header__search-form">
-                <button type="submit" class="header__search-form-button">
-                    <img src="./assets/img/header/search.svg" alt="Поиск">
-                </button>
-                <input name="search" type="search" class="header__search-form-field" placeholder="Поиск по сайту">
-            </form>
-            <div class="header__emergency-call">
-                <a href="tel:+781262702">
-                    <img src="./assets/img/header/emergency-call-24-7.svg" alt="Срочный звонок">
-                    Травмпункт
-                </a>
+        <div class="row row_center row_between">
+            <div class="header__bottom">
+                <div class="header__primary-menu"> <!--            Нижняя часть-->
+                    <ul>
+                        <li><a href="#">Врачи</a></li>
+                        <li class="dropdown-menu__open-button"><a href="#">Услуги</a></li>
+                        <li><a href="#">Телемедицина</a></li>
+                        <li><a href="#">Check-up программы</a></li>
+                        <li><a href="#">Цены</a></li>
+                        <li><a href="#">Для пациентов</a></li>
+                    </ul>
+                </div>
+                <div class="header__search-form-wrapper">
+                    <form action="#" class="header__search-form">
+                        <button type="submit" class="header__search-form-button">
+                            <img src="./assets/img/header/search.svg" alt="Поиск">
+                        </button>
+                        <input name="search" type="search" class="header__search-form-field" placeholder="Поиск по сайту">
+                    </form>
+                </div>
+                <div class="header__primary-menu_mobile">
+                    <div class="header__primary-menu-title">Услуги и цены</div>
+                    <ul>
+                        <li class="dropdown-menu__open-button"><a href="#">Услуги</a></li>
+                        <li><a href="#">Цены</a></li>
+                        <li><a href="#">Телемедицина</a></li>
+                        <li><a href="#">Check-up программы</a></li>
+                        <li><a href="#">Травмпункт</a></li>
+                    </ul>
+                    <div class="header__primary-menu-title">Специалисты</div>
+                    <ul>
+                        <li><a href="#">Врачи</a></li>
+                        <li><a href="#">Кураторы направлений</a></li>
+                    </ul>
+                    <div class="header__primary-menu-title">Информация</div>
+                    <ul>
+                        <li><a href="#">О центре</a></li>
+                        <li><a href="#">Для пациентов</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                    <div class="header__license-text">
+                        <p class="header__license-text_item">&copy; 2019-2020 ЛДЦ завода "Светлана".</p>
+                        <p class="header__license-text_item">Санкт-Петербург, пр. Энгельса д.27, лит. Т</p>
+                        <p class="header__license-text_item"><a href="#">Лицензия № ЛО-78-01-009435</a></p>
+                    </div>
+                    <div class="header__icons">
+                        <a href="#" class="header__icons-item"><img src="./assets/img/header/vk-circle-icon.svg" alt="иконка вк"></a>
+                        <a href="#" class="header__icons-item"><img src="./assets/img/header/fb-circle-icon.svg" alt="иконка фб"></a>
+                        <a href="#" class="header__icons-item"><img src="./assets/img/header/insta-circle-icon.svg" alt="иконка инсты">
+                        </a>
+                    </div>
+                </div>
+                <div class="header__emergency-call">
+                    <a href="tel:+781262702">
+                        <img src="./assets/img/header/emergency-call-24-7.svg" alt="Срочный звонок">
+                        Травмпункт
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </header>
-<div class="dropdown-menu__container hide">
+<div class="dropdown-menu__container">
     <div class="dropdown-menu ">
         <nav class="dropdown-menu__tabs">
             <ul>
@@ -1552,8 +1587,6 @@
     </div>
 </footer>
 
-
-<script src="./assets/js/owl-slider/owl.carousel.min.js"></script>
 <script src="./assets/js/slick-slider/slick.min.js"></script>
 <script src="./assets/js/jquery.inputmask.min.js"></script>
 <script src="./assets/js/script.js"></script>

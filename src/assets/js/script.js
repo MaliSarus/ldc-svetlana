@@ -1,12 +1,13 @@
-// ТУТ ОБРАБОТКА СЛАЙДЕРОВ И ЧТО С НИМИ СВЯЗАНО
+// Обработка событий при полной загрузки страницы
 window.onload = function () {
+
+    //Слайдер специалистов и кнопки слайдера специалистов
     const specSlick = $('.specialists__slider');
     specSlick.slick({
         infinite: true,
         arrows: false,
         dots: false,
         variableWidth: true,
-        // centerMode: true,
         responsive: [
             {
                 breakpoint: 1400,
@@ -26,7 +27,6 @@ window.onload = function () {
             }
         ]
     });
-
     $('.specialists__control-panel .arrows .arrows__arrow-left').on('click', function () {
         specSlick.slick('slickPrev');
     });
@@ -34,8 +34,8 @@ window.onload = function () {
         specSlick.slick('slickNext');
     });
 
+    //Сладер отзывов и кнопки сладера отзывов
     const feedSlick = $('.feedback__slider');
-
     feedSlick.slick({
         slidesToShow: 2,
         slidesToScroll: 1,
@@ -53,9 +53,6 @@ window.onload = function () {
             }
         ]
     });
-
-
-
     $('.feedback__control-panel .arrows .arrows__arrow-left').on('click', function () {
         feedSlick.slick('slickPrev');
     });
@@ -63,12 +60,11 @@ window.onload = function () {
         feedSlick.slick('slickNext');
     });
 
+    //Основной слайдер (анимации и тд)
     const currentSlide = $('.about__item').index($('.about__item_active'));
     const sliderButtons = $('.select-buttons__button');
-
     sliderButtons[currentSlide].classList.add('select-buttons__button_active');
     let sliderFlag = 0;
-
     sliderButtons.on('click', function (event) {
         if (sliderFlag == 0) {
             sliderButtons.removeClass('select-buttons__button_active');
@@ -89,16 +85,16 @@ window.onload = function () {
         }
     });
 
+    //Изменение поля поиска
     const headerSearchField = $('.header__search-form-field');
-
     headerSearchField.on('focus', function () {
         $('.header__search-form').addClass('header__search-form_focus');
     });
-
     headerSearchField.on('blur', function () {
         $('.header__search-form').removeClass('header__search-form_focus');
     });
 
+    //Изменения табов в блоках отделений
     $('.units__menu li').on('click', function (event) {
         event.preventDefault();
         const index = $('.units__menu li').index(event.currentTarget);
@@ -167,7 +163,10 @@ window.onload = function () {
     }
 };
 
+
+//Действия при изменении размеров окна
 const selectButtons = $('.select-buttons');
+const dropdownMenuContainer = $('.dropdown-menu__container');
 let resizeFlag = 0;
 
 $(window).on('resize', function () {
@@ -184,6 +183,18 @@ $(window).on('resize', function () {
             $('.specialists__head .title').html('Специалисты &lt;лечебно – диагностического центра&gt;');
             $('.feedback__head > .title').html('Отзывы &lt;наших клиентов&gt;');
             $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
+
+            //ВЫПАДАЮЩЕЕ МЕНЮ В ХЭДЕРЕ
+            $('.dropdown-menu__open-button').on('click', function () {
+                dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+                $('body').css({overflow: 'hidden'})
+            });
+            dropdownMenuContainer.on('click', function (event) {
+                if (event.target.classList.contains('dropdown-menu__container_active')) {
+                    $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
+                    $('body').css({overflow: 'visible'})
+                }
+            });
             resizeFlag = 1;
         }
     } else {
@@ -229,39 +240,35 @@ $(window).on('resize', function () {
             $('.appointment__block > .content').removeClass(['content_flex','content_between']);
             $('.specialists__head .title').html('Специалисты ЛДЦ');
             $('.feedback__head > .title').html('Отзывы');
+
+            $('.dropdown-menu__open-button').on('click', function () {
+                dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+                $('.header__bottom').css({display: 'none'});
+                $('.dropdown-menu__content').css({display:'none'});
+            });
+            dropdownMenuContainer.on('click', function (event) {
+                if (event.target.classList.contains('dropdown-menu__container_active')) {
+                    $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
+                }
+            });
             resizeFlag = 0;
         }
-
-        // $('.about__slider').slick('setPosition');
     }
 });
 
 
-//ТУПО ОБРАБОТКА СОБЫТИЙ
 
+
+//Обработка событий после загрузки страницы
 $(document).ready(function () {
-    const headerPrimaryMenu = $('.header__primary-menu');
-    const headerPrimaryMenuItems = headerPrimaryMenu.find('li');
-    const dropdownMenuContainer = $('.dropdown-menu__container');
-    //ВЫПАДАЮЩЕЕ МЕНЮ В ХЭДЕРЕ
-    $(headerPrimaryMenuItems[1]).on('click', function () {
-        dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
-        $('body').css({overflow: 'hidden'})
-    });
-    dropdownMenuContainer.on('click', function (event) {
-        if (event.target.classList.contains('dropdown-menu__container_active')) {
-            $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
-            $('body').css({overflow: 'visible'})
-        }
-    });
-
-
+    //Переменные для работы с формой
     const appointmentPhoneInput = $('input[name="phone"]');
     const appointmentNameInput = $('input[name="customerName"]');
     const appointmentConfident = $('.appointment__form label[for="confident"] #confident');
     const appointmentSubmitButton = $('.appointment__form button[type="submit"]');
     const popUpClose = $('.popup-close-button');
     const popUp = $('.popup');
+
     //ПОП АП ОКНО
     popUpClose.on('click', function () {
         popUp.hide();
@@ -270,6 +277,7 @@ $(document).ready(function () {
         });
         $('.appointment__form').unbind('submit').submit();
     });
+
     //ОБРАБОТКА ФОРМЫ ЗАПИСИ
     appointmentSubmitButton.on('click', function (event) {
         if (appointmentNameInput.val() == '') {
@@ -367,6 +375,7 @@ $(document).ready(function () {
             });
         }, 300)
     });
+
     //Вкладки на выпадающем меню хэдера
     const dropdownTabs = $('.dropdown-menu__tabs_item')
     dropdownTabs.on('click', function (event) {
@@ -399,9 +408,12 @@ $(document).ready(function () {
     // On click
     hamburger.on("click", function () {
         hamburger.toggleClass("is-active");
-        // Do something else, like open/close menu
+        $('.header__bottom').toggleClass('header__bottom_active');
+        $('body').children().toggleClass('hide');
+        $('.header').removeClass('hide');
     });
 
+    //Обработка медиа запроса
     if (window.matchMedia('screen and (max-width: 1000px)').matches) {
         $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
         $('.appointment__block > .content').removeClass(['content_flex','content_between']);
@@ -409,13 +421,13 @@ $(document).ready(function () {
         $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
         $('.specialists__head .title').html('Специалисты ЛДЦ');
         $('.feedback__head > .title').html('Отзывы');
-    } else {
+
     }
 });
 
+
 //Паралакс квадратиков
 $(window).scroll(parallaxScrolling);
-
 function parallaxScrolling() {
     var scrolled = $(window).scrollTop();
     $('.layer1').css('top', (0 - (scrolled * .9)) + 'px');
