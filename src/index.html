@@ -1088,7 +1088,7 @@
                         <h2 class="title">Запись на прием</h2>
                         <a href="tel:+78126270203">+7 (812) 627 02 03</a>
                     </div>
-                    <form action="#" class="appointment__form" id="#form-for-date">
+                    <form action="#" class="appointment__form" id="form-for-date">
                         <div class="appointment__input-wrapper">
                             <input type="text" id="customerName" name="customerName" required>
                             <label for="customerName">Имя</label>
@@ -1342,14 +1342,14 @@
         </div>
     </div>
 </section>
-<section class="feedback hide">
+<section class="feedback">
     <div class="quote">
     </div>
     <div class="container">
         <div class="row">
             <div class="feedback__head">
-
                 <h2 class="title">Отзывы &lt;наших клиентов&gt;</h2>
+                <div class="feedback__position"><span class="feedback__position_current">1</span>/35</div>
                 <div class="feedback__control-panel">
                     <a href="#">Читать все</a>
                     <div class="arrows">
@@ -1360,7 +1360,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="feedback__slider owl-carousel owl-theme">
+            <div class="feedback__slider">
                 <div class="feedback__item">
                     <div class="feedback__item-head">
                         <div class="feedback__item-head-user">
@@ -1497,41 +1497,44 @@
             </div>
         </div>
     </div>
-    <div class="container hide">
-        <div class="row">
-            <div class="footer__license">
-                <div class="footer__license-image">
-                    <img src="./assets/img/footer/logo.svg" alt="Логотип">
+    <div class="footer_desktop">
+        <div class="container">
+            <div class="row">
+                <div class="footer__license">
+                    <div class="footer__license-image">
+                        <img src="./assets/img/footer/logo.svg" alt="Логотип">
+                    </div>
+                    <div class="footer__license-text">
+                        <p class="footer__license-text-copy">&copy; 2019-2020<br>ЛДЦ завода "Светлана".</p>
+                        <p class="footer__license-text-number"><a href="#">Лицензия № ЛО-78-01-009435</a></p>
+                    </div>
                 </div>
-                <div class="footer__license-text">
-                    <p class="footer__license-text-copy">&copy; 2019-2020<br>ЛДЦ завода "Светлана".</p>
-                    <p class="footer__license-text-number"><u>Лицензия № ЛО-78-01-009435</u></p>
+                <div class="footer__menu">
+                    <ul>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Врачи</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Травмпункт</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Цены</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Телемедицина</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Check-Up программы</a></li>
+                    </ul>
+                    <ul>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">О центре</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Кураторы направлений</a>
+                        </li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Для пациентов</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Контакты</a></li>
+                        <li class="footer__menu-item"><a class="footer__menu-link" href="#">Правовая информация</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="footer__menu">
-                <ul>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Врачи</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Травмпункт</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Цены</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Телемедицина</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Check-Up программы</a></li>
-                </ul>
-                <ul>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">О центре</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Кураторы направлений</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Для пациентов</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Контакты</a></li>
-                    <li class="footer__menu-item"><a class="footer__menu-link" href="#">Правовая информация</a></li>
-                </ul>
-            </div>
-            <div class="footer__contacts">
-                <p>Санкт-Петербург,<br>пр.&nbsp;Энгельса д.&nbsp;27, лит.&nbsp;Т</p>
-                <a class="footer__phone" href="tel:+78126270203">+7 (812) 627 02 03</a>
-                <div class="footer__icons">
-                    <a class="footer__icons-item"><img src="./assets/img/footer/vk-icon.svg" alt="иконка вк"></a>
-                    <a class="footer__icons-item"><img src="./assets/img/footer/fb-icon.svg" alt="иконка фб"></a>
-                    <a class="footer__icons-item"><img src="./assets/img/footer/inst-icon.svg" alt="иконка инсты">
-                    </a>
+                <div class="footer__contacts">
+                    <p>Санкт-Петербург,<br>пр.&nbsp;Энгельса д.&nbsp;27, лит.&nbsp;Т</p>
+                    <a class="footer__phone" href="tel:+78126270203">+7 (812) 627 02 03</a>
+                    <div class="footer__icons">
+                        <a class="footer__icons-item"><img src="./assets/img/footer/vk-icon.svg" alt="иконка вк"></a>
+                        <a class="footer__icons-item"><img src="./assets/img/footer/fb-icon.svg" alt="иконка фб"></a>
+                        <a class="footer__icons-item"><img src="./assets/img/footer/inst-icon.svg" alt="иконка инсты">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

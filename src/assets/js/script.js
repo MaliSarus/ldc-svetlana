@@ -34,21 +34,33 @@ window.onload = function () {
         specSlick.slick('slickNext');
     });
 
-    const feedOwl = $('.feedback__slider.owl-carousel');
+    const feedSlick = $('.feedback__slider');
 
-    feedOwl.owlCarousel({
-        loop: true,
-        margin: 20,
-        items: 2,
-        nav: false,
-        dots: false,
+    feedSlick.slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: false,
+        dots:false,
+        responsive: [
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false
+                },
+            }
+        ]
     });
+
+
 
     $('.feedback__control-panel .arrows .arrows__arrow-left').on('click', function () {
-        feedOwl.trigger('prev.owl.carousel');
+        feedSlick.slick('slickPrev');
     });
     $('.feedback__control-panel .arrows .arrows__arrow-right').on('click', function () {
-        feedOwl.trigger('next.owl.carousel');
+        feedSlick.slick('slickNext');
     });
 
     const currentSlide = $('.about__item').index($('.about__item_active'));
@@ -131,6 +143,7 @@ window.onload = function () {
                 maxWidth: specSliderWidth + 'px'
             });
         }
+        $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
     } else {
         $('.about__slider').filter('.slick-initialized').slick("unslick");
         $('.features__slider').filter('.slick-initialized').slick("unslick");
@@ -138,13 +151,18 @@ window.onload = function () {
 
     if ($('.units__menu > .slick-initialized')) {
         $('.units__menu > ul').on('afterChange', function (event, slick, currentSlide) {
-            console.log('After Change');
             const index = $('.units__menu > ul').slick('slickCurrentSlide');
             const prevLink = $('.units__menu-link_active');
             prevLink.removeClass('units__menu-link_active');
             $('.units__menu li')[index].children[0].classList.add('units__menu-link_active');
             $('.units__content-services_active').removeClass('units__content-services_active');
             $('.units__content-services')[index].classList.add('units__content-services_active');
+        });
+    }
+
+    if ($('.feedback__slider.slick-initialized')) {
+        $('.feedback__slider').on('afterChange', function (event, slick, currentSlide) {
+            $('.feedback__position_current').html($('.feedback__slider').slick('slickCurrentSlide') + 1);
         });
     }
 };
@@ -164,6 +182,8 @@ $(window).on('resize', function () {
             $('.units__features > a.btn.btn_red_fill').remove();
             $('.appointment__block > .content').addClass(['content_flex','content_between']);
             $('.specialists__head .title').html('Специалисты &lt;лечебно – диагностического центра&gt;');
+            $('.feedback__head > .title').html('Отзывы &lt;наших клиентов&gt;');
+            $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
             resizeFlag = 1;
         }
     } else {
@@ -208,6 +228,7 @@ $(window).on('resize', function () {
             $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
             $('.appointment__block > .content').removeClass(['content_flex','content_between']);
             $('.specialists__head .title').html('Специалисты ЛДЦ');
+            $('.feedback__head > .title').html('Отзывы');
             resizeFlag = 0;
         }
 
@@ -387,6 +408,7 @@ $(document).ready(function () {
         $('.units__head .title').html('Отделения ЛДЦ');
         $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
         $('.specialists__head .title').html('Специалисты ЛДЦ');
+        $('.feedback__head > .title').html('Отзывы');
     } else {
     }
 });
