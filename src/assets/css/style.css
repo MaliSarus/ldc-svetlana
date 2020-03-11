@@ -352,6 +352,33 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   transform: scale(1.2);
 }
 
+.arrow-back {
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 576px) {
+  .with-arrow::after {
+    width: 7px;
+    height: 11px;
+    display: block;
+    content: '';
+    background: url("../img/header/arrow.svg") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .with-arrow:hover::after {
+    -webkit-filter: grayscale(1) invert(1) brightness(1000);
+    filter: grayscale(1) invert(1) brightness(1000);
+    cursor: pointer;
+  }
+}
+
 .select-buttons__button_active {
   background-color: #E84E2C !important;
 }
@@ -1060,12 +1087,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   color: white;
 }
 
-.header__primary-menu_mobile ul li.dropdown-menu__open-button:hover::after {
-  -webkit-filter: grayscale(1) invert(1) brightness(1000);
-  filter: grayscale(1) invert(1) brightness(1000);
-  cursor: pointer;
-}
-
 .header__primary-menu_mobile ul li a {
   text-transform: none;
   text-decoration: none;
@@ -1304,13 +1325,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   text-decoration: underline;
 }
 
+.dropdown-menu__container {
+  width: 100%;
+}
+
 @media screen and (min-width: 1400px) {
   .dropdown-menu__container {
     position: fixed;
     top: 129px;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.7);
-    width: 100%;
     height: 100vh;
     display: none;
   }
@@ -1319,6 +1343,11 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 @media screen and (max-width: 576px) {
   .dropdown-menu__container {
     display: none;
+    height: 100%;
+    background-color: transparent;
+    position: relative;
+    top: 54px;
+    left: 0;
   }
 }
 
@@ -1326,103 +1355,168 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   position: relative;
 }
 
-@media screen and (max-width: 576px) {
-  .dropdown-menu__open-button::after {
-    width: 7px;
-    height: 11px;
-    display: block;
-    content: '';
-    background: url("../img/header/arrow.svg") center no-repeat;
-    background-size: contain;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+.dropdown-menu {
+  width: 100%;
+  position: relative;
+}
+
+@media screen and (min-width: 1400px) {
+  .dropdown-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: white;
+    -webkit-box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
   }
 }
 
-.dropdown-menu {
-  background-color: white;
-  width: 100%;
-  -webkit-box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.12);
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+@media screen and (max-width: 576px) {
+  .dropdown-menu {
+    display: block;
+    padding-top: 35px;
+  }
+  .dropdown-menu .title {
+    font-size: 18px;
+    margin-bottom: 30px;
+    padding-left: 15px;
+  }
 }
 
-.dropdown-menu__tabs {
-  -ms-flex-preferred-size: calc(100% / 3);
-  flex-basis: calc(100% / 3);
-  background: #F1F1F1;
-  margin-right: 20px;
-  padding: 40px 0;
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__tabs {
+    -ms-flex-preferred-size: calc(100% / 3);
+    flex-basis: calc(100% / 3);
+    background: #F1F1F1;
+    margin-right: 20px;
+    padding: 40px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__tabs {
+    font-size: 14px;
+    color: rgba(10, 24, 49, 0.6);
+    text-transform: uppercase;
+  }
 }
 
 .dropdown-menu__tabs ul {
-  padding: 0;
   margin: 0;
   list-style: none;
-  width: 100%;
-  max-width: 350px;
-  float: right;
+  padding: 0;
+}
+
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__tabs ul {
+    width: 100%;
+    max-width: 350px;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__tabs ul {
+    background-color: white;
+    margin-bottom: 15px;
+  }
 }
 
 .dropdown-menu__tabs_item {
-  padding: 11px;
-  padding-right: 0;
   position: relative;
   cursor: pointer;
 }
 
-.dropdown-menu__tabs_item:hover {
-  background-color: white;
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__tabs_item {
+    padding: 11px;
+    padding-right: 0;
+  }
+  .dropdown-menu__tabs_item:hover {
+    background-color: white;
+  }
+  .dropdown-menu__tabs_item:hover::after {
+    display: block;
+    content: '';
+    height: 18px;
+    width: 10px;
+    background: url("../img/dropdown-menu/arrow.png") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 5px;
+    top: 11px;
+  }
 }
 
-.dropdown-menu__tabs_item:hover::after {
-  display: block;
-  content: '';
-  height: 18px;
-  width: 10px;
-  background: url("../img/dropdown-menu/arrow.png") center no-repeat;
-  background-size: contain;
-  position: absolute;
-  right: 5px;
-  top: 11px;
+@media screen and (max-width: 576px) {
+  .dropdown-menu__tabs_item {
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(42, 68, 114, 0.3);
+  }
+  .dropdown-menu__tabs_item:hover {
+    background: #3F5A8A;
+  }
+  .dropdown-menu__tabs_item:hover .dropdown-menu__tabs_link {
+    color: white;
+  }
+  .dropdown-menu__tabs_item:last-child {
+    border-bottom: none;
+  }
 }
 
 .dropdown-menu__tabs_item_active {
   background-color: white;
 }
 
-.dropdown-menu__tabs_item_active::after {
-  display: block;
-  content: '';
-  height: 18px;
-  width: 10px;
-  background: url("../img/dropdown-menu/arrow.png") center no-repeat;
-  background-size: contain;
-  position: absolute;
-  right: 5px;
-  top: 11px;
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__tabs_item_active::after {
+    display: block;
+    content: '';
+    height: 18px;
+    width: 10px;
+    background: url("../img/dropdown-menu/arrow.png") center no-repeat;
+    background-size: contain;
+    position: absolute;
+    right: 5px;
+    top: 11px;
+  }
 }
 
 .dropdown-menu__tabs_link {
   text-decoration: none;
-  font-weight: bold;
-  font-size: 16px;
-  color: #1A305C;
-  text-transform: uppercase;
 }
 
-.dropdown-menu__content {
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  padding: 51px 0 40px 0;
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__tabs_link {
+    font-weight: bold;
+    font-size: 16px;
+    color: #1A305C;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__tabs_link {
+    text-transform: none;
+    color: #2A4472;
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__content {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: 51px 0 40px 0;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__content {
+    background: white;
+    padding: 15px 15px;
+  }
 }
 
 .dropdown-menu__item {
@@ -1434,13 +1528,28 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-.dropdown-menu__column {
-  -ms-flex-preferred-size: calc(100% / 3);
-  flex-basis: calc(100% / 3);
-  max-width: 325px;
-  margin-right: 20px;
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__column {
+    -ms-flex-preferred-size: calc(100% / 3);
+    flex-basis: calc(100% / 3);
+    max-width: 325px;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__column {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    margin-bottom: 15px;
+  }
+  .dropdown-menu__column:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .dropdown-menu__column ul:last-child li:last-child {
@@ -1458,9 +1567,20 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 29px;
   padding-left: 30px;
   position: relative;
+}
+
+@media screen and (min-width: 1400px) {
+  .dropdown-menu__list-item {
+    margin-bottom: 29px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .dropdown-menu__list-item {
+    margin-bottom: 15px;
+  }
 }
 
 .dropdown-menu__list-item .main-letter {

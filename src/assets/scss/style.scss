@@ -252,6 +252,31 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
+.arrow-back{
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+.with-arrow{
+  @media screen and (max-width: 576px) {
+    &::after {
+      width: 7px;
+      height: 11px;
+      display: block;
+      content: '';
+      background: url("../img/header/arrow.svg") center no-repeat;
+      background-size: contain;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &:hover::after {
+      filter: grayscale(1) invert(1) brightness(1000);
+      cursor: pointer;
+    }
+  }
+}
 
 .select-buttons__button_active {
   background-color: $accent-color !important;
