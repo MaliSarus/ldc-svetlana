@@ -236,7 +236,7 @@ $(window).on('resize', function () {
             $('.units__menu > ul').slick('setPosition');
             $('.units__head .title').html('Отделения ЛДЦ');
             $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
-            $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
+            $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
             $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
             $('.specialists__head .title').html('Специалисты ЛДЦ');
             $('.feedback__head > .title').html('Отзывы');
@@ -459,7 +459,7 @@ $(document).ready(function () {
 
     //Обработка медиа запроса
     if (window.matchMedia('screen and (max-width: 1000px)').matches) {
-        $('.units__features').append('<a class="btn btn_red_fill" href="#form-for-date">Записаться на прием</a>');
+        $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
         $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
         $('.units__head .title').html('Отделения ЛДЦ');
         $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
@@ -467,6 +467,12 @@ $(document).ready(function () {
         $('.feedback__head > .title').html('Отзывы');
 
     }
+
+    $(".btn_red_fill").click(function() {
+        $('body, html').animate({
+            scrollTop: $(".appointment__block").offset().top - 54
+        }, 1);
+    });
 
 });
 

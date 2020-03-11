@@ -162,6 +162,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
       &:hover {
         background-color: $main-color;
+        border-color: transparent;
       }
 
       &:active {

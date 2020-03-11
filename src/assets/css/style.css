@@ -239,6 +239,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 .btn_red_fill:hover {
   background-color: #2A4472;
+  border-color: transparent;
 }
 
 .btn_red_fill:active {
@@ -774,6 +775,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     text-align: center;
     font-size: 12px;
     cursor: pointer;
+    display: block;
   }
   .tap-menu__button_logo {
     margin-bottom: 6px;
