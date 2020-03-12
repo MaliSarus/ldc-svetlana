@@ -1,6 +1,152 @@
+const selectButtons = $('.select-buttons');
+const dropdownMenuContainer = $('.dropdown-menu__container');
+const dropdownTabs = $('.dropdown-menu__tabs_item');
+const serviceTapButton = $('.tap-menu__button')[0];
+const dropdownTabsBlock = $('.dropdown-menu__tabs');
+const dropdownContentBlock = $('.dropdown-menu__content');
+const headerBottom = $('.header__bottom');
+let resizeFlag = 0;
+
+const aboutSliderInit = () => {
+    $('.about__slider').slick({
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,
+        infinite: false,
+        responsive: [
+            {
+                breakpoint: 577,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+            {
+                breakpoint: 876,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 1254,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 1400,
+                settings: {
+                    slidesToShow: 4,
+                },
+            },
+            {
+                breakpoint: 1451,
+                settings: "unslick"
+            }
+        ]
+    })
+};
+const featuresSliderInit = () => {
+    $('.features__slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,
+        infinite: false,
+        variableWidth: true,
+        adaptiveHeight: true
+    });
+};
+const unitsMenuSliderInit = () => {
+    $('.units__menu > ul').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,
+        infinite: false,
+        variableWidth: true,
+        adaptiveHeight: true
+    });
+};
+const unitsMenuSliderChangeTab = () => {
+    $('.units__menu > ul').on('afterChange', function (event, slick, currentSlide) {
+        const index = $('.units__menu > ul').slick('slickCurrentSlide');
+        const prevLink = $('.units__menu-link_active');
+        prevLink.removeClass('units__menu-link_active');
+        $('.units__menu li')[index].children[0].classList.add('units__menu-link_active');
+        $('.units__content-services_active').removeClass('units__content-services_active');
+        $('.units__content-services')[index].classList.add('units__content-services_active');
+    });
+};
+const windowDesktopSizeChange = () => {
+    // $('.about__slider').slick("unslick");
+    $('.features__slider').filter('.slick-initialized').slick("unslick");
+    $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
+    selectButtons.appendTo('.about__slider');
+    $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
+    $('.units__emergency-room .title').html(' Взрослый и детский травмпункт &lt;ЛДЦ Завода “Светлана”&gt;');
+    $('.units__features > a.btn.btn_red_fill').remove();
+    $('.appointment__block > .content').addClass(['content_flex', 'content_between']);
+    $('.specialists__head .title').html('Специалисты &lt;лечебно – диагностического центра&gt;');
+    $('.feedback__head > .title').html('Отзывы &lt;наших клиентов&gt;');
+    $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
+    $('.with-arrow').detach();
+};
+
+const windowMobileSizeChange = () => {
+    selectButtons.detach();
+    aboutSliderInit();
+    $('.about__slider').slick('setPosition');
+    featuresSliderInit();
+    $('.features__slider').slick('setPosition');
+    unitsMenuSliderInit();
+    $('.units__menu > ul').slick('setPosition');
+    $('.units__head .title').html('Отделения ЛДЦ');
+    $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
+    $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
+    $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
+    $('.specialists__head .title').html('Специалисты ЛДЦ');
+    $('.feedback__head > .title').html('Отзывы');
+    $('.dropdown-menu__open-button').append('<div class="with-arrow"></div>');
+    dropdownTabs.append('<div class="with-arrow"></div>');
+};
+
+const desktopDropdownOpenButtonHandler = () => {
+    $('.dropdown-menu__open-button').on('click', function () {
+        dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+        $('body').css({overflow: 'hidden'})
+    });
+    dropdownMenuContainer.on('click', function (event) {
+        if (event.target.classList.contains('dropdown-menu__container_active')) {
+            $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
+            $('body').css({overflow: 'visible'})
+        }
+    });
+};
+
+const onReadyMobileMediaChange = () => {
+    $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
+    $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
+    $('.units__head .title').html('Отделения ЛДЦ');
+    $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
+    $('.specialists__head .title').html('Специалисты ЛДЦ');
+    $('.feedback__head > .title').html('Отзывы');
+    $('.dropdown-menu__open-button').append('<div class="with-arrow"></div>');
+    dropdownTabs.append('<div class="with-arrow"></div>');
+};
+
+const closeServicesDropdownFromTapMenu = () => {
+    $(serviceTapButton).removeClass('tap-menu__button_active');
+    $('body').children().removeClass('hide');
+    dropdownMenuContainer.addClass('hide');
+    $('.dropdown-menu__content').attr('style','');
+    dropdownMenuContainer.removeClass('dropdown-menu__container_active');
+    dropdownMenuContainer.attr('style','');
+    dropdownContentBlock.attr('style','');
+}
+
+
 // Обработка событий при полной загрузки страницы
 window.onload = function () {
-
     //Слайдер специалистов и кнопки слайдера специалистов
     const specSlick = $('.specialists__slider');
     specSlick.slick({
@@ -61,9 +207,9 @@ window.onload = function () {
     });
 
     //Основной слайдер (анимации и тд)
-    const currentSlide = $('.about__item').index($('.about__item_active'));
+    const aboutSliderCurrentSlide = $('.about__item').index($('.about__item_active'));
     const sliderButtons = $('.select-buttons__button');
-    sliderButtons[currentSlide].classList.add('select-buttons__button_active');
+    sliderButtons[aboutSliderCurrentSlide].classList.add('select-buttons__button_active');
     let sliderFlag = 0;
     sliderButtons.on('click', function (event) {
         if (sliderFlag == 0) {
@@ -105,34 +251,12 @@ window.onload = function () {
         $('.units__content-services')[index].classList.add('units__content-services_active');
     });
 
-    //Действия со слайдерами в момент загрузки экрана маленького размера
-    if (window.matchMedia('screen and (max-width: 1000px)').matches) {
+    //Действия со слайдерами в момент загрузки экрана маленького размера или большого размера
+    if (window.matchMedia('screen and (max-width: 1400px)').matches) {
         selectButtons.detach();
-        $('.about__slider').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false,
-            arrows: false,
-            infinite: false
-        });
-        $('.features__slider').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false,
-            arrows: false,
-            infinite: false,
-            variableWidth: true,
-            adaptiveHeight: true
-        });
-        $('.units__menu > ul').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            dots: false,
-            arrows: false,
-            infinite: false,
-            variableWidth: true,
-            adaptiveHeight: true
-        });
+        aboutSliderInit();
+        featuresSliderInit();
+        unitsMenuSliderInit();
         const specSliderWidth = $('.specialists__slider > .slick-list').width();
         if (specSliderWidth < 325) {
             $('.specialists__doctor').css({
@@ -143,17 +267,11 @@ window.onload = function () {
     } else {
         $('.about__slider').filter('.slick-initialized').slick("unslick");
         $('.features__slider').filter('.slick-initialized').slick("unslick");
+        $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
     }
 
     if ($('.units__menu > .slick-initialized')) {
-        $('.units__menu > ul').on('afterChange', function (event, slick, currentSlide) {
-            const index = $('.units__menu > ul').slick('slickCurrentSlide');
-            const prevLink = $('.units__menu-link_active');
-            prevLink.removeClass('units__menu-link_active');
-            $('.units__menu li')[index].children[0].classList.add('units__menu-link_active');
-            $('.units__content-services_active').removeClass('units__content-services_active');
-            $('.units__content-services')[index].classList.add('units__content-services_active');
-        });
+        unitsMenuSliderChangeTab()
     }
 
     if ($('.feedback__slider.slick-initialized')) {
@@ -165,36 +283,14 @@ window.onload = function () {
 
 
 //Действия при изменении размеров окна
-const selectButtons = $('.select-buttons');
-const dropdownMenuContainer = $('.dropdown-menu__container');
-let resizeFlag = 0;
 
 $(window).on('resize', function () {
-    if ($(window).width() > 576) {
+    console.log($(window).width() > 1399);
+    if ($(window).width() > 1399) {
         if (resizeFlag == 0) {
-            $('.about__slider').filter('.slick-initialized').slick("unslick");
-            $('.features__slider').filter('.slick-initialized').slick("unslick");
-            $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
-            selectButtons.appendTo('.about__slider');
-            $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
-            $('.units__emergency-room .title').html(' Взрослый и детский травмпункт &lt;ЛДЦ Завода “Светлана”&gt;');
-            $('.units__features > a.btn.btn_red_fill').remove();
-            $('.appointment__block > .content').addClass(['content_flex', 'content_between']);
-            $('.specialists__head .title').html('Специалисты &lt;лечебно – диагностического центра&gt;');
-            $('.feedback__head > .title').html('Отзывы &lt;наших клиентов&gt;');
-            $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
-
+            windowDesktopSizeChange();
             //ВЫПАДАЮЩЕЕ МЕНЮ В ХЭДЕРЕ
-            $('.dropdown-menu__open-button').on('click', function () {
-                dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
-                $('body').css({overflow: 'hidden'})
-            });
-            dropdownMenuContainer.on('click', function (event) {
-                if (event.target.classList.contains('dropdown-menu__container_active')) {
-                    $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
-                    $('body').css({overflow: 'visible'})
-                }
-            });
+            desktopDropdownOpenButtonHandler();
             resizeFlag = 1;
         }
     } else {
@@ -205,41 +301,7 @@ $(window).on('resize', function () {
             });
         }
         if (resizeFlag == 1) {
-            selectButtons.detach();
-            $('.about__slider').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: false,
-                infinite: false
-            });
-            $('.about__slider').slick('setPosition');
-            $('.features__slider').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: false,
-                infinite: false,
-                variableWidth: true,
-                adaptiveHeight: true
-            });
-            $('.features__slider').slick('setPosition');
-            $('.units__menu > ul').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: false,
-                infinite: false,
-                variableWidth: true,
-                adaptiveHeight: true
-            });
-            $('.units__menu > ul').slick('setPosition');
-            $('.units__head .title').html('Отделения ЛДЦ');
-            $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
-            $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
-            $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
-            $('.specialists__head .title').html('Специалисты ЛДЦ');
-            $('.feedback__head > .title').html('Отзывы');
+            windowMobileSizeChange();
             resizeFlag = 0;
         }
     }
@@ -363,9 +425,7 @@ $(document).ready(function () {
         }, 300)
     });
 
-    const dropdownTabsBlock = $('.dropdown-menu__tabs');
-    const dropdownContentBlock = $('.dropdown-menu__content');
-    const headerBottom = $('.header__bottom');
+
     //Кнопка назад
     $('body').on('click', '.arrow-back', function () {
         if (dropdownTabsBlock.attr('style') == 'display: none;' && dropdownContentBlock.attr('style') == '') {
@@ -375,30 +435,40 @@ $(document).ready(function () {
             dropdownTabsBlock.attr('style', '');
             $('.dropdown-menu > .title').html('Услуги');
         } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && headerBottom.attr('style') == 'display: none;') {
-            console.log('pip');
-            dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style','');
-            headerBottom.attr('style','');
+            dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style', '');
+            headerBottom.attr('style', '');
+        }else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
+            closeServicesDropdownFromTapMenu();
         }
-        // $('.dropdown-menu__container')
-    })
+    });
 
     //Вкладки на выпадающем меню хэдера
-    const dropdownTabs = $('.dropdown-menu__tabs_item')
-    dropdownTabs.on('click', function (event) {
-        event.preventDefault();
-        const index = dropdownTabs.index(event.currentTarget);
+    $('.dropdown-menu__tabs_item').on('click', '.with-arrow', function (event) {
+        const index = dropdownTabs.index($(event.target).parent());
         const prevLink = $('.dropdown-menu__tabs_item_active');
         prevLink.removeClass('dropdown-menu__tabs_item_active');
         $(dropdownTabs[index]).addClass('dropdown-menu__tabs_item_active');
         const dropdownContents = $('.dropdown-menu__item');
         $('.dropdown-menu__item_active').removeClass('dropdown-menu__item_active');
         $(dropdownContents[index]).addClass('dropdown-menu__item_active');
-        if ($(window).width() < 768) {
-            $('.dropdown-menu__content').attr('style', '');
-            $('.dropdown-menu__tabs').css({
-                display: 'none'
-            });
-            $('.dropdown-menu').children('.title').html($('.dropdown-menu__tabs_item_active').children().html())
+        $('.dropdown-menu__content').attr('style', '');
+        $('.dropdown-menu__tabs').css({
+            display: 'none'
+        });
+        $('.dropdown-menu').children('.title').html($('.dropdown-menu__tabs_item_active').children().html())
+    });
+
+    dropdownTabs.on('click', function (event) {
+        if ($(window).width() < 960) {
+        } else {
+            event.preventDefault();
+            const index = dropdownTabs.index(event.currentTarget);
+            const prevLink = $('.dropdown-menu__tabs_item_active');
+            prevLink.removeClass('dropdown-menu__tabs_item_active');
+            $(dropdownTabs[index]).addClass('dropdown-menu__tabs_item_active');
+            const dropdownContents = $('.dropdown-menu__item');
+            $('.dropdown-menu__item_active').removeClass('dropdown-menu__item_active');
+            $(dropdownContents[index]).addClass('dropdown-menu__item_active');
         }
     });
 
@@ -418,15 +488,13 @@ $(document).ready(function () {
 
     //Кнопка для раскрытия меню в мобайле
     const hamburger = $('.hamburger');
-    // On click
     hamburger.on("click", function () {
         hamburger.toggleClass("is-active");
-
         $('.header__bottom').toggleClass('header__bottom_active');
         $('body').children().toggleClass('hide');
         $('.header').removeClass('hide');
-        if(dropdownMenuContainer.attr('style') != 'display: none;'){
-            dropdownMenuContainer.css({display:'none'});
+        if (dropdownMenuContainer.attr('style') != 'display: none;') {
+            dropdownMenuContainer.css({display: 'none'});
             dropdownContentBlock.attr('style', '');
             dropdownTabsBlock.attr('style', '');
             headerBottom.attr('style', '');
@@ -436,19 +504,23 @@ $(document).ready(function () {
 
     let prependFlag = 0;
 
-    $('.dropdown-menu__open-button').on('click', function () {
-        if ($(window).width() < 768) {
-            dropdownMenuContainer.removeClass('hide');
-            $('.header__bottom').css({display: 'none'});
-            $('.dropdown-menu__content').css({display: 'none'});
-            if(prependFlag == 0){
-                $('.dropdown-menu').prepend('<h2 class="title">Услуги</h2>');
-                $('.dropdown-menu').prepend('<img class="arrow-back" width="20px" height="15px" src="./assets/img/dropdown-menu/arrow-back.svg">');
-                prependFlag = 1;
-            }
+    $('.dropdown-menu__open-button').on('click', '.with-arrow', function (event) {
+        dropdownMenuContainer.removeClass('hide');
+        $('.header__bottom').css({display: 'none'});
+        $('.dropdown-menu__content').css({display: 'none'});
+        if (prependFlag == 0) {
+            $('.dropdown-menu').prepend('<h2 class="title">Услуги</h2>');
+            $('.dropdown-menu').prepend('<img class="arrow-back" width="20px" height="15px" src="./assets/img/dropdown-menu/arrow-back.svg">');
+            prependFlag = 1;
         }
         dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+    });
 
+    $('.dropdown-menu__open-button').on('click', function () {
+        if ($(window).width() < 960) {
+        } else {
+            dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+        }
     });
     dropdownMenuContainer.on('click', function (event) {
         if (event.target.classList.contains('dropdown-menu__container_active')) {
@@ -457,18 +529,41 @@ $(document).ready(function () {
         }
     });
 
-    //Обработка медиа запроса
-    if (window.matchMedia('screen and (max-width: 1000px)').matches) {
-        $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
-        $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
-        $('.units__head .title').html('Отделения ЛДЦ');
-        $('.units__emergency-room .title').html('Взрослый и детский травмпункт');
-        $('.specialists__head .title').html('Специалисты ЛДЦ');
-        $('.feedback__head > .title').html('Отзывы');
+    //Обработка кнопки услуги в нижнем меню
+    $(serviceTapButton).on('click', function () {
+        if (!dropdownMenuContainer.hasClass('dropdown-menu__container_active')) {
+            $(serviceTapButton).addClass('tap-menu__button_active');
+            $('body').children().addClass('hide');
+            $('.header').removeClass('hide');
+            // $('.footer').removeClass('hide');
+            dropdownMenuContainer.removeClass('hide');
+            $('.dropdown-menu__content').css({display: 'none'});
+            dropdownMenuContainer.addClass('dropdown-menu__container_active');
+            dropdownMenuContainer.css({
+                display: 'block'
+            });
+            dropdownContentBlock.css({
+                display: 'none'
+            });
 
+            if (prependFlag == 0) {
+                $('.dropdown-menu').prepend('<h2 class="title">Услуги</h2>');
+                $('.dropdown-menu').prepend('<img class="arrow-back" width="20px" height="15px" src="./assets/img/dropdown-menu/arrow-back.svg">');
+                prependFlag = 1;
+            }
+        }
+        else{
+            closeServicesDropdownFromTapMenu();
+        }
+
+    });
+
+    //Обработка медиа запроса
+    if (window.matchMedia('screen and (max-width: 960px)').matches) {
+        onReadyMobileMediaChange();
     }
 
-    $(".btn_red_fill").click(function() {
+    $(".btn_red_fill").click(function () {
         $('body, html').animate({
             scrollTop: $(".appointment__block").offset().top - 54
         }, 1);

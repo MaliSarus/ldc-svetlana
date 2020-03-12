@@ -38,7 +38,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   @media screen and (min-width: 1400px) {
     max-width: 1380px
   }
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 768px) {
     padding: 0;
     max-width: none;
   }
@@ -76,7 +76,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 .content {
   width: 100%;
   box-sizing: border-box;
-  @media screen and (min-width: 1400px){
+  @media screen and (min-width: 1400px) {
     max-width: 1360px;
     margin: 0 auto;
   }
@@ -108,7 +108,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  @media screen and (max-width: 576px){
+  @media screen and (max-width: 576px) {
     padding: 15px 0;
   }
 
@@ -202,7 +202,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   height: 100%;
   align-items: center;
   z-index: 20;
-  @media screen and (max-width: 576px){
+  @media screen and (max-width: 576px) {
     position: static;
   }
 
@@ -232,6 +232,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   @media screen and (max-width: 576px) {
     width: 23px;
   }
+
   &::before {
     display: block;
     content: '';
@@ -242,7 +243,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     top: 0;
     background: url("../img/specialists/arrow.svg") center no-repeat;
     background-size: contain;
-    @media screen and (max-width: 576px){
+    @media screen and (max-width: 576px) {
       background: url("../img/specialists/arrow-small.svg") center no-repeat;
     }
   }
@@ -253,29 +254,26 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-.arrow-back{
+.arrow-back {
   padding-left: 15px;
   margin-bottom: 30px;
 }
 
-.with-arrow{
-  @media screen and (max-width: 576px) {
-    &::after {
-      width: 7px;
-      height: 11px;
-      display: block;
-      content: '';
-      background: url("../img/header/arrow.svg") center no-repeat;
-      background-size: contain;
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    &:hover::after {
-      filter: grayscale(1) invert(1) brightness(1000);
-      cursor: pointer;
-    }
+.with-arrow {
+  width: 30%;
+  height: 100%;
+  display: block;
+  background: url("../img/header/arrow.svg") right no-repeat;
+  position: absolute;
+  z-index: 10;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: all;
+
+  &:hover {
+    filter: grayscale(1) invert(1) brightness(1000);
+    cursor: pointer;
   }
 }
 
@@ -324,10 +322,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-.hide{
-  @media screen and (max-width: 576px){
-    display: none;
-  }
+.hide {
+  display: none;
 }
 
 .layer1, .layer2, .layer3, .layer4 {
@@ -466,10 +462,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   position: relative;
   right: 0;
   padding: 15px;
-  display: none;
-  @media screen and (max-width: 576px) {
-    display: block;
-  }
+  display: block;
   cursor: pointer;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
@@ -481,13 +474,16 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   margin: 0;
   overflow: visible;
   background-color: $accent-color;
+  @media screen and (min-width: 961px){
+    display: none;
+  }
 }
 
 .hamburger:hover {
   opacity: 1;
 }
 
-.hamburger:focus{
+.hamburger:focus {
   outline: none;
 }
 
@@ -572,8 +568,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 @import "mobile";
 
 
-.owl-carousel .owl-stage-outer{
-  @media screen and (max-width: 576px){
+.owl-carousel .owl-stage-outer {
+  @media screen and (max-width: 576px) {
 
   }
 }

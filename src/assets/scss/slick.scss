@@ -65,6 +65,9 @@
     float: left;
     height: 100%;
     min-height: 1px;
+    @media screen and (min-width: 577px){
+        margin-right: 10px;
+    }
     &:focus{
         outline: none;
     }
@@ -86,7 +89,7 @@
 
     .slick-initialized & {
         display: block;
-        @media screen and (max-width: 576px){
+        @media screen and (max-width: 1400px){
             display: flex;
         }
     }
