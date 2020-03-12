@@ -1488,21 +1488,24 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   position: relative;
   cursor: pointer;
   padding: 10px 15px;
+  border-bottom: 1px solid rgba(42, 68, 114, 0.3);
+}
+
+.dropdown-menu__tabs_item:hover {
+  background: #3F5A8A;
+}
+
+.dropdown-menu__tabs_item:hover .dropdown-menu__tabs_link {
+  color: white;
+}
+
+.dropdown-menu__tabs_item:last-child {
+  border-bottom: none;
 }
 
 @media screen and (min-width: 577px) {
   .dropdown-menu__tabs_item {
     padding: 15px;
-    border-bottom: 1px solid rgba(42, 68, 114, 0.3);
-  }
-  .dropdown-menu__tabs_item:hover {
-    background: #3F5A8A;
-  }
-  .dropdown-menu__tabs_item:hover .dropdown-menu__tabs_link {
-    color: white;
-  }
-  .dropdown-menu__tabs_item:last-child {
-    border-bottom: none;
   }
 }
 
