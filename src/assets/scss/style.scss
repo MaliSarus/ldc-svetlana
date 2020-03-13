@@ -33,14 +33,13 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   max-width: 100%;
   margin: 0 auto;
   position: relative;
-  padding: 0 10px;
+  padding: 0;
   box-sizing: border-box;
+  @media screen and (min-width: 577px){
+    padding: 0 15px;
+  }
   @media screen and (min-width: 1400px) {
     max-width: 1380px
-  }
-  @media screen and (max-width: 768px) {
-    padding: 0;
-    max-width: none;
   }
 
   &_size_1667 {
@@ -329,7 +328,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 .layer1, .layer2, .layer3, .layer4 {
   position: fixed;
   width: 100%;
-  @media screen and (max-width: 576px) {
+  @media screen and (max-width: 1400px) {
     display: none;
   }
 

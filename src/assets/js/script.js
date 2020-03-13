@@ -47,13 +47,24 @@ const aboutSliderInit = () => {
 };
 const featuresSliderInit = () => {
     $('.features__slider').slick({
-        slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
         arrows: false,
         infinite: false,
         variableWidth: true,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        responsive: [
+            {
+                breakpoint: 577,
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+            {
+                breakpoint: 1400,
+                settings: "unslick"
+            }
+        ]
     });
 };
 const unitsMenuSliderInit = () => {
@@ -78,8 +89,6 @@ const unitsMenuSliderChangeTab = () => {
     });
 };
 const windowDesktopSizeChange = () => {
-    // $('.about__slider').slick("unslick");
-    $('.features__slider').filter('.slick-initialized').slick("unslick");
     $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
     selectButtons.appendTo('.about__slider');
     $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
@@ -138,11 +147,11 @@ const closeServicesDropdownFromTapMenu = () => {
     $(serviceTapButton).removeClass('tap-menu__button_active');
     $('body').children().removeClass('hide');
     dropdownMenuContainer.addClass('hide');
-    $('.dropdown-menu__content').attr('style','');
+    $('.dropdown-menu__content').attr('style', '');
     dropdownMenuContainer.removeClass('dropdown-menu__container_active');
-    dropdownMenuContainer.attr('style','');
-    dropdownContentBlock.attr('style','');
-}
+    dropdownMenuContainer.attr('style', '');
+    dropdownContentBlock.attr('style', '');
+};
 
 
 // Обработка событий при полной загрузки страницы
@@ -206,6 +215,7 @@ window.onload = function () {
         feedSlick.slick('slickNext');
     });
 
+
     //Основной слайдер (анимации и тд)
     const aboutSliderCurrentSlide = $('.about__item').index($('.about__item_active'));
     const sliderButtons = $('.select-buttons__button');
@@ -266,8 +276,11 @@ window.onload = function () {
         $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
     } else {
         $('.about__slider').filter('.slick-initialized').slick("unslick");
-        $('.features__slider').filter('.slick-initialized').slick("unslick");
         $('.units__menu > ul').filter('.slick-initialized').slick("unslick");
+    }
+
+    if (window.matchMedia('screen and (min-width: 577px)').matches) {
+        $('.features__slider').filter('.slick-initialized').slick("unslick");
     }
 
     if ($('.units__menu > .slick-initialized')) {
@@ -437,7 +450,7 @@ $(document).ready(function () {
         } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && headerBottom.attr('style') == 'display: none;') {
             dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style', '');
             headerBottom.attr('style', '');
-        }else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
+        } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
             closeServicesDropdownFromTapMenu();
         }
     });
@@ -551,8 +564,7 @@ $(document).ready(function () {
                 $('.dropdown-menu').prepend('<img class="arrow-back" width="20px" height="15px" src="./assets/img/dropdown-menu/arrow-back.svg">');
                 prependFlag = 1;
             }
-        }
-        else{
+        } else {
             closeServicesDropdownFromTapMenu();
         }
 
