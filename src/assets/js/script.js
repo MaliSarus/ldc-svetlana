@@ -15,31 +15,13 @@ const aboutSliderInit = () => {
         infinite: false,
         responsive: [
             {
-                breakpoint: 577,
-                settings: {
-                    slidesToShow: 1,
-                },
-            },
-            {
-                breakpoint: 876,
-                settings: {
-                    slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 1254,
-                settings: {
-                    slidesToShow: 3,
-                },
-            },
-            {
                 breakpoint: 1400,
-                settings: {
-                    slidesToShow: 4,
-                },
+                settings:{
+                    slidesToShow: 1
+                }
             },
             {
-                breakpoint: 1451,
+                breakpoint: 1401,
                 settings: "unslick"
             }
         ]
@@ -165,6 +147,30 @@ window.onload = function () {
         variableWidth: true,
         responsive: [
             {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true
+                },
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true
+                },
+            },
+            {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true
+                },
+            },
+            {
                 breakpoint: 1400,
                 settings: {
                     slidesToShow: 4,
@@ -172,14 +178,7 @@ window.onload = function () {
                     infinite: true,
                 },
             },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true
-                },
-            }
+
         ]
     });
     $('.specialists__control-panel .arrows .arrows__arrow-left').on('click', function () {
@@ -199,9 +198,17 @@ window.onload = function () {
         dots: false,
         responsive: [
             {
-                breakpoint: 576,
+                breakpoint: 769,
                 settings: {
                     slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false
+                },
+            },
+            {
+                breakpoint: 961,
+                settings: {
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     infinite: false
                 },

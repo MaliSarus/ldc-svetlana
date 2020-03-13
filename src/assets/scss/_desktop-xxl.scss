@@ -798,6 +798,10 @@
     flex-wrap: wrap;
     max-width: 100vw;
     width: 100%;
+    margin-right: 0;
+    @media screen and (min-width: 577px){
+      flex-wrap: nowrap;
+    }
     @media screen and (min-width: 1400px) {
       width: 100%;
       display: none;
@@ -821,6 +825,9 @@
     padding: 18px 15px;
     background: white;
     width: 100%;
+    @media screen and (min-width: 577px){
+      flex-basis: calc(100vw / 2 - 50px);
+    }
     @media screen and (min-width: 1400px) {
       background: transparent;
       padding: 90px 0;
@@ -924,17 +931,21 @@
     flex-grow: 1;
     position: relative;
     min-height: 100%;
-    @media screen and (max-width: 1399px) {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      height: 231px;
-      background: url("../img/about/bg-h-figure.svg") bottom no-repeat;
-      background-size: auto 100%;
-      padding-top: 20px;
-      background-clip: border-box;
-      order: -1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 231px;
+    background: url("../img/about/bg-h-figure.svg") bottom no-repeat;
+    background-size: auto 100%;
+    padding-top: 20px;
+    background-clip: border-box;
+    order: -1;
+    @media screen and (min-width: 577px){
+      order: initial;
+      flex-basis: calc(100vw / 2);
+      height: auto;
     }
+
 
     img {
       height: auto;
@@ -1059,7 +1070,7 @@
     .row {
       margin-bottom: 30px;
     }
-    .container{
+    .container {
       padding: 0;
     }
   }
@@ -1089,9 +1100,11 @@
     }
 
     .title {
-      font-size: 20px;
       margin-bottom: 18px;
       @media screen and (min-width: 961px) {
+        margin-bottom: 25px;
+      }
+      @media screen and (min-width: 1400px) {
         margin-bottom: 35px;
       }
     }
@@ -1204,7 +1217,7 @@
           padding: 40px 25px;
           font-size: 16px;
           margin: 0;
-          @media screen  and  (min-width: 1400px){
+          @media screen and (min-width: 1400px) {
             font-size: 18px;
           }
         }
@@ -1223,7 +1236,7 @@
           flex-wrap: wrap;
           justify-content: space-between;
         }
-        @media screen and (min-width: 961px){
+        @media screen and (min-width: 961px) {
           justify-content: stretch;
         }
       }
@@ -1237,10 +1250,10 @@
         margin-bottom: 0;
       }
     }
-    @media screen and (min-width: 577px){
+    @media screen and (min-width: 577px) {
       flex-basis: calc(100% / 4 - 10px);
     }
-    @media screen and (min-width: 769px){
+    @media screen and (min-width: 769px) {
       flex-basis: calc(100% / 3 - 10px);
     }
     @media screen and (min-width: 961px) {
@@ -1313,18 +1326,17 @@
       padding: 40px 0 45px 0;
       margin-bottom: 60px;
       box-sizing: content-box;
-      .content{
+      .content {
         padding: 0 15px;
       }
     }
-    @media screen and (min-width: 1400px){
-      .content{
+    @media screen and (min-width: 1400px) {
+      .content {
         padding: 0;
       }
     }
 
     .title {
-      font-size: 20px;
       @media screen and (max-width: 960px) {
         line-height: 120%;
         margin-bottom: 18px;
@@ -1333,7 +1345,6 @@
         margin-bottom: 25px;
       }
       @media screen and (min-width: 1400px) {
-        font-size: 30px;
         margin-bottom: 35px;
       }
     }
@@ -1355,7 +1366,7 @@
       @media screen and (min-width: 961px) {
         flex-basis: calc(100% / 3 - 20px);
       }
-      @media  screen and (min-width: 1400px) {
+      @media screen and (min-width: 1400px) {
         flex-basis: auto;
         max-width: 641px;
       }
@@ -1427,7 +1438,7 @@
     }
 
     &-image {
-      width: 325px;
+      max-width: 325px;
       height: 190px;
       background: url("../img/units/features-image.png") center no-repeat;
       position: relative;
@@ -1438,7 +1449,7 @@
         height: auto;
         background-size: cover;
       }
-      @media screen and (min-width: 1400px){
+      @media screen and (min-width: 1400px) {
         height: 190px;
       }
 
@@ -1467,12 +1478,11 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    @media screen and (min-width: 1400px) {
+    box-sizing: border-box;
+    padding: 0 15px;
+    @media screen and (min-width: 961px) {
       margin-bottom: 60px;
-    }
-    @media screen and (max-width: 576px) {
-      padding: 0 15px;
-      box-sizing: border-box;
+      padding: 0;
     }
   }
 
@@ -1484,22 +1494,23 @@
     z-index: 10;
     box-sizing: border-box;
     text-align: center;
+    flex-basis: calc(100% / 2 - 9px);
+    padding: 15px 0;
+    margin-bottom: 18px;
 
-    @media screen and (min-width: 1400px) {
+    &:nth-child(3) {
+      margin: 0;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+
+    @media screen and (min-width: 961px) {
       flex-basis: calc(100% / 4 - 20px);
       padding: 27px 0;
       font-size: 20px;
-    }
-    @media screen and (max-width: 576px) {
-      flex-basis: calc(100% / 2 - 9px);
-      padding: 15px 0;
-      margin-bottom: 18px;
-      &:nth-child(3) {
-        margin: 0;
-      }
-      &:last-child {
-        margin: 0;
-      }
+      margin-bottom: 0;
     }
 
     &:hover {
@@ -1534,15 +1545,32 @@
 }
 
 .appointment {
-  background-color: white;
+  background-color: $bg-gray;
+  padding: 0 15px;
+  margin-bottom: 30px;
+  .container{
+    padding: 0;
+  }
+  @media screen and (min-width: 961px){
+    background-color: white;
+    padding: 0;
+    margin-bottom: auto;
+    .container{
+      padding: 0 15px;
+    }
+  }
 
   &__block {
     flex-basis: 100%;
     position: relative;
     z-index: 10;
     background-color: white;
-    @media screen and (min-width: 1400px) {
-      padding: 55px 0;
+    box-sizing: border-box;
+    padding: 18px;
+    box-shadow: 0px 6px 15px rgba(6, 14, 29, 0.08);
+
+    @media screen and (min-width: 961px) {
+      padding: 45px 0;
       box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
       margin-top: 60px;
       margin-bottom: 90px;
@@ -1572,10 +1600,17 @@
         background: url("../img/appointment/bg-figure-red.svg") bottom right no-repeat;
         background-size: contain;
       }
+      .content {
+        padding: 0 15px;
+        flex-wrap: wrap;
+      }
     }
-    @media screen and (max-width: 576px) {
-      box-sizing: border-box;
-      padding: 18px;
+
+    @media screen and (min-width: 1400px) {
+      .content {
+        padding: 0;
+      }
+      padding: 55px 0;
     }
 
     .content {
@@ -1585,29 +1620,40 @@
   }
 
   &__title {
-    @media screen and (min-width: 1400px) {
+    display: flex;
+    margin-bottom: 18px;
+    @media screen and (min-width: 961px) {
+      display: block;
       flex-grow: 1;
+      margin-bottom: 20px;
+      flex-basis: 100%;
     }
-    @media screen and (max-width: 576px) {
-      display: flex;
-      margin-bottom: 18px;
+    @media screen and (min-width: 1400px) {
+      margin-bottom: 0;
+      flex-basis: auto;
     }
 
     .title {
-      @media screen and (min-width: 1400px) {
+      font-size: 16px;
+      flex-basis: 50%;
+      @media screen and (min-width: 577px) {
+        font-size: 18px;
+      }
+      @media screen and (min-width: 961px) {
         margin-top: -5px;
         margin-bottom: 12px;
+        flex-basis: auto;
+        font-size: 20px;
+      }
+      @media screen and (min-width: 1400px) {
         font-size: 24px;
       }
-      @media screen and (max-width: 576px) {
-        font-size: 16px;
-        flex-basis: 50%;
-      }
+
     }
 
     a {
       color: $accent-color;
-      @media screen and (max-width: 576px) {
+      @media screen and (max-width: 960px) {
         font-size: 16px;
         display: block;
         flex-basis: 50%;
@@ -1618,15 +1664,15 @@
 
 
   &__form {
-    //@media screen and (min-width: 1400px) {
     display: flex;
-    justify-content: space-between;
     vertical-align: center;
     position: relative;
     flex-grow: 3;
-    @media screen and (max-width: 576px) {
-      flex-wrap: wrap;
-      justify-content: stretch;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    @media screen and (min-width: 961px) {
+      justify-content: space-between;
+      padding: 0;
     }
     @media screen and (min-width: 1400px) {
       padding-left: 20px;
@@ -1634,12 +1680,11 @@
 
     .appointment__input-wrapper {
       position: relative;
-      @media screen and (min-width: 1400px) {
+      flex-basis: 100%;
+      margin-bottom: 12px;
+      @media screen and (min-width: 961px) {
         flex-basis: calc(100% / 3 - 20px);
-      }
-      @media screen and (max-width: 576px) {
-        flex-basis: 100%;
-        margin-bottom: 12px;
+        margin-bottom: 0;
       }
 
       label {
@@ -1686,7 +1731,7 @@
 
     button {
       border: 1px solid $main-color;
-      @media screen and (min-width: 1400px) {
+      @media screen and (min-width: 961px) {
         flex-basis: calc(100% / 3 - 20px);
       }
 
@@ -1705,11 +1750,11 @@
 
     label[for="confident"] {
 
-      @media screen and (min-width: 1400px) {
+      @media screen and (min-width: 961px) {
         position: absolute;
         bottom: -22px;
       }
-      @media screen and (max-width: 576px) {
+      @media screen and (max-width: 960px) {
         display: flex;
         align-items: center;
         margin-bottom: 12px;
@@ -1755,19 +1800,24 @@
 }
 
 .specialists {
-  @media screen and (min-width: 1400px) {
+  margin-bottom: 30px;
+  .container{
+    padding: 0;
+  }
+  @media screen and (min-width: 961px) {
     background-color: $bg-gray;
     position: relative;
-  }
-  @media screen and (max-width: 576px) {
-    margin-bottom: 30px;
+    margin-bottom: auto;
+    .container{
+      padding: 0 15px;
+    }
   }
 
   &__block {
     width: 100%;
     position: relative;
     z-index: 2;
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 961px) {
       box-shadow: 0 10px 30px rgba(12, 28, 56, 0.08);
       left: 0;
       top: -30px;
@@ -1776,11 +1826,8 @@
 
   &__head {
     width: 100%;
-    @media screen and (min-width: 1400px) {
-      background-color: $bg-gray;
-      padding: 40px 0;
-    }
-    @media screen and (max-width: 576px) {
+
+    @media screen and (max-width: 960px) {
       background: white;
       .content {
         display: flex;
@@ -1788,7 +1835,6 @@
         align-items: center;
 
         .title {
-          font-size: 20px;
           padding-left: 18px;
         }
       }
@@ -1799,15 +1845,20 @@
         box-sizing: border-box;
       }
     }
+    @media screen and (min-width: 961px) {
+      background-color: $bg-gray;
+      padding: 40px 0;
+      .mobile {
+        display: none;
+      }
+
+    }
+
   }
 
   &__content {
     background-color: white;
-    @media screen and (min-width: 1400px) {
-      padding: 40px 0;
-      padding-top: 20px;
-    }
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 960px) {
       padding: 0 15px;
       .specialists__control-panel {
         padding-top: 0;
@@ -1818,6 +1869,19 @@
         }
       }
     }
+    @media screen and (min-width: 960px){
+      .content{
+        padding: 0 15px;
+      }
+      padding: 40px 0;
+      padding-top: 20px;
+    }
+    @media screen and (min-width: 1400px) {
+      .content{
+        padding: 0;
+      }
+    }
+
   }
 
   &__doctor {
@@ -1891,7 +1955,7 @@
         .doctor__full-info {
           opacity: 1;
           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-          @media screen and (max-width: 576px) {
+          @media screen and (max-width: 960px) {
             box-shadow: none;
           }
         }
@@ -1949,28 +2013,28 @@
   }
 
   &__slider {
-    @media screen and (min-width: 1400px) {
+    margin-bottom: 18px;
+
+    .slick-list {
+      display: flex;
+
+      .slick-track {
+        display: flex;
+      }
+    }
+
+    @media screen and (min-width: 961px) {
+      .slick-track {
+        padding: 20px 0;
+      }
+    }
+    @media screen and (min-width: 1500px) {
       margin-bottom: 15px;
       width: calc(100% + 30px);
       transform: translateX(-30px);
       .slick-list {
-        display: flex;
         padding: 0 20px;
 
-        .slick-track {
-          display: flex;
-          padding: 20px 0;
-        }
-      }
-    }
-    @media screen and (max-width: 576px) {
-      margin-bottom: 18px;
-      .slick-list {
-        display: flex;
-
-        .slick-track {
-          display: flex;
-        }
       }
     }
   }
@@ -1980,7 +2044,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 960px) {
       padding: 18px 0;
       background-color: #F6F7F8;
     }
@@ -1992,7 +2056,11 @@
 }
 
 .care {
-  @media screen and (min-width: 1400px) {
+  margin-bottom: 30px;
+  .container{
+    padding: 0;
+  }
+  @media screen and (min-width: 961px) {
     background-color: $bg-gray;
     background-image: url("../img/care/bg-figure-white.svg");
     background-position: bottom right;
@@ -2012,14 +2080,15 @@
       content: '';
       background: url("../img/care/bg-figure-red.svg") top left no-repeat;
     }
+    .container{
+      padding: 0 15px;
+    }
   }
-  @media screen and (max-width: 576px) {
-    margin-bottom: 30px;
-  }
+
 
   &__block {
     display: flex;
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 960px) {
       background: white;
       flex-wrap: wrap;
       padding: 18px 15px;
@@ -2028,7 +2097,7 @@
 
   &__content {
     flex-basis: 100%;
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 961px) {
       flex-basis: 50%;
       padding-right: 50px;
     }
@@ -2036,8 +2105,7 @@
 
     .title {
       margin-bottom: 35px;
-      @media screen and (max-width: 576px) {
-        font-size: 20px;
+      @media screen and (max-width: 960px) {
         margin-bottom: 18px;
       }
     }
@@ -2048,7 +2116,7 @@
       font-size: 16px;
       line-height: 22.4px;
       margin-bottom: 35px;
-      @media screen and (max-width: 576px) {
+      @media screen and (max-width: 960px) {
         margin-bottom: 18px;
       }
     }
@@ -2059,34 +2127,32 @@
       background-color: transparent;
       width: 100%;
       margin-bottom: 30px;
-      @media screen and (min-width: 1400px) {
+      font-size: 14px;
+      padding: 15px 0;
+      @media screen and (min-width: 961px) {
         width: 325px;
-      }
-      @media screen and (max-width: 576px) {
-        font-size: 14px;
-        padding: 15px 0;
+        padding: 20px 0;
       }
     }
   }
 
   &__video {
-    flex-basis: 50%;
-    @media screen and (max-width: 576px) {
-      flex-basis: 100%;
+    flex-basis: 100%;
+    @media screen and (min-width: 961px) {
+      flex-basis: 50%;
     }
 
     &-block {
       width: 100%;
-      max-width: 634px;
-      height: 324px;
       background: url("../img/care/video.png") no-repeat center;
       background-size: contain;
       position: relative;
       top: 50%;
       transform: translateY(-50%);
       right: 0;
-      @media screen and (max-width: 576px) {
-        height: 176px;
+      height: 176px;
+      @media screen and (min-width: 961px) {
+        height: 324px;
       }
     }
   }
@@ -2094,13 +2160,16 @@
 
 .feedback {
   background: white;
-  @media screen and (min-width: 1400px) {
+  padding: 18px 16px 30px 16px;
+  margin-bottom: 30px;
+  @media screen and (min-width: 961px) {
     position: relative;
     background-image: url("../img/feedback/bg-figure-gray.svg");
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: contain;
     padding: 60px 0;
+    margin: auto;
 
     .quote {
       box-sizing: border-box;
@@ -2124,20 +2193,15 @@
       }
     }
   }
-  @media screen and (max-width: 576px) {
-    padding: 18px 16px 30px 16px;
-    margin-bottom: 30px;
-  }
 
   &__head {
     display: flex;
     flex-basis: 100%;
     justify-content: space-between;
     margin-bottom: 45px;
-    @media screen and (max-width: 576px) {
+    @media screen and (max-width: 960px) {
       margin-bottom: 18px;
       .title {
-        font-size: 20px;
         margin-right: 15px;
       }
     }
@@ -2147,15 +2211,21 @@
     flex-grow: 1;
     font-size: 14px;
     color: #2A4472;
+    @media screen and (min-width: 577px) {
+      font-size: 18px;
+    }
+    @media screen and (min-width: 769px) {
+      display: none;
+    }
 
     &_current {
       font-size: 20px;
       font-weight: bold;
+      @media screen and (min-width: 577px) {
+        font-size: 24px;
+      }
     }
 
-    @media screen and (min-width: 1400px) {
-      display: none;
-    }
   }
 
   &__control-panel {
@@ -2168,52 +2238,54 @@
     }
 
     .arrows {
-      @media screen and (min-width: 1400px) {
+      display: none;
+      @media screen and (min-width: 961px) {
         position: static;
         margin-left: 50px;
-      }
-      @media screen and (max-width: 576px) {
-        display: none;
       }
     }
   }
 
   &__slider {
     width: 100%;
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 961px) {
       width: calc(100% + 20px);
     }
   }
 
   &__item.slick-slide {
-    @media screen and (max-width: 576px) {
+    //@media screen and (max-width: 960px) {
       display: block;
-    }
+    //}
   }
 
   &__item {
     background-color: #F6F7F8;
-    padding: 20px 37px;
-    margin-right: 20px;
+    padding: 12px;
+    margin-right: 0;
     max-width: 670px;
-    @media screen and (max-width: 576px) {
-      padding: 12px;
-      margin-right: 0;
+    @media screen and (min-width: 769px){
+      margin-right: 10px;
+    }
+    @media screen and (min-width: 961px) {
+      padding: 20px 37px;
+      margin-right: 20px;
     }
 
     &-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
-      @media screen and (max-width: 576px) {
-        flex-wrap: wrap;
-        margin-bottom: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      @media screen and (min-width: 961px) {
+
+        margin-bottom: 15px;
       }
 
       &-user {
         position: relative;
-        @media screen and (max-width: 576px) {
+        @media screen and (max-width: 960px) {
           padding-top: 13px;
         }
 
@@ -2235,24 +2307,24 @@
         }
 
         &-username {
-          font-size: 16px;
-          @media screen and (max-width: 576px) {
-            font-size: 14px;
+          font-size: 14px;
+          @media screen and (min-width: 961px) {
+            font-size: 16px;
           }
         }
 
         &-date {
-          font-size: 12px;
+          font-size: 14px;
           color: rgba(black, .5);
-          @media screen and (max-width: 576px) {
-            font-size: 14px;
+          @media screen and (min-width: 961px) {
+            font-size: 12px;
           }
         }
       }
 
       &-portal {
         display: flex;
-        @media screen and (max-width: 576px) {
+        @media screen and (max-width: 960px) {
           order: -1;
           flex-basis: 100%;
           padding-bottom: 5px;
@@ -2262,7 +2334,7 @@
         &-text {
           margin: 0;
           margin-right: 10px;
-          @media screen and (max-width: 576px) {
+          @media screen and (max-width: 960px) {
             font-size: 14px;
             margin-top: 2px;
           }
@@ -2324,14 +2396,14 @@
       &-doctor {
         margin-top: 0;
         margin-bottom: 5px;
-        @media screen and (max-width: 576px) {
+        @media screen and (max-width: 960px) {
           font-size: 14px;
         }
       }
 
       &-ordinary {
         margin: 0;
-        @media screen and (max-width: 576px) {
+        @media screen and (max-width: 960px) {
           font-size: 14px;
         }
       }
@@ -2341,7 +2413,7 @@
 
 .footer {
   background-color: white;
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 961px) {
     background: $main-color;
     color: rgba(white, .8);
     padding-top: 30px;
@@ -2349,7 +2421,7 @@
 
   &_desktop {
     display: none;
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 961px) {
       display: block;
     }
   }
@@ -2423,6 +2495,15 @@
     font-weight: bold;
     display: block;
     margin-bottom: 35px;
+    @media screen and (min-width: 960px){
+      font-size: 16px;
+    }
+    @media screen and (min-width: 1200px){
+      font-size: 19px;
+    }
+    @media screen and (min-width: 1400px){
+      font-size: 24px;
+    }
   }
 
   &__icons {
@@ -2435,17 +2516,18 @@
   }
 
   .bottom {
-    padding: 15px 0;
     text-align: center;
-    @media screen and (min-width: 1400px) {
+    color: #B0B0B0;
+    padding: 15px;
+    margin-bottom: 77px;
+    @media screen and (min-width: 961px) {
+      padding: 15px 0;
       margin-top: 45px;
       background-color: #3b5482;
+      margin-bottom: 0;
+      color: white;
     }
-    @media screen and (max-width: 576px) {
-      color: #B0B0B0;
-      padding: 15px;
-      margin-bottom: 77px;
-    }
+
 
     .row {
       p {
@@ -2456,13 +2538,11 @@
       &:nth-child(1) {
         p {
           text-transform: uppercase;
-          @media screen and (min-width: 1400px) {
+          font-size: 14px;
+          margin-bottom: 23px;
+          @media screen and (min-width: 961px) {
             font-size: 18px;
             margin-bottom: 8px;
-          }
-          @media screen and (max-width: 576px) {
-            font-size: 14px;
-            margin-bottom: 23px;
           }
         }
       }
