@@ -989,9 +989,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 @media screen and (min-width: 961px) {
   .header__contacts {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -999,6 +996,13 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     -ms-flex-pack: justify;
     justify-content: space-between;
     text-align: right;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .header__contacts {
+    -ms-flex-preferred-size: calc(100% / 3 - 5px);
+    flex-basis: calc(100% / 3 - 5px);
   }
 }
 
@@ -1014,13 +1018,24 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   display: none;
 }
 
+@media screen and (min-width: 1100px) {
+  .header__location {
+    display: inline-block;
+    font-size: 14px;
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 40%;
+  }
+}
+
 @media screen and (min-width: 1400px) {
   .header__location {
     font-size: 16px;
-    display: inline-block;
     font-weight: 400;
     margin: 0;
     margin-right: 20px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
   }
 }
 
@@ -1054,7 +1069,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
   .header__phone a {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 22px;
     text-decoration: none;
     color: #2A4472;
   }
@@ -1064,6 +1079,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 }
 
 @media screen and (min-width: 1400px) {
+  .header__phone a {
+    font-size: 24px;
+  }
   .header__phone small {
     display: block;
     position: absolute;
@@ -1197,10 +1215,23 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
   .header__search-form-wrapper {
     display: block;
     padding: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    margin: 0  30px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .header__search-form-wrapper {
+    -webkit-box-flex: unset;
+    -ms-flex-positive: unset;
+    flex-grow: unset;
+    margin: 0;
   }
 }
 
@@ -1215,17 +1246,23 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   border-radius: 5px;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
   .header__search-form {
+    display: block;
+    z-index: 2;
+    width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 310px;
     color: rgba(255, 255, 255, 0.5);
-    margin-right: 77px;
     background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.05)), to(rgba(255, 255, 255, 0.05)));
     background: -o-linear-gradient(bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
-    z-index: 2;
-    display: block;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .header__search-form {
+    margin-right: 77px;
+    width: 310px;
   }
 }
 
@@ -1266,7 +1303,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 .header__search-form-field {
   outline: none;
-  width: calc(310px - 50px);
   color: rgba(255, 255, 255, 0.5);
   font-size: 14px;
   position: absolute;
@@ -1276,11 +1312,12 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   padding: 0;
   border: none;
   z-index: 3;
+  width: calc(100% - 50px);
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (min-width: 1400px) {
   .header__search-form-field {
-    width: calc(100% - 50px);
+    width: calc(310px - 50px);
   }
 }
 
@@ -1714,7 +1751,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: 100vw;
-  width: 100%;
+  width: 100% !important;
   margin-right: 0;
 }
 
@@ -1731,9 +1768,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     display: none;
   }
   .about__item_active {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
     -webkit-animation-duration: 1000ms;
@@ -1766,8 +1803,24 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
+@media screen and (min-width: 960px) {
+  .about__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
 @media screen and (min-width: 1400px) {
   .about__info {
+    display: block;
     background: transparent;
     padding: 90px 0;
     max-width: 666px;
@@ -1793,10 +1846,15 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   max-width: none;
 }
 
+@media screen and (min-width: 577px) {
+  .about__info button {
+    max-width: 325px;
+  }
+}
+
 @media screen and (min-width: 1400px) {
   .about__info button {
     margin-bottom: 55px;
-    max-width: 325px;
   }
 }
 
@@ -1805,18 +1863,10 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   color: #0A1831;
   margin: 0;
   margin-bottom: 18px;
-  font-size: 20px;
-}
-
-@media screen and (min-width: 577px) {
-  .about__doctor-name {
-    font-size: 18px;
-  }
 }
 
 @media screen and (min-width: 1400px) {
   .about__doctor-name {
-    font-size: 36px;
     line-height: 48px;
     margin-bottom: 35px;
   }
@@ -1919,6 +1969,12 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
+@media screen and (min-width: 1400px) {
+  .about__doctor {
+    background: none;
+  }
+}
+
 .about__doctor img {
   height: auto;
   width: auto;
@@ -1959,21 +2015,13 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 }
 
 .features__title {
-  font-size: 20px;
   line-height: 120%;
   margin-bottom: 18px;
-}
-
-@media screen and (min-width: 577px) {
-  .features__title {
-    font-size: 24px;
-  }
 }
 
 @media screen and (min-width: 961px) {
   .features__title {
     margin-bottom: 60px;
-    font-size: 36px;
   }
 }
 
