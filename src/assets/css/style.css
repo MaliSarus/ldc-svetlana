@@ -1478,6 +1478,12 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   padding-top: 35px;
 }
 
+@media screen and (min-width: 961px) {
+  .dropdown-menu {
+    padding-top: 0;
+  }
+}
+
 .dropdown-menu .title {
   font-size: 18px;
   margin-bottom: 30px;
@@ -1751,7 +1757,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   max-width: 100vw;
-  width: 100% !important;
   margin-right: 0;
 }
 
@@ -1759,6 +1764,12 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   .about__item {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .about__item {
+    width: 100%;
   }
 }
 
@@ -3619,6 +3630,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 @media screen and (min-width: 961px) {
   .feedback__control-panel .arrows {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     position: static;
     margin-left: 50px;
   }
