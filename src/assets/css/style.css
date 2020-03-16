@@ -397,7 +397,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 10000;
+  z-index: 10003;
   width: 100%;
   height: 100vh;
   display: none;
@@ -725,6 +725,70 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   -o-transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.popup-iphone {
+  background-color: rgba(63, 90, 138, 0.4);
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  z-index: 10001;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+.popup-iphone_active {
+  display: block;
+}
+
+.popup-iphone__block {
+  text-align: center;
+  width: 100%;
+  max-width: 360px;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  margin-bottom: 15px;
+  -webkit-animation: slideInUp;
+  animation: slideInUp;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  color: #1074E9;
+  z-index: 10003;
+}
+
+.popup-iphone__block a {
+  color: #1074E9;
+}
+
+.popup-iphone__item {
+  background-color: white;
+  overflow: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.popup-iphone__actions {
+  margin-bottom: 10px;
+}
+
+.popup-iphone__action {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(42, 68, 114, 0.25);
+}
+
+.popup-iphone__action:last-child {
+  border-bottom: none;
+}
+
+.popup-iphone__cancel {
+  padding: 20px 0;
+  font-weight: bold;
 }
 
 .header__logo-mobile {
@@ -1566,6 +1630,9 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   .dropdown-menu__tabs_item:hover {
     background-color: white;
   }
+  .dropdown-menu__tabs_item:hover .dropdown-menu__tabs_link {
+    color: #1A305C;
+  }
   .dropdown-menu__tabs_item:hover::after {
     display: block;
     content: '';
@@ -1750,6 +1817,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
+@media screen and (min-width: 577px) {
+  .about__slider .slick-list, .about__slider .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
 .about__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1764,6 +1839,8 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   .about__item {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    background: url("../img/about/bg-h-figure.svg") bottom right no-repeat;
+    background-size: auto 100%;
   }
 }
 
@@ -1775,6 +1852,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 
 @media screen and (min-width: 1400px) {
   .about__item {
+    background: none;
     width: 100%;
     display: none;
   }
@@ -1811,11 +1889,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   .about__info {
     -ms-flex-preferred-size: calc(100vw / 2 - 50px);
     flex-basis: calc(100vw / 2 - 50px);
-  }
-}
-
-@media screen and (min-width: 960px) {
-  .about__info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -1826,6 +1899,7 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    background: transparent;
   }
 }
 
@@ -1977,11 +2051,6 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
     -ms-flex-preferred-size: calc(100vw / 2);
     flex-basis: calc(100vw / 2);
     height: auto;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .about__doctor {
     background: none;
   }
 }
@@ -2773,6 +2842,51 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
+.appointment_popup {
+  background: transparent;
+  display: none;
+  position: absolute;
+  height: 90vh;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 10002;
+  margin-bottom: 0;
+}
+
+.appointment_popup_active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation: fadeIn;
+  animation: fadeIn;
+  -webkit-animation-duration: 500ms;
+  animation-duration: 500ms;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.appointment_popup .appointment__block {
+  margin-top: 10vh;
+}
+
+.appointment_popup .appointment__title {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.appointment_popup .appointment__title .title {
+  margin-bottom: 12px;
+}
+
 .appointment__block {
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
@@ -3023,14 +3137,14 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
 }
 
 @media screen and (min-width: 961px) {
-  .appointment__form label[for="confident"] {
+  .appointment__form .confident-label {
     position: absolute;
     bottom: -22px;
   }
 }
 
 @media screen and (max-width: 960px) {
-  .appointment__form label[for="confident"] {
+  .appointment__form .confident-label {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3041,12 +3155,12 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   }
 }
 
-.appointment__form label[for="confident"] small {
+.appointment__form .confident-label small {
   font-size: 12px;
   color: #2A4472;
 }
 
-.appointment__form label[for="confident"] #confident {
+.appointment__form .confident-label .appointment__confident {
   margin: 0;
   height: 16px;
   width: 16px;
@@ -3061,11 +3175,11 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   padding: 0;
 }
 
-.appointment__form label[for="confident"] #confident:checked {
+.appointment__form .confident-label .appointment__confident:checked {
   background-color: #2A4472;
 }
 
-.appointment__form label[for="confident"] #confident:checked::before {
+.appointment__form .confident-label .appointment__confident:checked::before {
   display: block;
   content: '';
   width: 98%;
@@ -4012,6 +4126,42 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   font-size: 14px;
 }
 
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes slideIn {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
@@ -4059,5 +4209,27 @@ input[type="text"], input[type="search"], input[type="tel"], input[type="email"]
   99% {
     opacity: 0;
     margin-left: -2000px;
+  }
+}
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translateX(-50%) translateY(100%);
+    transform: translateX(-50%) translateY(100%);
+  }
+  to {
+    -webkit-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translateX(-50%) translateY(100%);
+    transform: translateX(-50%) translateY(100%);
+  }
+  to {
+    -webkit-transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }

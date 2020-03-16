@@ -651,6 +651,9 @@
 
         &:hover {
           background-color: white;
+          .dropdown-menu__tabs_link {
+            color: #1A305C;
+          }
 
           &::after {
             display: block;
@@ -814,6 +817,11 @@
       background: url("../img/about/bg-h-figure.svg") bottom right no-repeat;
       background-size: auto 100%;
     }
+    .slick-list,.slick-track{
+      @media screen and (min-width: 577px){
+        display: flex;
+      }
+    }
   }
 
   &__item {
@@ -824,11 +832,14 @@
     margin-right: 0;
     @media screen and (min-width: 577px){
       flex-wrap: nowrap;
+      background: url("../img/about/bg-h-figure.svg") bottom right no-repeat;
+      background-size: auto 100%;
     }
     @media screen and (min-width: 961px) {
       width: 100%;
     }
     @media screen and (min-width: 1400px) {
+      background: none;
       width: 100%;
       display: none;
       &_active {
@@ -853,11 +864,10 @@
     width: 100%;
     @media screen and (min-width: 577px){
       flex-basis: calc(100vw / 2 - 50px);
-    }
-    @media screen and (min-width: 960px){
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: transparent;
     }
     @media screen and (min-width: 1400px) {
       display: block;
@@ -974,8 +984,6 @@
       order: initial;
       flex-basis: calc(100vw / 2);
       height: auto;
-    }
-    @media screen and (min-width: 1400px){
       background: none;
     }
 
@@ -1576,6 +1584,7 @@
   }
 }
 
+
 .appointment {
   background-color: $bg-gray;
   padding: 0 15px;
@@ -1589,6 +1598,36 @@
     margin-bottom: auto;
     .container{
       padding: 0 15px;
+    }
+  }
+
+  &_popup{
+    background: transparent;
+    display: none;
+    position: absolute;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+    margin-bottom: 0;
+    &_active{
+      display: flex;
+      animation: fadeIn;
+      animation-duration: 500ms;
+      animation-fill-mode: both;
+    }
+    .appointment {
+      &__block{
+        margin-top: 10vh;
+      }
+      &__title {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .title {
+          margin-bottom: 12px;
+        }
+      }
     }
   }
 
@@ -1780,7 +1819,7 @@
       }
     }
 
-    label[for="confident"] {
+    .confident-label {
 
       @media screen and (min-width: 961px) {
         position: absolute;
@@ -1797,7 +1836,7 @@
         color: $main-color;
       }
 
-      #confident {
+      .appointment__confident{
         margin: 0;
         height: 16px;
         width: 16px;

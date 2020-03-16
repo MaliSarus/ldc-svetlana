@@ -2,9 +2,14 @@ const selectButtons = $('.select-buttons');
 const dropdownMenuContainer = $('.dropdown-menu__container');
 const dropdownTabs = $('.dropdown-menu__tabs_item');
 const serviceTapButton = $('.tap-menu__button')[0];
+const appointmentTapButton = $('.tap-menu__button')[3];
+const mapTapButton = $('.tap-menu__button')[$('.tap-menu__button').length - 1];
 const dropdownTabsBlock = $('.dropdown-menu__tabs');
 const dropdownContentBlock = $('.dropdown-menu__content');
 const headerBottom = $('.header__bottom');
+const popupIphone = $('.popup-iphone');
+const popupIphoneFirstAction = $($('.popup-iphone__action')[0]);
+const popupIphoneSecondAction = $($('.popup-iphone__action')[1]);
 let dropdownFlag = 0;
 let appendFlag = 0;
 let resizeFlag = 0;
@@ -69,7 +74,6 @@ const windowDesktopSizeChange = () => {
     $('.specialists__head .title').html('Специалисты &lt;лечебно – диагностического центра&gt;');
     $('.feedback__head > .title').html('Отзывы &lt;наших клиентов&gt;');
     $('.feedback__position').html('<span class="feedback__position_current">1</span>/' + $('.feedback__item').length);
-    $('.with-arrow').detach();
 };
 
 const windowMobileSizeChange = () => {
@@ -79,8 +83,6 @@ const windowMobileSizeChange = () => {
     $('.appointment__block > .content').removeClass(['content_flex', 'content_between']);
     $('.specialists__head .title').html('Специалисты ЛДЦ');
     $('.feedback__head > .title').html('Отзывы');
-    $('.dropdown-menu__open-button').append('<div class="with-arrow"></div>');
-    dropdownTabs.append('<div class="with-arrow"></div>');
 };
 
 const desktopDropdownOpenButtonHandler = () => {
@@ -166,9 +168,12 @@ $(window).on('resize', function () {
 
 
     if ($(window).width() > 960 && appendFlag == 0) {
+        $('.with-arrow').detach();
         $('.units__features > a.btn.btn_red_fill').remove();
         appendFlag = 1;
     } else if ($(window).width() <= 960 && appendFlag == 1) {
+        $('.dropdown-menu__open-button').append('<div class="with-arrow"></div>');
+        dropdownTabs.append('<div class="with-arrow"></div>');
         $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
         appendFlag = 0;
     }
@@ -379,10 +384,10 @@ window.onload = function () {
 //Обработка событий после загрузки страницы
 $(document).ready(function () {
     //Переменные для работы с формой
-    const appointmentPhoneInput = $('input[name="phone"]');
-    const appointmentNameInput = $('input[name="customerName"]');
-    const appointmentConfident = $('.appointment__form label[for="confident"] #confident');
-    const appointmentSubmitButton = $('.appointment__form button[type="submit"]');
+    const appointmentPhoneInput = $('.appointment__phone');
+    const appointmentNameInput = $('.appointment__customerName');
+    const appointmentConfident = $('.appointment__confident');
+    const appointmentSubmitButton = $('.appointment__form .btn[type="submit"]');
     const popUpClose = $('.popup-close-button');
     const popUp = $('.popup');
 
@@ -423,11 +428,11 @@ $(document).ready(function () {
             appointmentConfident.css({
                 borderColor: '#E84E2C'
             });
-            $('.appointment__form label[for="confident"] small').css({
+            $('.confident-label small').css({
                 color: '#E84E2C'
             })
         }
-        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999") && appointmentNameInput.val() !== '') {
+        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999") && appointmentNameInput.val() !== '' ) {
             event.preventDefault();
             popUp.show();
             popUp.css({
@@ -465,18 +470,21 @@ $(document).ready(function () {
             $('.appointment__form').unbind('submit')
         }
     });
+    appointmentNameInput.on('input', function() {
+        appointmentNameInput.val(appointmentNameInput.val().replace(/[^А-я]/,''));
+    });
 
     appointmentConfident.change(function () {
         if (!this.checked) {
             $(this).css({
                 borderColor: '#E84E2C',
             });
-            $('.appointment__form label[for="confident"] small').css({
+            $('.confident-label small').css({
                 color: '#E84E2C',
             })
         } else {
             $(this).attr('style', '');
-            $('.appointment__form label[for="confident"] small').attr('style', '');
+            $('.confident-label small').attr('style', '');
         }
     });
 
@@ -580,7 +588,6 @@ $(document).ready(function () {
             $(serviceTapButton).addClass('tap-menu__button_active');
             $('body').children().addClass('hide');
             $('.header').removeClass('hide');
-            // $('.footer').removeClass('hide');
             dropdownMenuContainer.removeClass('hide');
             $('.dropdown-menu__content').css({display: 'none'});
             dropdownMenuContainer.addClass('dropdown-menu__container_active');
@@ -598,6 +605,55 @@ $(document).ready(function () {
             }
         } else {
             closeServicesDropdownFromTapMenu();
+        }
+
+    });
+
+    //Обработка кнопки записи в нижнем меню
+    $(appointmentTapButton).on('click', function () {
+        if (!popupIphone.hasClass('popup-iphone_active')) {
+            $(appointmentTapButton).addClass('tap-menu__button_active');
+            popupIphone.fadeIn(500).addClass('popup-iphone_active');
+            popupIphoneFirstAction.html('Записаться');
+            popupIphoneSecondAction.html('Вызов +7 (812) 627-02-03');
+            $('body').css({
+                overflow: 'hidden'
+            })
+        }
+    });
+
+    $(mapTapButton).on('click', function () {
+        if (!popupIphone.hasClass('popup-iphone_active')) {
+            $(appointmentTapButton).addClass('tap-menu__button_active');
+            popupIphone.fadeIn(500).addClass('popup-iphone_active');
+            popupIphoneFirstAction.html('Контакты');
+            popupIphoneSecondAction.html('Проложить маршрут');
+
+            $('body').css({
+                overflow: 'hidden'
+            })
+        }
+    });
+
+    popupIphoneFirstAction.on('click',function () {
+        if($(this).html() == 'Записаться'){
+            $('.appointment_popup').addClass('appointment_popup_active');
+            $('.popup-iphone__actions').fadeOut();
+        }
+    });
+
+    popupIphone.on('click', '.popup-iphone__cancel',function () {
+        if($('.appointment_popup').hasClass('appointment_popup_active')){
+            $('.appointment_popup').removeClass('appointment_popup_active');
+            $('.popup-iphone__actions').fadeIn();
+        }else if(popupIphone.hasClass('popup-iphone_active')){
+            popupIphone.fadeOut(500, function () {
+                popupIphone.removeClass('popup-iphone_active');
+            });
+            $(appointmentTapButton).removeClass('tap-menu__button_active');
+            $('body').css({
+                overflow: 'visible'
+            })
         }
 
     });
