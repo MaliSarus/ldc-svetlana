@@ -67,7 +67,6 @@ const unitsMenuSliderChangeTab = () => {
     });
 };
 const windowDesktopSizeChange = () => {
-    selectButtons.appendTo('.about__slider');
     $('.units__head .title').html('Отделения &lt;лечебно – диагностического центра&gt;');
     $('.units__emergency-room .title').html(' Взрослый и детский травмпункт &lt;ЛДЦ Завода “Светлана”&gt;');
     $('.appointment__block > .content').addClass(['content_flex', 'content_between']);
@@ -85,25 +84,35 @@ const windowMobileSizeChange = () => {
     $('.feedback__head > .title').html('Отзывы');
 };
 
+dropdownMenuContainerOff = () => {
+
+}
+
 const desktopDropdownOpenButtonHandler = () => {
-    $('.dropdown-menu__open-button').on('click', function () {
-        if ($(window).width() >= 961) {
-            if(!dropdownMenuContainer.hasClass('dropdown-menu__container_active')) {
-                dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
-                $('body').css({overflow: 'hidden'})
-            }
-            else{
+    $('body').on('click', function (event) {
+        if ($(window).width() > 960) {
+            console.log(event.target);
+            if ($('.dropdown-menu__open-button').is(event.target) || $('.dropdown-menu__open-button').has(event.target).length !== 0) {
+                if (!dropdownMenuContainer.hasClass('dropdown-menu__container_active')) {
+                    dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
+                    $('body').css({overflow: 'hidden'});
+                    $(this).css({
+                        height: 'calc(100% - 2px)',
+                        borderBottom: '2px solid white'
+                    })
+                } else {
+                    dropdownMenuContainer.fadeOut(400).removeClass('dropdown-menu__container_active');
+                    $('body').css({overflow: 'visible'});
+                    $(this).attr('style', '');
+                }
+            } else if (!$('.dropdown-menu').is(event.target) && $('.dropdown-menu').has(event.target).length === 0) { // и не по его дочерним элементам
+
                 dropdownMenuContainer.fadeOut(400).removeClass('dropdown-menu__container_active');
-                $('body').css({overflow: 'visible'})
+                $('body').css({overflow: 'visible'});
+                $(this).attr('style', '');
             }
         }
-    });
-    dropdownMenuContainer.on('click', function (event) {
-        if (event.target.classList.contains('dropdown-menu__container_active')) {
-            $(event.target).fadeOut(400).removeClass('dropdown-menu__container_active');
-            $('body').css({overflow: 'visible'})
-        }
-    });
+    })
 };
 
 const mobileDropdownOpenButtonHandler = () => {
@@ -148,7 +157,6 @@ const closeServicesDropdownFromTapMenu = () => {
 $(window).on('resize', function () {
     if ($(window).width() > 1399) {
         if (resizeFlag == 0) {
-            selectButtons.detach();
             windowDesktopSizeChange();
             //ВЫПАДАЮЩЕЕ МЕНЮ В ХЭДЕРЕ
             resizeFlag = 1;
@@ -168,6 +176,7 @@ $(window).on('resize', function () {
 
 
     if ($(window).width() > 960 && appendFlag == 0) {
+        selectButtons.appendTo('.about__slider');
         $('.with-arrow').detach();
         $('.units__features > a.btn.btn_red_fill').remove();
         appendFlag = 1;
@@ -308,22 +317,29 @@ window.onload = function () {
     sliderButtons[aboutSliderCurrentSlide].classList.add('select-buttons__button_active');
     let sliderFlag = 0;
     sliderButtons.on('click', function (event) {
-        if (sliderFlag == 0) {
-            sliderButtons.removeClass('select-buttons__button_active');
-            const prevItem = $('.about__item_active');
-            const sliderItems = $('.about__item');
-            const index = sliderButtons.index(event.currentTarget);
-            const sliderItem = sliderItems[index];
+        const index = sliderButtons.index(event.currentTarget);
+        if($(window).width() >= 1400) {
+            if (sliderFlag == 0) {
+                sliderButtons.removeClass('select-buttons__button_active');
+                const prevItem = $('.about__item_active');
+                const sliderItems = $('.about__item');
+                const sliderItem = sliderItems[index];
+                sliderButtons.removeClass('select-buttons__button_active');
+                event.currentTarget.classList.add('select-buttons__button_active');
+                prevItem.addClass('about__item_deactivate');
+                sliderFlag = 1;
+                setTimeout(function () {
+                    prevItem.removeClass('about__item_deactivate');
+                    prevItem.removeClass('about__item_active');
+                    sliderItem.classList.add('about__item_active');
+                    sliderFlag = 0
+                }, 900);
+            }
+        }
+        else{
+            $('.about__slider').slick('slickGoTo', index, false);
             sliderButtons.removeClass('select-buttons__button_active');
             event.currentTarget.classList.add('select-buttons__button_active');
-            prevItem.addClass('about__item_deactivate');
-            sliderFlag = 1;
-            setTimeout(function () {
-                prevItem.removeClass('about__item_deactivate');
-                prevItem.removeClass('about__item_active');
-                sliderItem.classList.add('about__item_active');
-                sliderFlag = 0
-            }, 900);
         }
     });
 
@@ -377,6 +393,12 @@ window.onload = function () {
         $('.feedback__slider').on('afterChange', function (event, slick, currentSlide) {
             $('.feedback__position_current').html($('.feedback__slider').slick('slickCurrentSlide') + 1);
         });
+    }
+
+    if (window.matchMedia('screen and (min-width: 960px)').matches) {
+        selectButtons.appendTo('.about__slider')
+    } else {
+        selectButtons.detach();
     }
 };
 
@@ -432,7 +454,7 @@ $(document).ready(function () {
                 color: '#E84E2C'
             })
         }
-        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999") && appointmentNameInput.val() !== '' ) {
+        if (appointmentConfident.prop('checked') && Inputmask.isValid(appointmentPhoneInput.val(), "+7-(999)-999-9999") && appointmentNameInput.val() !== '') {
             event.preventDefault();
             popUp.show();
             popUp.css({
@@ -470,10 +492,10 @@ $(document).ready(function () {
             $('.appointment__form').unbind('submit')
         }
     });
-    appointmentNameInput.on('input', function() {
+    appointmentNameInput.on('input', function () {
         console.log($(appointmentNameInput[1]).val())
-        $(appointmentNameInput[0]).val($(appointmentNameInput[0]).val().replace(/[^А-Яа-я]/,''));
-        $(appointmentNameInput[1]).val($(appointmentNameInput[1]).val().replace(/[^А-Яа-я]/,''));
+        $(appointmentNameInput[0]).val($(appointmentNameInput[0]).val().replace(/[^А-Яа-я]/, ''));
+        $(appointmentNameInput[1]).val($(appointmentNameInput[1]).val().replace(/[^А-Яа-я]/, ''));
     });
 
     appointmentConfident.change(function () {
@@ -579,9 +601,6 @@ $(document).ready(function () {
         }
     });
 
-
-
-
     desktopDropdownOpenButtonHandler();
 
     //Обработка кнопки услуги в нижнем меню
@@ -637,18 +656,18 @@ $(document).ready(function () {
         }
     });
 
-    popupIphoneFirstAction.on('click',function () {
-        if($(this).html() == 'Записаться'){
+    popupIphoneFirstAction.on('click', function () {
+        if ($(this).html() == 'Записаться') {
             $('.appointment_popup').addClass('appointment_popup_active');
             $('.popup-iphone__actions').fadeOut();
         }
     });
 
-    popupIphone.on('click', '.popup-iphone__cancel',function () {
-        if($('.appointment_popup').hasClass('appointment_popup_active')){
+    popupIphone.on('click', '.popup-iphone__cancel', function () {
+        if ($('.appointment_popup').hasClass('appointment_popup_active')) {
             $('.appointment_popup').removeClass('appointment_popup_active');
             $('.popup-iphone__actions').fadeIn();
-        }else if(popupIphone.hasClass('popup-iphone_active')){
+        } else if (popupIphone.hasClass('popup-iphone_active')) {
             popupIphone.fadeOut(500, function () {
                 popupIphone.removeClass('popup-iphone_active');
             });
@@ -665,9 +684,9 @@ $(document).ready(function () {
         onReadyMobileMediaChange();
         $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
         appendFlag = 0;
-    }
-    else {
-        $('.dropdown-menu__open-button').off('click');
+    } else {
+        selectButtons.appendTo('.about__slider');
+        $('body').off('click');
         desktopDropdownOpenButtonHandler();
         $('.units__features > a.btn.btn_red_fill').remove();
         appendFlag = 1;

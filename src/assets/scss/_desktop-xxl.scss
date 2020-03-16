@@ -186,13 +186,19 @@
           a {
             text-decoration: none;
             color: $main-color;
+            font-size: 14px;
+            @media screen and (min-width: 1400px){
+              font-size: 16px;
+            }
           }
         }
       }
     }
+    @media screen and (min-width: 1145px){
+      flex-grow: 0;
+    }
     @media screen and (min-width: 1400px) {
       margin-right: 50px;
-      flex-grow: 0;
     }
     @media screen and (max-width: 960px) {
       display: none;
@@ -203,23 +209,25 @@
     display: flex;
     @media screen and (min-width: 961px) {
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       text-align: right;
     }
-    @media  screen and (min-width: 1100px){
+    @media  screen and (min-width: 1145px){
       flex-basis: calc(100% / 3 - 5px);
+      flex-grow: 1;
     }
     @media screen and (min-width: 1400px) {
-      flex-grow: 1;
+      justify-content: space-between;
     }
   }
 
   &__location {
     display: none;
-    @media screen and (min-width: 1100px) {
+    @media screen and (min-width: 1145px) {
       display: inline-block;
       font-size: 14px;
-      flex-basis: 40%;
+      flex-basis: 46%;
+      margin-right: 45px;
     }
     @media screen and (min-width: 1400px) {
       font-size: 16px;
@@ -227,11 +235,12 @@
       margin: 0;
       margin-right: 20px;
       flex-grow: 1;
+      text-align: left;
     }
   }
 
   &__phone {
-
+    min-width: 193px;
     small {
       display: none;
     }
@@ -388,7 +397,7 @@
     @media screen and (min-width: 960px) {
       display: none;
     }
-    @media screen and (min-width: 1100px){
+    @media screen and (min-width: 1145px){
       display: block;
       padding: 0;
       flex-grow: 1;
@@ -941,14 +950,23 @@
 
   .select-buttons {
     display: none;
-    @media screen and (min-width: 1400px) {
+    @media screen and (min-width: 961px) {
       display: inline-block;
       position: absolute;
+      bottom: 0px;
+      float: none;
+      height: auto;
+      min-height: auto;
+      padding-left: 15px;
+      margin-right: 0;
+    }
+    @media screen and (min-width: 1400px){
       bottom: 88px;
+      padding-left: 0;
     }
 
     &__button {
-      @media screen and (min-width: 1400px) {
+      @media screen and (min-width: 961px) {
         display: inline-block;
         height: 18px;
         width: 18px;
