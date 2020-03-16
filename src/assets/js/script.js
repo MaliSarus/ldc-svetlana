@@ -84,32 +84,43 @@ const windowMobileSizeChange = () => {
     $('.feedback__head > .title').html('Отзывы');
 };
 
-dropdownMenuContainerOff = () => {
-
-}
-
-const desktopDropdownOpenButtonHandler = () => {
+const DropdownOpenButtonHandler = () => {
     $('body').on('click', function (event) {
-        if ($(window).width() > 960) {
+        if ($(window).width() >= 961) {
             console.log(event.target);
             if ($('.dropdown-menu__open-button').is(event.target) || $('.dropdown-menu__open-button').has(event.target).length !== 0) {
                 if (!dropdownMenuContainer.hasClass('dropdown-menu__container_active')) {
                     dropdownMenuContainer.fadeIn(400).addClass('dropdown-menu__container_active');
                     $('body').css({overflow: 'hidden'});
-                    $(this).css({
+                    $('li.dropdown-menu__open-button').css({
                         height: 'calc(100% - 2px)',
                         borderBottom: '2px solid white'
-                    })
+                    });
                 } else {
                     dropdownMenuContainer.fadeOut(400).removeClass('dropdown-menu__container_active');
                     $('body').css({overflow: 'visible'});
-                    $(this).attr('style', '');
+                    $('li.dropdown-menu__open-button').attr('style', '');
                 }
             } else if (!$('.dropdown-menu').is(event.target) && $('.dropdown-menu').has(event.target).length === 0) { // и не по его дочерним элементам
-
                 dropdownMenuContainer.fadeOut(400).removeClass('dropdown-menu__container_active');
                 $('body').css({overflow: 'visible'});
-                $(this).attr('style', '');
+                $('li.dropdown-menu__open-button').attr('style', '');
+            }
+        }
+        else{
+            if($('.arrow-back').is(event.target)) {
+                if (dropdownTabsBlock.attr('style') == 'display: none;' && dropdownContentBlock.attr('style') == '') {
+                    dropdownContentBlock.css({
+                        display: 'none'
+                    });
+                    dropdownTabsBlock.attr('style', '');
+                    $('.dropdown-menu > .title').html('Услуги');
+                } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && headerBottom.attr('style') == 'display: none;') {
+                    dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style', '');
+                    headerBottom.attr('style', '');
+                } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
+                    closeServicesDropdownFromTapMenu();
+                }
             }
         }
     })
@@ -139,7 +150,6 @@ const onReadyMobileMediaChange = () => {
     dropdownTabs.append('<div class="with-arrow"></div>');
 
     $('.dropdown-menu__open-button').off('click');
-    mobileDropdownOpenButtonHandler();
 };
 
 const closeServicesDropdownFromTapMenu = () => {
@@ -175,12 +185,12 @@ $(window).on('resize', function () {
     }
 
 
-    if ($(window).width() > 960 && appendFlag == 0) {
+    if ($(window).width() >= 961 && appendFlag == 0) {
         selectButtons.appendTo('.about__slider');
         $('.with-arrow').detach();
         $('.units__features > a.btn.btn_red_fill').remove();
         appendFlag = 1;
-    } else if ($(window).width() <= 960 && appendFlag == 1) {
+    } else if ($(window).width() < 961 && appendFlag == 1) {
         $('.dropdown-menu__open-button').append('<div class="with-arrow"></div>');
         dropdownTabs.append('<div class="with-arrow"></div>');
         $('.units__features').append('<a class="btn btn_red_fill">Записаться на прием</a>');
@@ -189,7 +199,6 @@ $(window).on('resize', function () {
 
     if ($(window).width() > 960 && dropdownFlag == 0) {
         $('.dropdown-menu__open-button').off('click');
-        desktopDropdownOpenButtonHandler();
         dropdownFlag = 1;
     } else if ($(window).width() <= 960 && dropdownFlag == 1) {
         $('.dropdown-menu__open-button').off('click');
@@ -223,6 +232,8 @@ $(window).on('resize', function () {
 
 // Обработка событий при полной загрузки страницы
 window.onload = function () {
+
+
     $('.about__slider').on('destroy', function () {
         console.log('destroy');
     });
@@ -527,20 +538,20 @@ $(document).ready(function () {
 
 
     //Кнопка назад
-    $('body').on('click', '.arrow-back', function () {
-        if (dropdownTabsBlock.attr('style') == 'display: none;' && dropdownContentBlock.attr('style') == '') {
-            dropdownContentBlock.css({
-                display: 'none'
-            });
-            dropdownTabsBlock.attr('style', '');
-            $('.dropdown-menu > .title').html('Услуги');
-        } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && headerBottom.attr('style') == 'display: none;') {
-            dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style', '');
-            headerBottom.attr('style', '');
-        } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
-            closeServicesDropdownFromTapMenu();
-        }
-    });
+    // $('body').on('click', '.arrow-back', function () {
+    //     if (dropdownTabsBlock.attr('style') == 'display: none;' && dropdownContentBlock.attr('style') == '') {
+    //         dropdownContentBlock.css({
+    //             display: 'none'
+    //         });
+    //         dropdownTabsBlock.attr('style', '');
+    //         $('.dropdown-menu > .title').html('Услуги');
+    //     } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && headerBottom.attr('style') == 'display: none;') {
+    //         dropdownMenuContainer.removeClass('dropdown-menu__container_active').addClass('hide').attr('style', '');
+    //         headerBottom.attr('style', '');
+    //     } else if (dropdownMenuContainer.hasClass('dropdown-menu__container_active') && $(serviceTapButton).hasClass('tap-menu__button_active')) {
+    //         closeServicesDropdownFromTapMenu();
+    //     }
+    // });
 
     //Вкладки на выпадающем меню хэдера
     $('.dropdown-menu__tabs_item').on('click', '.with-arrow', function (event) {
@@ -601,7 +612,7 @@ $(document).ready(function () {
         }
     });
 
-    desktopDropdownOpenButtonHandler();
+    DropdownOpenButtonHandler();
 
     //Обработка кнопки услуги в нижнем меню
     $(serviceTapButton).on('click', function () {
@@ -686,8 +697,7 @@ $(document).ready(function () {
         appendFlag = 0;
     } else {
         selectButtons.appendTo('.about__slider');
-        $('body').off('click');
-        desktopDropdownOpenButtonHandler();
+        // $('body').off('click');
         $('.units__features > a.btn.btn_red_fill').remove();
         appendFlag = 1;
     }
