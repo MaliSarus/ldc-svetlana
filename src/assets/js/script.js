@@ -407,7 +407,7 @@ $(document).ready(function () {
                 borderColor: '#E84E2C',
                 color: '#E84E2C'
             });
-            $('label[for="customerName"]').css({
+            $('label[for="customerName"], label[for="popup-customerName"]').css({
                 color: '#E84E2C'
             }).html('Введите имя');
             event.preventDefault();
@@ -471,7 +471,9 @@ $(document).ready(function () {
         }
     });
     appointmentNameInput.on('input', function() {
-        appointmentNameInput.val(appointmentNameInput.val().replace(/[^А-я]/,''));
+        console.log($(appointmentNameInput[1]).val())
+        $(appointmentNameInput[0]).val($(appointmentNameInput[0]).val().replace(/[^А-Яа-я]/,''));
+        $(appointmentNameInput[1]).val($(appointmentNameInput[1]).val().replace(/[^А-Яа-я]/,''));
     });
 
     appointmentConfident.change(function () {
