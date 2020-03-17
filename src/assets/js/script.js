@@ -106,9 +106,8 @@ const DropdownOpenButtonHandler = () => {
                 $('body').css({overflow: 'visible'});
                 $('li.dropdown-menu__open-button').attr('style', '');
             }
-        }
-        else{
-            if($('.arrow-back').is(event.target)) {
+        } else {
+            if ($('.arrow-back').is(event.target)) {
                 if (dropdownTabsBlock.attr('style') == 'display: none;' && dropdownContentBlock.attr('style') == '') {
                     dropdownContentBlock.css({
                         display: 'none'
@@ -329,7 +328,7 @@ window.onload = function () {
     let sliderFlag = 0;
     sliderButtons.on('click', function (event) {
         const index = sliderButtons.index(event.currentTarget);
-        if($(window).width() >= 1400) {
+        if ($(window).width() >= 1400) {
             if (sliderFlag == 0) {
                 sliderButtons.removeClass('select-buttons__button_active');
                 const prevItem = $('.about__item_active');
@@ -346,8 +345,7 @@ window.onload = function () {
                     sliderFlag = 0
                 }, 900);
             }
-        }
-        else{
+        } else {
             $('.about__slider').slick('slickGoTo', index, false);
             sliderButtons.removeClass('select-buttons__button_active');
             event.currentTarget.classList.add('select-buttons__button_active');
@@ -503,13 +501,31 @@ $(document).ready(function () {
             $('.appointment__form').unbind('submit')
         }
     });
-    appointmentNameInput.on('input', function () {
-        console.log($(appointmentNameInput[1]).val())
-        $(appointmentNameInput[0]).val($(appointmentNameInput[0]).val().replace(/[^А-Яа-я]/, ''));
-        $(appointmentNameInput[1]).val($(appointmentNameInput[1]).val().replace(/[^А-Яа-я]/, ''));
+
+    appointmentPhoneInput.on('keyup', function (event) {
+        if (typeof(event.originalEvent) != 'undefined') {
+            appointmentPhoneInput.each(function (index) {
+               if(index == appointmentPhoneInput.index(event.target)){
+                   console.log(index);
+               }
+               else{
+                   $(this).val($(this).val() + event.originalEvent.key)
+               }
+            })
+        }
+
     });
 
-    appointmentConfident.change(function () {
+    appointmentNameInput.on('input', function (event) {
+        $(appointmentNameInput[0]).val($(event.currentTarget).val().replace(/[^А-Яа-я]/, ''));
+        $(appointmentNameInput[1]).val($(event.currentTarget).val().replace(/[^А-Яа-я]/, ''));
+
+    });
+
+    appointmentConfident.change(function (event) {
+        $(appointmentConfident[0]).prop('checked', $(event.currentTarget).prop('checked'));
+        $(appointmentConfident[1]).prop('checked', $(event.currentTarget).prop('checked'));
+        $(event.currentTarget).prop('checked');
         if (!this.checked) {
             $(this).css({
                 borderColor: '#E84E2C',
@@ -531,6 +547,7 @@ $(document).ready(function () {
                 showMaskOnFocus: true,
                 'onincomplete': function () {
                     appointmentPhoneInput.inputmask("remove")
+
                 }
             });
         }, 300)
